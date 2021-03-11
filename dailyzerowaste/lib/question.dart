@@ -17,178 +17,246 @@ class _question extends State<question_page> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
           children: <Widget>[
-            Row(
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                IconButton(
-                  icon: Icon(
-                    Icons.arrow_back,
-                    size: 30,
-                  ),
-                  onPressed: () => Navigator.pop(context),
-                ),
-                SizedBox(width: 141),
-                Text('Sign up'),
-                SizedBox(width: 171),
-              ],
-            ),
-            Container(
-              // contents
-              padding: EdgeInsets.only(top: 50),
-              child: Column(
-                // contents align
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  // nickname
-                  Container(
-                    padding: EdgeInsets.only(left: 51), // nickname left padding
-                    child: Column(
-                      // nickname align
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Text('Please set a nickname.'), // nickname desc
-                        Row(
-                          // nickname input
-                          children: <Widget>[
-                            Container(
-                              padding: EdgeInsets.only(right: 10),
-                              width: 230,
-                              child: TextField(),
-                            ),
-                            RaisedButton(
-                              child: Text('Confirm'),
-                              onPressed: () {},
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  // Question 1
-                  Container(
-                    padding: EdgeInsets.only(top: 50),
-                    child: Column(
-                      children: <Widget>[
-                        Text('1. Do you know "Zero waste"?'),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Radio(
-                                value: 1, groupValue: _q1, onChanged: (val) {}),
-                            Text('Yes'),
-                            Radio(
-                                value: 2, groupValue: _q1, onChanged: (val) {}),
-                            Text('No'),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  // Question 2
-                  Container(
-                    padding: EdgeInsets.only(top: 20),
-                    child: Column(
-                      children: <Widget>[
-                        Text('2. Have you practiced Zerowaste DIY?'),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Radio(
-                                value: 1, groupValue: _q2, onChanged: (val) {}),
-                            Text('0'),
-                            Radio(
-                                value: 2, groupValue: _q2, onChanged: (val) {}),
-                            Text('1~9'),
-                            Radio(
-                                value: 3, groupValue: _q2, onChanged: (val) {}),
-                            Text('10~15'),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  // Question 3
-                  Container(
-                    padding: EdgeInsets.only(top: 20),
-                    child: Column(
-                      children: <Widget>[
-                        Text('3. Have you ever visited a Zerowaste shop?'),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Radio(
-                                value: 1, groupValue: _q3, onChanged: (val) {}),
-                            Text('0~5'),
-                            Radio(
-                                value: 2, groupValue: _q3, onChanged: (val) {}),
-                            Text('6~15'),
-                            Radio(
-                                value: 3, groupValue: _q3, onChanged: (val) {}),
-                            Text('16~40'),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  // Ready Question
-                  Container(
-                    padding: EdgeInsets.only(top: 70),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          'Are you ready\nto accept that progress is better than perfection?',
-                          textAlign: TextAlign.center,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Radio(
-                                value: 1,
-                                groupValue: _readyQ,
-                                onChanged: (val) {}),
-                            Text('Yes'),
-                            Radio(
-                                value: 2,
-                                groupValue: _readyQ,
-                                onChanged: (val) {}),
-                            Text('No'),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  // Sign up Button
-                  Container(
-                    padding: EdgeInsets.only(top: 70),
-                    child: ButtonTheme(
-                      minWidth: 295,
-                      height: 48,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30)),
-                      child: RaisedButton(
-                        child: Text(
-                          'Sign up',
-                          style: TextStyle(
-                              fontFamily: 'Arial',
-                              fontSize: 10,
-                              color: Colors.white),
-                        ),
-                        color: Color(0xff2699FB),
-                        onPressed: () {},
+                // 비율이 맞지 않습니다ㅠㅠㅠㅠ
+                Row(
+                  children: <Widget>[
+                    SizedBox(width: 41.02),
+                    IconButton(
+                      icon: Icon(
+                        Icons.arrow_back,
+                        size: 18.98,
                       ),
+                      onPressed: () => Navigator.pop(context),
                     ),
+                    SizedBox(width: 121),
+                    Text(
+                      'Sign up',
+                      style: TextStyle(fontSize: 15),
+                    ),
+                    SizedBox(width: 181),
+                  ],
+                ),
+                Container(
+                  // contents
+                  padding: EdgeInsets.only(top: 68),
+                  child: Column(
+                    // contents align
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      // nickname
+                      Container(
+                        padding:
+                            EdgeInsets.only(left: 51), // nickname left padding
+                        child: Column(
+                          // nickname align
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text('Please set a nickname.'), // nickname desc
+                            Row(
+                              // nickname input
+                              children: <Widget>[
+                                Container(
+                                  padding: EdgeInsets.only(right: 10),
+                                  width: 230,
+                                  child: TextFormField(),
+                                ),
+                                RaisedButton(
+                                  child: Text('Confirm'),
+                                  onPressed: () {},
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      // Question 1
+                      Container(
+                        padding: EdgeInsets.only(top: 64, left: 51),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text('1. Do you know "Zero waste"?'),
+                            Row(
+                              //mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Radio(
+                                    value: 1,
+                                    groupValue: _q1,
+                                    onChanged: (val) {
+                                      setState(() {
+                                        _q1 = val;
+                                      });
+                                    }),
+                                Text('Yes'),
+                                Radio(
+                                    value: 2,
+                                    groupValue: _q1,
+                                    onChanged: (val) {
+                                      setState(() {
+                                        _q1 = val;
+                                      });
+                                    }),
+                                Text('No'),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      // Question 2
+                      Container(
+                        padding: EdgeInsets.only(top: 38, left: 51, right: 67),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text('2. Have you practiced Zerowaste DIY?'),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Radio(
+                                    value: 1,
+                                    groupValue: _q2,
+                                    onChanged: (val) {
+                                      setState(() {
+                                        _q2 = val;
+                                      });
+                                    }),
+                                Text('0'),
+                                Radio(
+                                    value: 2,
+                                    groupValue: _q2,
+                                    onChanged: (val) {
+                                      setState(() {
+                                        _q2 = val;
+                                      });
+                                    }),
+                                Text('1~9'),
+                                Radio(
+                                    value: 3,
+                                    groupValue: _q2,
+                                    onChanged: (val) {
+                                      setState(() {
+                                        _q2 = val;
+                                      });
+                                    }),
+                                Text('10~15'),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      // Question 3
+                      Container(
+                        padding: EdgeInsets.only(top: 38, left: 51, right: 67),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text('3. Have you ever visited a Zerowaste shop?'),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Radio(
+                                    value: 1,
+                                    groupValue: _q3,
+                                    onChanged: (val) {
+                                      setState(() {
+                                        _q3 = val;
+                                      });
+                                    }),
+                                Text('0~5'),
+                                Radio(
+                                    value: 2,
+                                    groupValue: _q3,
+                                    onChanged: (val) {
+                                      setState(() {
+                                        _q3 = val;
+                                      });
+                                    }),
+                                Text('6~15'),
+                                Radio(
+                                    value: 3,
+                                    groupValue: _q3,
+                                    onChanged: (val) {
+                                      setState(() {
+                                        _q3 = val;
+                                      });
+                                    }),
+                                Text('16~40'),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      // Ready Question
+                      Container(
+                        padding: EdgeInsets.only(top: 78),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              'Are you ready\nto accept that progress is better than perfection?',
+                              textAlign: TextAlign.center,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Radio(
+                                    value: 1,
+                                    groupValue: _readyQ,
+                                    onChanged: (val) {
+                                      setState(() {
+                                        _readyQ = val;
+                                      });
+                                    }),
+                                Text('Yes'),
+                                Radio(
+                                    value: 2,
+                                    groupValue: _readyQ,
+                                    onChanged: (val) {
+                                      setState(() {
+                                        _readyQ = val;
+                                      });
+                                    }),
+                                Text('No'),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      // Sign up Button
+                      Container(
+                        padding: EdgeInsets.only(top: 71, bottom: 64),
+                        child: ButtonTheme(
+                          minWidth: 295,
+                          height: 48,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30)),
+                          child: RaisedButton(
+                            child: Text(
+                              'Sign up',
+                              style: TextStyle(
+                                  fontFamily: 'Arial',
+                                  fontSize: 10,
+                                  color: Colors.white),
+                            ),
+                            color: Color(0xff2699FB),
+                            onPressed: () {},
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),
