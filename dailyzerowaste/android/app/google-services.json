@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "763840709427",
+    "project_id": "dailyzerowaste-bc717",
+    "storage_bucket": "dailyzerowaste-bc717.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:763840709427:android:e3c8414b9f8adc9c10b446",
+        "android_client_info": {
+          "package_name": "com.example.dailyzerowaste"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "763840709427-3o8idj1vm4i125k1eoa02s8a92fcbcid.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dailyzerowaste",
+            "certificate_hash": "10644a9742022bad7def43ff9390fdde7e01fe71"
+          }
+        },
+        {
+          "client_id": "763840709427-fc3ea8u8hivgtjgdp3tl83t4ai51tf5b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFS0FX-Ki9CRLtKL2nGdxwkXn6eIACajc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "763840709427-fc3ea8u8hivgtjgdp3tl83t4ai51tf5b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

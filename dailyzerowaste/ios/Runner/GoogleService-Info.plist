@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>763840709427-lmlnk8ljesut1cm78rcnlj7i6lb7icrc.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.763840709427-lmlnk8ljesut1cm78rcnlj7i6lb7icrc</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>763840709427-3o8idj1vm4i125k1eoa02s8a92fcbcid.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDy1zWweMYeriuRF6iFnveWHK0pjXYIMLY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>763840709427</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.dailyzerowaste</string>
+	<key>PROJECT_ID</key>
+	<string>dailyzerowaste-bc717</string>
+	<key>STORAGE_BUCKET</key>
+	<string>dailyzerowaste-bc717.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:763840709427:ios:f039e25399b366a610b446</string>
+</dict>
+</plist>
