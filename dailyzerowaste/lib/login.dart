@@ -18,23 +18,25 @@ class _login extends State<login_page> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Image.asset(
-                'image/logo.jpg',
-                width: 175,
-                height: 175,
+                'image/dailyzerowaste_default_logo.png',
+                width: 270,
+                height: 270,
               ),
-              SizedBox(height: 95),
+              SizedBox(height: 93),
               ButtonTheme(
-                minWidth: 295,
-                height: 48,
+                minWidth: 271,
+                height: 55,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)),
+                  borderRadius: BorderRadius.circular(30),
+                  side: BorderSide(color: Color(0xff4f4b49), width: 2.0),
+                ),
                 child: RaisedButton(
                   child: Text(
                     'Sign up with Google',
                     style: TextStyle(
-                        fontFamily: 'Arial', fontSize: 10, color: Colors.white),
+                        fontFamily: 'Quick-Pencil', fontSize: 25, color: Color(0xff4f4b49)),
                   ),
-                  color: Color(0xff2699FB),
+                  color: Color(0x00fffff),
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -43,23 +45,23 @@ class _login extends State<login_page> {
                   },
                 ),
               ),
-              SizedBox(height: 24),
+              SizedBox(height: 25),
               ButtonTheme(
-                minWidth: 295,
-                height: 48,
+                minWidth: 271,
+                height: 55,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
-                  side: BorderSide(color: Color(0xff2699FB), width: 2.0),
+                  side: BorderSide(color: Color(0xff4f4b49), width: 2.0),
                 ),
                 child: RaisedButton(
                   child: Text(
                     'Guest Login',
                     style: TextStyle(
-                        fontFamily: 'Arial',
-                        fontSize: 10,
-                        color: Color(0xff2699FB)),
+                        fontFamily: 'Quick-Pencil',
+                        fontSize: 27,
+                        color: Color(0xff4f4b49)),
                   ),
-                  color: Colors.white,
+                  color: Color(0x00000000),
                   onPressed: () {},
                 ),
               ),

@@ -25,20 +25,20 @@ class _question extends State<question_page> {
                 // 비율이 맞지 않습니다ㅠㅠㅠㅠ
                 Row(
                   children: <Widget>[
-                    SizedBox(width: 41.02),
+                    SizedBox(width: 36),
                     IconButton(
                       icon: Icon(
                         Icons.arrow_back,
-                        size: 18.98,
+                        size: 26,
                       ),
                       onPressed: () => Navigator.pop(context),
                     ),
-                    SizedBox(width: 121),
+                    SizedBox(width: 99),
                     Text(
                       'Sign up',
-                      style: TextStyle(fontSize: 15),
+                      style: TextStyle(fontSize: 40),
                     ),
-                    SizedBox(width: 181),
+                    SizedBox(width: 160),
                   ],
                 ),
                 Container(
