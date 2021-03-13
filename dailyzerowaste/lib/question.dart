@@ -85,24 +85,56 @@ class _question extends State<question_page> {
                             Row(
                               //mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                Radio(
-                                    value: 1,
-                                    groupValue: _q1,
-                                    onChanged: (val) {
+                                Flexible(
+                                  child: InkWell(
+                                    onTap: () {
                                       setState(() {
-                                        _q1 = val;
+                                        _q1 = 1;
                                       });
-                                    }),
-                                Text('Yes'),
-                                Radio(
-                                    value: 2,
-                                    groupValue: _q1,
-                                    onChanged: (val) {
+                                    },
+                                    child: Row(
+                                      children: <Widget>[
+                                        Radio(
+                                          value: 1,
+                                          groupValue: _q1,
+                                          onChanged: (val) {
+                                            setState(() {
+                                              _q1 = val;
+                                            });
+                                          },
+                                        ),
+                                        Text('Yes'),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Flexible(
+                                  child: InkWell(
+                                    onTap: () {
                                       setState(() {
-                                        _q1 = val;
+                                        _q1 = 2;
                                       });
-                                    }),
-                                Text('No'),
+                                    },
+                                    child: Row(
+                                      children: <Widget>[
+                                        Radio(
+                                          value: 2,
+                                          groupValue: _q1,
+                                          onChanged: (val) {
+                                            setState(() {
+                                              _q1 = val;
+                                            });
+                                          },
+                                        ),
+                                        Text('No'),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Flexible(
+                                  child: SizedBox(),
+                                  flex: 2,
+                                ),
                               ],
                             ),
                           ],
@@ -111,41 +143,81 @@ class _question extends State<question_page> {
 
                       // Question 2
                       Container(
-                        padding: EdgeInsets.only(top: 38, left: 51, right: 67),
+                        padding: EdgeInsets.only(top: 38, left: 51),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text('2. Have you practiced Zerowaste DIY?'),
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                Radio(
-                                    value: 1,
-                                    groupValue: _q2,
-                                    onChanged: (val) {
+                                Flexible(
+                                  child: InkWell(
+                                    onTap: () {
                                       setState(() {
-                                        _q2 = val;
+                                        _q2 = 1;
                                       });
-                                    }),
-                                Text('0'),
-                                Radio(
-                                    value: 2,
-                                    groupValue: _q2,
-                                    onChanged: (val) {
+                                    },
+                                    child: Row(
+                                      children: <Widget>[
+                                        Radio(
+                                            value: 1,
+                                            groupValue: _q2,
+                                            onChanged: (val) {
+                                              setState(() {
+                                                _q2 = val;
+                                              });
+                                            }),
+                                        Text('0'),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Flexible(
+                                  child: InkWell(
+                                    onTap: () {
                                       setState(() {
-                                        _q2 = val;
+                                        _q2 = 2;
                                       });
-                                    }),
-                                Text('1~9'),
-                                Radio(
-                                    value: 3,
-                                    groupValue: _q2,
-                                    onChanged: (val) {
+                                    },
+                                    child: Row(
+                                      children: <Widget>[
+                                        Radio(
+                                            value: 2,
+                                            groupValue: _q2,
+                                            onChanged: (val) {
+                                              setState(() {
+                                                _q2 = val;
+                                              });
+                                            }),
+                                        Text('1~19'),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Flexible(
+                                  child: InkWell(
+                                    onTap: () {
                                       setState(() {
-                                        _q2 = val;
+                                        _q2 = 3;
                                       });
-                                    }),
-                                Text('10~15'),
+                                    },
+                                    child: Row(
+                                      children: <Widget>[
+                                        Radio(
+                                            value: 3,
+                                            groupValue: _q2,
+                                            onChanged: (val) {
+                                              setState(() {
+                                                _q2 = val;
+                                              });
+                                            }),
+                                        Text('10~15'),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Flexible(child: SizedBox()),
                               ],
                             ),
                           ],
@@ -154,41 +226,81 @@ class _question extends State<question_page> {
 
                       // Question 3
                       Container(
-                        padding: EdgeInsets.only(top: 38, left: 51, right: 67),
+                        padding: EdgeInsets.only(top: 38, left: 51),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text('3. Have you ever visited a Zerowaste shop?'),
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                Radio(
-                                    value: 1,
-                                    groupValue: _q3,
-                                    onChanged: (val) {
+                                Flexible(
+                                  child: InkWell(
+                                    onTap: () {
                                       setState(() {
-                                        _q3 = val;
+                                        _q3 = 1;
                                       });
-                                    }),
-                                Text('0~5'),
-                                Radio(
-                                    value: 2,
-                                    groupValue: _q3,
-                                    onChanged: (val) {
+                                    },
+                                    child: Row(
+                                      children: <Widget>[
+                                        Radio(
+                                            value: 1,
+                                            groupValue: _q3,
+                                            onChanged: (val) {
+                                              setState(() {
+                                                _q3 = val;
+                                              });
+                                            }),
+                                        Text('0~5'),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Flexible(
+                                  child: InkWell(
+                                    onTap: () {
                                       setState(() {
-                                        _q3 = val;
+                                        _q3 = 2;
                                       });
-                                    }),
-                                Text('6~15'),
-                                Radio(
-                                    value: 3,
-                                    groupValue: _q3,
-                                    onChanged: (val) {
+                                    },
+                                    child: Row(
+                                      children: <Widget>[
+                                        Radio(
+                                            value: 2,
+                                            groupValue: _q3,
+                                            onChanged: (val) {
+                                              setState(() {
+                                                _q3 = val;
+                                              });
+                                            }),
+                                        Text('6~15'),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Flexible(
+                                  child: InkWell(
+                                    onTap: () {
                                       setState(() {
-                                        _q3 = val;
+                                        _q3 = 3;
                                       });
-                                    }),
-                                Text('16~40'),
+                                    },
+                                    child: Row(
+                                      children: <Widget>[
+                                        Radio(
+                                            value: 3,
+                                            groupValue: _q3,
+                                            onChanged: (val) {
+                                              setState(() {
+                                                _q3 = val;
+                                              });
+                                            }),
+                                        Text('16~40'),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Flexible(child: SizedBox()),
                               ],
                             ),
                           ],
@@ -208,24 +320,52 @@ class _question extends State<question_page> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                Radio(
-                                    value: 1,
-                                    groupValue: _readyQ,
-                                    onChanged: (val) {
+                                Flexible(child: SizedBox(), flex: 2,),
+                                Flexible(
+                                  child: InkWell(
+                                    onTap: () {
                                       setState(() {
-                                        _readyQ = val;
+                                        _readyQ = 1;
                                       });
-                                    }),
-                                Text('Yes'),
-                                Radio(
-                                    value: 2,
-                                    groupValue: _readyQ,
-                                    onChanged: (val) {
+                                    },
+                                    child: Row(
+                                      children: <Widget>[
+                                        Radio(
+                                            value: 1,
+                                            groupValue: _readyQ,
+                                            onChanged: (val) {
+                                              setState(() {
+                                                _readyQ = val;
+                                              });
+                                            }),
+                                        Text('Yes'),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Flexible(
+                                  child: InkWell(
+                                    onTap: () {
                                       setState(() {
-                                        _readyQ = val;
+                                        _readyQ = 2;
                                       });
-                                    }),
-                                Text('No'),
+                                    },
+                                    child: Row(
+                                      children: <Widget>[
+                                        Radio(
+                                            value: 2,
+                                            groupValue: _readyQ,
+                                            onChanged: (val) {
+                                              setState(() {
+                                                _readyQ = val;
+                                              });
+                                            }),
+                                        Text('No'),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Flexible(child: SizedBox()),
                               ],
                             ),
                           ],
