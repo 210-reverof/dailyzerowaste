@@ -50,9 +50,19 @@ flutter:
   assets:
    - image/logo.jpg
    - image/background.png
-   - image/dailyzerowaste_default_bg.png
-   - image/dailyzerowaste_default_logo.png
-   - image/dailyzerowaste_logo_shadow.png
+   - image/default_bg.png
+   - image/default_logo.png
+   - image/logo_shadow.png
+   - image/source_bar.png
+   - image/source_bar_2.png
+   - image/source_bottom_navigator.png
+   - image/source_direction.png
+   - image/source_selection_bar.png
+   - image/bottom_navigator/home.png
+   - image/bottom_navigator/location.png
+   - image/bottom_navigator/profile.png
+   - image/bottom_navigator/search.png
+   - image/bottom_navigator/step.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

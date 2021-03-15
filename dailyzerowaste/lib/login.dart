@@ -18,51 +18,42 @@ class _login extends State<login_page> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Image.asset(
-                'image/dailyzerowaste_default_logo.png',
+                'image/default_logo.png',
                 width: 270,
                 height: 270,
               ),
               SizedBox(height: 93),
-              ButtonTheme(
-                minWidth: 271,
-                height: 55,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  side: BorderSide(color: Color(0xff4f4b49), width: 2.0),
-                ),
-                child: RaisedButton(
-                  child: Text(
-                    'Sign up with Google',
-                    style: TextStyle(
-                        fontFamily: 'Quick-Pencil', fontSize: 25, color: Color(0xff4f4b49)),
+              Container(
+                width: 271,
+                child: InkWell(
+                  child: Stack(
+                    children: <Widget>[
+                      Center(
+                        child: Image.asset(
+                          'image/source_bar.png',
+                          width: 271,
+                          height: 55,
+                        ),
+                      ),
+                      Center(
+                        heightFactor: 2.7,
+                        child: Text(
+                          'Sign up with Google',
+                          style: TextStyle(
+                              fontFamily: 'Quick-Pencil',
+                              fontSize: 25,
+                              color: Color(0xff4f4b49)),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ],
                   ),
-                  color: Color(0x00fffff),
-                  onPressed: () {
+                  onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => question_page()),
                     );
                   },
-                ),
-              ),
-              SizedBox(height: 25),
-              ButtonTheme(
-                minWidth: 271,
-                height: 55,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  side: BorderSide(color: Color(0xff4f4b49), width: 2.0),
-                ),
-                child: RaisedButton(
-                  child: Text(
-                    'Guest Login',
-                    style: TextStyle(
-                        fontFamily: 'Quick-Pencil',
-                        fontSize: 27,
-                        color: Color(0xff4f4b49)),
-                  ),
-                  color: Color(0x00000000),
-                  onPressed: () {},
                 ),
               ),
             ],
