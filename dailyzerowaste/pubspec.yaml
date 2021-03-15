@@ -35,6 +35,11 @@ dev_dependencies:
   cloud_firestore: ^1.0.1
   firebase_core: ^1.0.1
   firebase_storage: ^8.0.0
+  flutter_launcher_icons: ^0.9.0
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/logo_shadow.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -53,7 +58,6 @@ flutter:
    - image/background.png
    - image/default_bg.png
    - image/default_logo.png
-   - image/logo_shadow.png
    - image/source_bar.png
    - image/source_bar_2.png
    - image/source_bottom_navigator.png
