@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: '#dailyzerowaste',
-      theme: new ThemeData(scaffoldBackgroundColor: const Color(0x00000000)),
+      theme: new ThemeData(scaffoldBackgroundColor: const Color(0x00000ff0)),
       home: Container(
         decoration: BoxDecoration(
           image: DecorationImage(

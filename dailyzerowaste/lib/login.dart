@@ -1,3 +1,4 @@
+import 'package:dailyzerowaste/mypage.dart';
 import 'package:dailyzerowaste/question.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -5,7 +6,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dailyzerowaste/model/user.dart';
-import 'package:dailyzerowaste/mypage.dart';
 
 final GoogleSignIn googleSignIn = new GoogleSignIn();
 // variable for firestore collection 'users'
@@ -26,7 +26,7 @@ class LoginPage extends StatefulWidget {
   }
 }
 
-class _login extends State<Login_page> {
+class _login extends State<LoginPage> {
   bool isSignedIn = false;
   // 페이지 컨트롤
   PageController pageController;
@@ -75,7 +75,7 @@ class _login extends State<Login_page> {
     if (!documentSnapshot.exists) {
       // 유저정보를 셋팅하는 페이지로 이동
       final username = await Navigator.push(
-          context, MaterialPageRoute(builder: (context) => question_page()));
+          context, MaterialPageRoute(builder: (context) => QuestionPage()));
 
       // 유저정보 셋팅된 값으로 db에 set
       userReference.doc(gCurrentUser.id).set({
@@ -112,7 +112,7 @@ class _login extends State<Login_page> {
   }
 
   buildHomeScreen() {
-    return mypage(currentUser);
+    return MyPage(currentUser);
   }
 
   buildSignInScreen() {

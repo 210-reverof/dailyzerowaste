@@ -69,7 +69,7 @@ class _shop extends State<ZeroWasteShop> {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(top: 64.5, right: 41.5),
+              padding: EdgeInsets.only(top: 90, right: 10),
               alignment: Alignment.topRight,
               child: FloatingActionButton(
                 child: Icon(Icons.menu),
