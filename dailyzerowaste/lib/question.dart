@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class question_page extends StatefulWidget {
+class QuestionPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _question();
   }
 }
 
-class _question extends State<question_page> {
+class _question extends State<QuestionPage> {
   int _q1 = 0;
   int _q2 = 0;
   int _q3 = 0;

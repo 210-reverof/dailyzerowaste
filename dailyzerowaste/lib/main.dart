@@ -1,8 +1,6 @@
-import 'package:dailyzerowaste/search.dart';
 import 'package:flutter/material.dart';
-import 'package:dailyzerowaste/login.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'mypage.dart';
+import 'bottomBar.dart';
 
 /*void main() {
   runApp(MyApp());
@@ -14,6 +12,7 @@ Future<void> main() async {
   await Firebase.initializeApp(); // firebae 초기화
   runApp(MyApp()); //앱 실행
 }
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -27,9 +26,7 @@ class MyApp extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: login_page(),
-        //search_page(), // 화면 테스트용
-        //mypage(), // 화면 테스트용
+        child: BottomBar(),
       ),
     );
   }

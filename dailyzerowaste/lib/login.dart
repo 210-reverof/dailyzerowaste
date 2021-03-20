@@ -1,14 +1,14 @@
 import 'package:dailyzerowaste/question.dart';
 import 'package:flutter/material.dart';
 
-class login_page extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _login();
   }
 }
 
-class _login extends State<login_page> {
+class _login extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +51,7 @@ class _login extends State<login_page> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => question_page()),
+                      MaterialPageRoute(builder: (context) => QuestionPage()),
                     );
                   },
                 ),

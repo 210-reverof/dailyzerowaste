@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class mypage extends StatefulWidget {
+class MyPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _myPage();
   }
 }
 
-class _myPage extends State<mypage> {
+class _myPage extends State<MyPage> {
   @override
   Widget build(BuildContext context) {
     // 배경 이미지
