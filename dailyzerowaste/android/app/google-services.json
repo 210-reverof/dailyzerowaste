@@ -14,11 +14,35 @@
       },
       "oauth_client": [
         {
+          "client_id": "763840709427-3bp4ln88d9g8e670div21k6dav8uj98r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dailyzerowaste",
+            "certificate_hash": "916549bb8d75cca18e608dddebebe1c5622d24b6"
+          }
+        },
+        {
           "client_id": "763840709427-3o8idj1vm4i125k1eoa02s8a92fcbcid.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.dailyzerowaste",
             "certificate_hash": "10644a9742022bad7def43ff9390fdde7e01fe71"
+          }
+        },
+        {
+          "client_id": "763840709427-dln069poecj1dmlttvjvj66hhcf07m54.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dailyzerowaste",
+            "certificate_hash": "798a13241031e5a920de0611de159a7c988275c8"
+          }
+        },
+        {
+          "client_id": "763840709427-ktpcgh1qh3d1hmnre17p4v9jqk06erou.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dailyzerowaste",
+            "certificate_hash": "37ca1511a271f0a2fd75c77576fd7f00d27b6c27"
           }
         },
         {
@@ -37,6 +61,13 @@
             {
               "client_id": "763840709427-fc3ea8u8hivgtjgdp3tl83t4ai51tf5b.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "763840709427-lmlnk8ljesut1cm78rcnlj7i6lb7icrc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.dailyzerowaste"
+              }
             }
           ]
         }
