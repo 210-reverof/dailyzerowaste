@@ -2,8 +2,8 @@ import 'package:dailyzerowaste/login.dart';
 import 'package:dailyzerowaste/model/user.dart';
 import 'package:flutter/material.dart';
 
-class Mypage extends StatefulWidget {
-  mypage(User currentUser);
+class MyPage extends StatefulWidget {
+  MyPage(User currentUser);
 
   @override
   State<StatefulWidget> createState() {
@@ -38,9 +38,8 @@ class _myPage extends State<MyPage> {
                       width: 72,
                       height: 72,
                       decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage(currentUser.image)
-                        ),
+                          image: DecorationImage(
+                              image: NetworkImage(currentUser.image)),
                           border: Border.all(width: 1, color: Colors.black),
                           borderRadius: BorderRadius.circular(50)),
                     ),
