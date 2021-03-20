@@ -1,4 +1,16 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+
+class ReturnNickname {
+  String nickname;
+  String step;
+
+  ReturnNickname({this.nickname, this.step});
+
+  ReturnNickname.setNickname(String str) {
+    this.nickname = str;
+  }
+}
 
 class QuestionPage extends StatefulWidget {
   @override
@@ -8,13 +20,72 @@ class QuestionPage extends StatefulWidget {
 }
 
 class _question extends State<QuestionPage> {
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+  final _formKey = GlobalKey<FormState>();
   int _q1 = 0;
   int _q2 = 0;
   int _q3 = 0;
   int _readyQ = 0;
+  ReturnNickname user;
+  TextEditingController nicknameController;
+
+  submitNickname() {
+    checkStep();
+
+    if (user.step == null || user.nickname == null) return;
+
+    if (user.step == "e1") {
+      print("e1");
+      return;
+    }
+
+    if (user.step == "e2") {
+      print("e2");
+      return;
+    }
+
+    final form = _formKey.currentState;
+    if (form.validate()) {
+      form.save();
+
+/*
+      SnackBar snackBar = SnackBar(content: Text('Welcome ' + user.nickname));
+      _scaffoldKey.currentState.showSnackBar(snackBar);*/
+      print(user.nickname.toString() + " " + user.step.toString());
+      Timer(Duration(seconds: 4), () {
+        Navigator.pop(context, user);
+      });
+    }
+  }
+
+  checkStep() {
+    if (_q1 == 0 || _q2 == 0 || _q3 == 0 || _readyQ == 0) {
+      user.step = "e1";
+      print("e1");
+      return;
+    }
+
+    if (_readyQ == 2) {
+      user.step = "e2";
+      print("e2");
+      return;
+    }
+
+    user.step = "beginner";
+
+    if (_q1 == 1 && _q2 >= 2 && _q3 >= 2) {
+      user.step = "intermediate";
+    }
+
+    if (_q1 == 1 && _q2 >= 3 && _q3 >= 3) {
+      user.step = "expert";
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    user = ReturnNickname.setNickname("dddd");
+    user.step = "";
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -73,13 +144,27 @@ class _question extends State<QuestionPage> {
                                 // nickname input
                                 children: <Widget>[
                                   Container(
-                                    padding: EdgeInsets.only(right: 10),
-                                    width: 262,
-                                    child: TextFormField(
-                                      decoration: new InputDecoration(
-                                          border: InputBorder.none),
-                                    ),
-                                  ),
+                                  width: 262,
+                                  child: Form(
+                                      key: _formKey,
+                                      autovalidate: true,
+                                      child: TextFormField(
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                        validator: (val) {
+                                          if (val.trim().length < 5 ||
+                                              val.isEmpty) {
+                                            return 'user name is too short (< 5)';
+                                          } else if (val.trim().length > 15 ||
+                                              val.isEmpty) {
+                                            return 'user name is too long (> 15)';
+                                          } else {
+                                            return null;
+                                          }
+                                        },
+                                        onSaved: (val) => user.nickname = val,
+                                      ))),
                                   InkWell(
                                     child: Container(
                                       padding: EdgeInsets.all(10),
@@ -431,7 +516,7 @@ class _question extends State<QuestionPage> {
                                 ),
                               ],
                             ),
-                            onTap: () {},
+                            onTap: submitNickname,
                           ),
                         ),
                       ],
