@@ -1,8 +1,13 @@
+import 'package:dailyzerowaste/login.dart';
+import 'package:dailyzerowaste/model/user.dart';
 import 'package:flutter/material.dart';
 
 class mypage extends StatefulWidget {
+  mypage(User currentUser);
+
   @override
   State<StatefulWidget> createState() {
+    print(currentUser.image.toString());
     return _myPage();
   }
 }
@@ -33,6 +38,9 @@ class _myPage extends State<mypage> {
                       width: 72,
                       height: 72,
                       decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(currentUser.image)
+                        ),
                           border: Border.all(width: 1, color: Colors.black),
                           borderRadius: BorderRadius.circular(50)),
                     ),
@@ -43,14 +51,14 @@ class _myPage extends State<mypage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            'User name',
+                            currentUser.username,
                             style: TextStyle(
                               fontFamily: 'Quick-Pencil',
                               fontSize: 30,
                             ),
                           ),
                           Text(
-                            'information',
+                            currentUser.email,
                             style: TextStyle(
                               fontFamily: 'Quick-Pencil',
                               fontSize: 20,
