@@ -23,6 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  google_maps_flutter: ^2.0.1
+  location: ^4.1.1
   flutter_native_splash: ^1.1.4+1
   firebase_auth: ^1.0.1
   google_sign_in: ^5.0.0

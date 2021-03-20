@@ -19,14 +19,14 @@ final postsReference =
 final DateTime timestamp = DateTime.now();
 User currentUser;
 
-class login_page extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _login();
   }
 }
 
-class _login extends State<login_page> {
+class _login extends State<Login_page> {
   bool isSignedIn = false;
   // 페이지 컨트롤
   PageController pageController;

@@ -12,14 +12,14 @@ class ReturnNickname {
   }
 }
 
-class question_page extends StatefulWidget {
+class QuestionPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _question();
   }
 }
 
-class _question extends State<question_page> {
+class _question extends State<QuestionPage> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
   int _q1 = 0;

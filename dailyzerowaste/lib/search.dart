@@ -8,14 +8,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-class search_page extends StatefulWidget {
+class SearchPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _search();
   }
 }
 
-class _search extends State<search_page> {
+class _search extends State<SearchPage> {
   String searchText;
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class _search extends State<search_page> {
                 ),
               ),
 
-            //검색결과 -> 스트림빌더 생성 함수(생성자) 호출
+              //검색결과 -> 스트림빌더 생성 함수(생성자) 호출
               _buildBody(context, searchText)
             ],
           ),
@@ -60,17 +60,18 @@ class _search extends State<search_page> {
 
   // 텍스트폼필드의 값을 인자로 갖고, 스트림빌더를 반환하는 함수
   Widget _buildBody(BuildContext context, String val) {
-    return StreamBuilder<QuerySnapshot>(  //동적 데이터 활용을 위해 스트림 형성
+    return StreamBuilder<QuerySnapshot>(
+        //동적 데이터 활용을 위해 스트림 형성
         stream: FirebaseFirestore.instance
             .collection('feed')
-            .where('title', isGreaterThanOrEqualTo: val)    //텍스트폼필드 값을 쿼리문에 이용
+            .where('title', isGreaterThanOrEqualTo: val) //텍스트폼필드 값을 쿼리문에 이용
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return LinearProgressIndicator();
           }
 
-          return _buildList(context, snapshot.data.docs);   //리스트뷰 생성 함수(생성자) 호출
+          return _buildList(context, snapshot.data.docs); //리스트뷰 생성 함수(생성자) 호출
         });
   }
 
@@ -80,18 +81,20 @@ class _search extends State<search_page> {
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
       padding: const EdgeInsets.only(top: 20.0),
-      children: snapshot.map((data) => _buildListItem(context, data)).toList(),   //문서마다 리스트뷰_타일 생성 함수(생성자) 호출
+      children: snapshot
+          .map((data) => _buildListItem(context, data))
+          .toList(), //문서마다 리스트뷰_타일 생성 함수(생성자) 호출
     );
   }
-
 
   //각 문서의 데이터를 인자로 갖고 리스트뷰_타일(각 사각항목)을 반환하는 함수
   Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
     final record = Record.fromSnapshot(data);
     List<Widget> tagArray = [];
 
-    for (int i = 0; i < record.tag.length; i++) {   //태그의 개수만큼 tagRectangle 생성 함수(생성자) 호출
-      tagArray.add(tagRectangle(record.tag[i]));  //리스트에 추가
+    for (int i = 0; i < record.tag.length; i++) {
+      //태그의 개수만큼 tagRectangle 생성 함수(생성자) 호출
+      tagArray.add(tagRectangle(record.tag[i])); //리스트에 추가
     }
 
     return Padding(

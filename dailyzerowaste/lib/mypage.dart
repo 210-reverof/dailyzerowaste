@@ -2,7 +2,7 @@ import 'package:dailyzerowaste/login.dart';
 import 'package:dailyzerowaste/model/user.dart';
 import 'package:flutter/material.dart';
 
-class mypage extends StatefulWidget {
+class Mypage extends StatefulWidget {
   mypage(User currentUser);
 
   @override
@@ -12,7 +12,7 @@ class mypage extends StatefulWidget {
   }
 }
 
-class _myPage extends State<mypage> {
+class _myPage extends State<MyPage> {
   @override
   Widget build(BuildContext context) {
     // 배경 이미지
