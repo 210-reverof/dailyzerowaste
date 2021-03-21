@@ -1,10 +1,13 @@
 import 'dart:async';
 
+import 'package:dailyzerowaste/model/user.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
 class ZeroWasteShop extends StatefulWidget {
+  ZeroWasteShop(User currentUser);
+
   @override
   State<StatefulWidget> createState() {
     return _shop();

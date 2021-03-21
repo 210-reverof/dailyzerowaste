@@ -1,6 +1,9 @@
+import 'package:dailyzerowaste/model/user.dart';
 import 'package:flutter/material.dart';
 
 class FeedUploadPage extends StatefulWidget {
+  FeedUploadPage(User currentUser);
+
   @override
   State<StatefulWidget> createState() {
     return _feedUpload();

@@ -5,10 +5,13 @@
 import 'package:dailyzerowaste/model/record.dart';
 import 'package:dailyzerowaste/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dailyzerowaste/model/user.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatefulWidget {
+  SearchPage(User currentUser);
+
   @override
   State<StatefulWidget> createState() {
     return _search();

@@ -1,5 +1,4 @@
 import 'package:dailyzerowaste/mypage.dart';
-import 'package:dailyzerowaste/question.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -8,7 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dailyzerowaste/model/user.dart';
 
 import 'bottomBar.dart';
-
+/*
 final GoogleSignIn googleSignIn = new GoogleSignIn();
 // variable for firestore collection 'users'
 final userReference =
@@ -172,5 +171,50 @@ class _login extends State<LoginPage> {
     } else {
       return buildSignInScreen();
     }
+  }
+}*/
+
+User currentUser;
+
+class FakeLoginPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _fakelogin();
+  }
+}
+
+class _fakelogin extends State<FakeLoginPage> {
+
+    @override
+  void initState() {
+    super.initState();
+    setter();
+  }
+
+  setter() async{
+    await setUser();
+  }
+
+  setUser() async {
+    currentUser = User.fakesetting("112739560368228214353", "https://lh5.googleusercontent.com/-0uKddFdprgQ/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnTFp4j1YIpbKKlsA7WkNwqXYFuQQ/s96-c/photo.jpg");
+    currentUser.id = "112739560368228214353";
+    currentUser.profileName = "wonyoung 2";
+    currentUser.username = "courtney";
+    currentUser.url = "https://lh5.googleusercontent.com/-0uKddFdprgQ/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnTFp4j1YIpbKKlsA7WkNwqXYFuQQ/s96-c/photo.jpg";
+    currentUser.email = "sheltonwon@gmail.com";
+    currentUser.bio ="";
+    currentUser.image = "https://lh5.googleusercontent.com/-0uKddFdprgQ/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnTFp4j1YIpbKKlsA7WkNwqXYFuQQ/s96-c/photo.jpg";
+    currentUser.step = "intermediate";
+    print(currentUser.id.toString() + "=======" + currentUser.image.toString());
+  }
+
+ buildHomeScreen() {
+    print(currentUser.image.toString());
+    return BottomBar(currentUser);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return buildHomeScreen();
   }
 }

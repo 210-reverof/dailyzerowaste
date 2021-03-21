@@ -1,3 +1,4 @@
+import 'package:dailyzerowaste/model/user.dart';
 import 'package:flutter/material.dart';
 import 'login.dart';
 import 'mypage.dart';
@@ -8,6 +9,8 @@ import 'zeroWasteShop.dart';
 import 'question.dart';
 
 class BottomBar extends StatefulWidget {
+  BottomBar(User currentUser);
+
   @override
   State<StatefulWidget> createState() {
     return _bottomBar();
@@ -19,11 +22,11 @@ class _bottomBar extends State<BottomBar> {
   final List<Widget> _menu = [
     //LoginPage(),
     Temp(), // 1번
-    ZeroWasteShop(), // 2번
-    FeedUploadPage(), // 3번
+    ZeroWasteShop(currentUser), // 2번
+    FeedUploadPage(currentUser), // 3번
     //Temp(), // 4번
-    SearchPage(), // 4번
-    Temp(), // 5번
+    SearchPage(currentUser), // 4번
+    MyPage(currentUser), // 5번
   ]; // 테스트용
   //final List<Widget> _menu = [Feed(), ZeroWasteShop(), Step(), SearchPage(), MyPage()];
 

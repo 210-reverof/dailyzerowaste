@@ -1,14 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class User {
-  final String id;
-  final String profileName;
-  final String username;
-  final String url;
-  final String email;
-  final String bio;
-  final String image;
-  final String step;
+  String id;
+  String profileName;
+  String username;
+  String url;
+  String email;
+  String bio;
+  String image;
+  String step;
 
   User({
     this.id, 
@@ -33,5 +33,11 @@ class User {
       image: getDocs["image"],
       step: getDocs["step"]
     );
+  }
+
+
+ User.fakesetting(String s, String t) {
+    this.id = s;
+    this.image = t;
   }
 }
