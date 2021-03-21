@@ -7,6 +7,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dailyzerowaste/model/user.dart';
 
+import 'bottomBar.dart';
+
 final GoogleSignIn googleSignIn = new GoogleSignIn();
 // variable for firestore collection 'users'
 final userReference =
@@ -112,7 +114,7 @@ class _login extends State<LoginPage> {
   }
 
   buildHomeScreen() {
-    return MyPage(currentUser);
+    return BottomBar();
   }
 
   buildSignInScreen() {

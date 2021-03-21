@@ -77,14 +77,14 @@ class _search extends State<SearchPage> {
 
   //쿼리문 스냅샷 문서를 인자로 갖고 리스트뷰를 반환하는 함수
   Widget _buildList(BuildContext context, List<DocumentSnapshot> snapshot) {
-    return ListView(
+    return Expanded(child: ListView(
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
       padding: const EdgeInsets.only(top: 20.0),
       children: snapshot
           .map((data) => _buildListItem(context, data))
           .toList(), //문서마다 리스트뷰_타일 생성 함수(생성자) 호출
-    );
+    ));
   }
 
   //각 문서의 데이터를 인자로 갖고 리스트뷰_타일(각 사각항목)을 반환하는 함수

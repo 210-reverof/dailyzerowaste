@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'bottomBar.dart';
+import 'login.dart';
 
 /*void main() {
   runApp(MyApp());
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: BottomBar(),
+        child: LoginPage(),
       ),
     );
   }

@@ -3,7 +3,9 @@ import 'login.dart';
 import 'mypage.dart';
 import 'search.dart';
 import 'temp.dart';
+import 'feedupload.dart';
 import 'zeroWasteShop.dart';
+import 'question.dart';
 
 class BottomBar extends StatefulWidget {
   @override
@@ -18,7 +20,7 @@ class _bottomBar extends State<BottomBar> {
     //LoginPage(),
     Temp(), // 1번
     ZeroWasteShop(), // 2번
-    Temp(), // 3번
+    FeedUploadPage(), // 3번
     //Temp(), // 4번
     SearchPage(), // 4번
     Temp(), // 5번
