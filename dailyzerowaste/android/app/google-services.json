@@ -30,6 +30,14 @@
           }
         },
         {
+          "client_id": "763840709427-bfdhqbv6hlgoi2kfmpftea7jod5ihjef.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dailyzerowaste",
+            "certificate_hash": "17a054da01d729259a6a2806be39e4596ff5b7b1"
+          }
+        },
+        {
           "client_id": "763840709427-dln069poecj1dmlttvjvj66hhcf07m54.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
