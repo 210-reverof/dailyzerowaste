@@ -1,5 +1,12 @@
+import 'dart:io';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:dailyzerowaste/model/user.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
+import 'login.dart';
 
 class FeedUploadPage extends StatefulWidget {
   FeedUploadPage(User currentUser);
@@ -31,6 +38,17 @@ class _feedUpload extends State<FeedUploadPage> {
   String image;
   String title;
   String text;
+  File _imageFile;
+
+    final picker = ImagePicker();
+
+  Future pickImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      _imageFile = File(pickedFile.path);
+    });
+  }
 
   Widget build(BuildContext context) {
     return Container(
@@ -161,17 +179,42 @@ class _feedUpload extends State<FeedUploadPage> {
 
                   SizedBox(height: 48),
 
-                  Container(
-                    height: 311,
-                    width: 311,
-                    color: Color(0xff4f4b49),
+                  Stack(
+                    children: <Widget>[
+                      Container(
+                        width: 310,
+                        height: 310,
+                        margin: const EdgeInsets.only(
+                            left: 30.0, right: 30.0, top: 10.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(30.0),
+                          child: _imageFile != null
+                              ? Image.file(_imageFile)
+                              : FlatButton(
+                            child: Icon(
+                              Icons.add_a_photo,
+                              color: Colors.blue,
+                              size: 50,
+                            ),
+                            onPressed: pickImage,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
 
                   SizedBox(height: 20),
 
+                  //작성 글 제목
                   Container(
                       width: 310,
                       child: TextField(
+                        onChanged: (val) {
+                        //텍스트폼필드에 변화가 있을 때마다
+                        setState(() {
+                          title = val; //검색텍스트 갱신
+                        });
+                      },
                         maxLength: 20,
                         style: TextStyle(
                           fontSize: 30,
@@ -181,14 +224,20 @@ class _feedUpload extends State<FeedUploadPage> {
                           hintText: 'Title',
                           hintStyle: TextStyle(color: Color(0xff5c5b5a))
                         ),
-                        onChanged: (val) {},
                       )),
 
                   SizedBox(height: 5),
 
+                  //본문 글 작성
                   Container(
                       width: 310,
                       child: TextField(
+                        onChanged: (val) {
+                        //텍스트폼필드에 변화가 있을 때마다
+                        setState(() {
+                          text = val; //검색텍스트 갱신
+                        });
+                      },
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
                         maxLength: 500,
@@ -201,9 +250,7 @@ class _feedUpload extends State<FeedUploadPage> {
                           border: InputBorder.none,
                           hintText: 'Contents',
                           hintStyle: TextStyle(color: Color(0xff5c5b5a)),
-                        ),
-                        onChanged: (val) {},
-                      )),
+                      ))),
 
                   // Complete Button
                   Container(
@@ -233,6 +280,7 @@ class _feedUpload extends State<FeedUploadPage> {
                         ],
                       ),
                       onTap: () {
+                        uploadImageToFirebase(context);
                         print(selectedTags.toString() +
                             "   " +
                             selectedTargets.toString());
@@ -292,5 +340,31 @@ class _feedUpload extends State<FeedUploadPage> {
     setState(() {
       item['isActive'] = !item['isActive'];
     });
+  }
+
+    Future uploadImageToFirebase(BuildContext context) async {
+    String fileName = basename(_imageFile.path);
+    Reference firebaseStorageRef =
+    FirebaseStorage.instance.ref().child('uploads/$fileName');
+    UploadTask uploadTask = firebaseStorageRef.putFile(_imageFile);
+    TaskSnapshot taskSnapshot = await uploadTask;
+    taskSnapshot.ref.getDownloadURL().then(
+          (value) => { image = value, saveUserInfoToFirestore(context)},
+    );
+  }
+
+  saveUserInfoToFirestore(BuildContext context) async {
+final userReference =
+    FirebaseFirestore.instance.collection('feed');
+
+      // 작성글 셋팅된 값으로 db에 set
+      userReference.doc().set({
+        'user': currentUser.id,
+        'title': title,
+        'text': text,
+        'image': image,
+        'selectedTags':selectedTags,
+        'selectedTargets':selectedTargets,
+      });
   }
 }
