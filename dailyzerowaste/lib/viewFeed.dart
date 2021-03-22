@@ -91,7 +91,7 @@ class _viewFeed extends State<ViewFeedPage> {
                               fontWeight: FontWeight.normal,
                               color: Color(0xff403e3d)))),
 
-                              SizedBox(height: 10),
+                  SizedBox(height: 10),
 
                   // 본문 내용
                   Container(

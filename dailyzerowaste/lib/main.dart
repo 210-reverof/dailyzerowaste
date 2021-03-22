@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'bottomBar.dart';
 import 'login.dart';
 
 /*void main() {

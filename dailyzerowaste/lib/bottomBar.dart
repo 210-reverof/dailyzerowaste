@@ -6,7 +6,6 @@ import 'search.dart';
 import 'temp.dart';
 import 'feedupload.dart';
 import 'zeroWasteShop.dart';
-import 'question.dart';
 
 class BottomBar extends StatefulWidget {
   BottomBar(User currentUser);

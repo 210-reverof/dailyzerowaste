@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dailyzerowaste/model/user.dart';
 
 import 'bottomBar.dart';
+import 'package:dailyzerowaste/question.dart';
 /*
 final GoogleSignIn googleSignIn = new GoogleSignIn();
 // variable for firestore collection 'users'
@@ -25,6 +26,14 @@ class LoginPage extends StatefulWidget {
   State<StatefulWidget> createState() {
     return _login();
   }
+}
+
+loginUser() {
+  googleSignIn.signIn();
+}
+
+logoutUser() {
+  googleSignIn.signOut();
 }
 
 class _login extends State<LoginPage> {
@@ -99,21 +108,8 @@ class _login extends State<LoginPage> {
     currentUser = User.fromDocument(documentSnapshot);
   }
 
-  void dispose() {
-    pageController.dispose();
-    super.dispose();
-  }
-
-  loginUser() {
-    googleSignIn.signIn();
-  }
-
-  logoutUser() {
-    googleSignIn.signOut();
-  }
-
   buildHomeScreen() {
-    return BottomBar();
+    return BottomBar(currentUser);
   }
 
   buildSignInScreen() {
@@ -185,7 +181,7 @@ class FakeLoginPage extends StatefulWidget {
 
 class _fakelogin extends State<FakeLoginPage> {
 
-    @override
+  @override
   void initState() {
     super.initState();
     setter();

@@ -1,6 +1,8 @@
+import 'contact.dart';
 import 'package:dailyzerowaste/login.dart';
 import 'package:dailyzerowaste/model/user.dart';
 import 'package:flutter/material.dart';
+import 'login.dart';
 
 class MyPage extends StatefulWidget {
   MyPage(User currentUser);
@@ -77,33 +79,53 @@ class _myPage extends State<MyPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(
-                      'settings',
-                      style: TextStyle(
-                        fontFamily: 'Quick-Pencil',
-                        fontSize: 20,
-                      ),
-                    ),
+                    InkWell(
+                        onTap: () {},
+                        child: Text(
+                          'settings',
+                          style: TextStyle(
+                            fontFamily: 'Quick-Pencil',
+                            fontSize: 20,
+                          ),
+                        )),
                     SizedBox(height: 10.7),
                     Image.asset('image/source_bar_2.png'),
                     SizedBox(height: 10.7),
-                    Text(
-                      'Version',
-                      style: TextStyle(
-                        fontFamily: 'Quick-Pencil',
-                        fontSize: 20,
-                      ),
-                    ),
+                    InkWell(
+                        onTap: () {},
+                        child: Text(
+                          'Version',
+                          style: TextStyle(
+                            fontFamily: 'Quick-Pencil',
+                            fontSize: 20,
+                          ),
+                        )),
                     SizedBox(height: 10.7),
                     Image.asset('image/source_bar_2.png'),
                     SizedBox(height: 10.7),
-                    Text(
-                      'Contact us',
-                      style: TextStyle(
-                        fontFamily: 'Quick-Pencil',
-                        fontSize: 20,
+                    InkWell(
+                        onTap: () => Navigator.push(
+          context, MaterialPageRoute(builder: (context) => ContactPage(currentUser))),
+                        child: Text(
+                          'Contact us',
+                          style: TextStyle(
+                            fontFamily: 'Quick-Pencil',
+                            fontSize: 20,
+                          ),
+                        )),
+                    SizedBox(height: 10.7),
+                    Image.asset('image/source_bar_2.png'),
+                    SizedBox(height: 10.7),
+                    InkWell(
+                  //    onTap: () => logoutUser(), //로그아웃버튼 잘 작동되지만, 페이크로그인에서는 작동 x 나중에 활성화하기
+                      child: Text(
+                        'Log out',
+                        style: TextStyle(
+                          fontFamily: 'Quick-Pencil',
+                          fontSize: 20,
+                        ),
                       ),
-                    ),
+                    )
                   ],
                 ),
               ),
