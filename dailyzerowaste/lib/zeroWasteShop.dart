@@ -27,9 +27,9 @@ class _shop extends State<ZeroWasteShop> {
   );
 
   void _onMapCreated(GoogleMapController controller) {
-    if (!_mapController.isCompleted) {
-      _mapController.complete(controller);
-    }
+    //if (!_mapController.isCompleted) {
+    _mapController.complete(controller);
+    //}
   }
 
   // 현재 위치 불러오기
