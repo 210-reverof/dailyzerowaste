@@ -8,10 +8,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'zeroWasteShopList.dart';
 
-const LatLng DEST_LOCATION = LatLng(37.553609, 126.911598);
-const double PIN_VISIBLE_POSITION = 257;
-const double PIN_INVISIBLE_POSITION = -220;
-
 class ZeroWasteShop extends StatefulWidget {
   ZeroWasteShop(User currentUser);
 
@@ -25,13 +21,6 @@ class _shop extends State<ZeroWasteShop> {
   Completer<GoogleMapController> _mapController = Completer();
   MapType _googleMapType = MapType.normal;
 
-  Set<Marker> _markers = Set<Marker>();
-
-  LatLng shopLocation;
-  BitmapDescriptor shopIcon;
-
-  double pinPillPosition = PIN_INVISIBLE_POSITION;
-
   CameraPosition _initialCameraPosition = CameraPosition(
     target: LatLng(36.769691, 126.931705),
     zoom: 17,
@@ -41,16 +30,6 @@ class _shop extends State<ZeroWasteShop> {
     if (!_mapController.isCompleted) {
       _mapController.complete(controller);
     }
-    showPinsOnMap();
-  }
-
-  void setShopMarkerIcons() async {
-    shopIcon = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(devicePixelRatio: 2.0), 'assets/icon/location.png');
-  }
-
-  void setInitialLocation() {
-    shopLocation = LatLng(DEST_LOCATION.latitude, DEST_LOCATION.longitude);
   }
 
   // 현재 위치 불러오기
@@ -73,28 +52,6 @@ class _shop extends State<ZeroWasteShop> {
     ));
   }
 
-  void showPinsOnMap() {
-    setState(() {
-      _markers.add(Marker(
-        markerId: MarkerId('abc'),
-        position: shopLocation,
-        icon: shopIcon,
-        onTap: () {
-          setState(() {
-            this.pinPillPosition = PIN_VISIBLE_POSITION;
-          });
-        },
-      ));
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    this.setInitialLocation();
-    this.setShopMarkerIcons();
-  }
-
   @override
   Widget build(BuildContext context) {
     // 배경 이미지
@@ -111,28 +68,14 @@ class _shop extends State<ZeroWasteShop> {
             Container(
               padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
               child: GoogleMap(
-                markers: _markers,
                 mapType: _googleMapType,
                 onMapCreated: _onMapCreated,
                 initialCameraPosition: _initialCameraPosition,
+                myLocationButtonEnabled: true,
                 myLocationEnabled: true,
-                onTap: (LatLng loc) {
-                  // 마커를 눌렀을 때 가게 정보 띄우기
-                  setState(() {
-                    this.pinPillPosition = PIN_INVISIBLE_POSITION;
-                  });
-                },
               ),
             ),
             ShopListButton(),
-            AnimatedPositioned(
-              duration: const Duration(milliseconds: 500),
-              curve: Curves.easeInOut,
-              left: 0,
-              right: 0,
-              bottom: this.pinPillPosition,
-              child: ShopInfo(),
-            ),
           ],
         ),
       ),
