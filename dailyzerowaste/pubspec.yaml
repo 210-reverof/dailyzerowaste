@@ -71,6 +71,7 @@ flutter:
    - image/source_bottom_navigator.png
    - image/source_direction.png
    - image/source_selection_bar.png
+   - image/shop_info.png
    - image/bottom_navigator/home.png
    - image/bottom_navigator/location.png
    - image/bottom_navigator/profile.png

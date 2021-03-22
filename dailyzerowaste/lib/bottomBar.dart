@@ -41,6 +41,7 @@ class _bottomBar extends State<BottomBar> {
       child: Scaffold(
         body: _menu[_selectedIndex],
         bottomNavigationBar: Container(
+          margin: EdgeInsets.all(0),
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage('image/source_bottom_navigator.png'),
