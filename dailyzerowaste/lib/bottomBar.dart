@@ -6,6 +6,7 @@ import 'search.dart';
 import 'temp.dart';
 import 'feedupload.dart';
 import 'zeroWasteShop.dart';
+import 'practicecheck.dart';
 
 class BottomBar extends StatefulWidget {
   BottomBar(User currentUser);
@@ -22,7 +23,7 @@ class _bottomBar extends State<BottomBar> {
     //LoginPage(),
     Temp(), // 1번
     ZeroWasteShop(currentUser), // 2번
-    FeedUploadPage(currentUser), // 3번
+   PractieCheckPage(currentUser), // 3번
     //Temp(), // 4번
     SearchPage(currentUser), // 4번
     MyPage(currentUser), // 5번

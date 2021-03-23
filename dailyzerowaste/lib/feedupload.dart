@@ -283,7 +283,8 @@ class _feedUpload extends State<FeedUploadPage> {
                         uploadImageToFirebase(context);
                         print(selectedTags.toString() +
                             "   " +
-                            selectedTargets.toString());
+                            selectedTargets.toString()); //디버깅 용
+                        Navigator.pop(context);
                       },
                     ),
                   ),
