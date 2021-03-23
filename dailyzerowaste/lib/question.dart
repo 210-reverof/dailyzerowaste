@@ -23,7 +23,7 @@ comfirm(str, ReturnNickname user) async {
     DocumentSnapshot documentSnapshot =
        // await FirebaseFirestore.instance.collection('users').doc().get();
        await FirebaseFirestore.instance.collection('users').;*/
-       user.nickname = str;
+  user.nickname = str;
   FirebaseFirestore.instance
       .collection('users')
       .where('username', isEqualTo: str)
@@ -229,7 +229,7 @@ class _question extends State<QuestionPage> {
                                                   return null;
                                                 }
                                               },
-                                             // onSaved: (val) => input = val,
+                                              // onSaved: (val) => input = val,
                                             ))),
                                     InkWell(
                                       child: Container(
