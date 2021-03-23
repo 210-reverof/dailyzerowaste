@@ -72,12 +72,25 @@ flutter:
    - image/source_direction.png
    - image/source_selection_bar.png
    - image/shop_info.png
+   - image/try_button.png
    - image/bottom_navigator/home.png
    - image/bottom_navigator/location.png
    - image/bottom_navigator/profile.png
    - image/bottom_navigator/search.png
    - image/bottom_navigator/step.png
    - image/select_background.png
+   - image/tier/check_beginner.png
+   - image/tier/check_expert.png
+   - image/tier/check_intermediate.png
+   - image/tier/DIY_beginner.png
+   - image/tier/DIY_expert.png
+   - image/tier/DIY_intermediate.png
+   - image/tier/share_beginner.png
+   - image/tier/share_expert.png
+   - image/tier/share_intermediate.png
+   - image/tier/shop_beginner.png
+   - image/tier/shop_expert.png
+   - image/tier/shop_intermediate.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

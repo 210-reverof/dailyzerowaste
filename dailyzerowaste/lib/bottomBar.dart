@@ -1,5 +1,7 @@
-import 'package:dailyzerowaste/model/user.dart';
 import 'package:flutter/material.dart';
+
+import 'package:dailyzerowaste/model/user.dart';
+import 'stepHistory.dart';
 import 'login.dart';
 import 'mypage.dart';
 import 'search.dart';
@@ -23,6 +25,7 @@ class _bottomBar extends State<BottomBar> {
     //LoginPage(),
     //Temp(), // 1번
     StepHomePage(),
+    //StepHistoryPage(),
     ZeroWasteShop(currentUser), // 2번
     FeedUploadPage(currentUser), // 3번
     //Temp(), // 4번
