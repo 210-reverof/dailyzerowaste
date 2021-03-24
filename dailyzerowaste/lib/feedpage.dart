@@ -161,16 +161,6 @@ class _feed extends State<FeedPage> {
                                             print("add");
                                             print(stepValues);
                                           } else {
-                                            int a;
-                                            for (int i = 0;
-                                                i < stepValues.length;
-                                                i++) {
-                                              if (stepValues[i] ==
-                                                  [option['title']]) {
-                                                a = i;
-                                              }
-                                            }
-
                                             //stepValues.removeAt(a);
                                             print("remove");
                                             print([option['title']]);
