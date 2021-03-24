@@ -1,8 +1,13 @@
+import 'package:dailyzerowaste/login.dart';
 import 'package:flutter/material.dart';
 
+import 'model/user.dart';
+import 'pageTransition.dart';
 import 'stepHistory.dart';
 
 class StepHomePage extends StatefulWidget {
+  StepHomePage(User currentUser);
+
   @override
   State<StatefulWidget> createState() {
     return _step();
@@ -101,8 +106,8 @@ class StepTopTabBar extends StatelessWidget {
                       print('hello'); // debug only
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => StepHistoryPage()),
+                        CustomRoute(
+                            builder: (context) => StepHistoryPage(currentUser)),
                       );
                     },
                   ),
