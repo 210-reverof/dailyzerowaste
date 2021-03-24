@@ -121,7 +121,7 @@ class _myPage extends State<MyPage> {
                     Image.asset('image/source_bar_2.png'),
                     SizedBox(height: 10.7),
                     InkWell(
-                  //    onTap: () => logoutUser(), //로그아웃버튼 잘 작동되지만, 페이크로그인에서는 작동 x 나중에 활성화하기
+                     // onTap: () => logoutUser(), //로그아웃버튼 잘 작동되지만, 페이크로그인에서는 작동 x 나중에 활성화하기
                       child: Text(
                         'Log out',
                         style: TextStyle(

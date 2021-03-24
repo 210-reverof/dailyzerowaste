@@ -92,6 +92,10 @@ class _login extends State<LoginPage> {
         'id': gCurrentUser.id,
         'profileName': gCurrentUser.displayName,
         'username': username.nickname,
+        'cntDIY': username.init[0],
+        'cntVisitShop': username.init[1],
+        'cntCheck': 0,
+        'cntShare': 0,
         'url': gCurrentUser.photoUrl,
         'email': gCurrentUser.email,
         'bio': '',
@@ -201,6 +205,10 @@ class _fakelogin extends State<FakeLoginPage> {
     currentUser.bio ="";
     currentUser.image = "https://lh5.googleusercontent.com/-0uKddFdprgQ/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnTFp4j1YIpbKKlsA7WkNwqXYFuQQ/s96-c/photo.jpg";
     currentUser.step = "intermediate";
+    currentUser.cntDIY = 10;
+    currentUser.cntCheck = 0;
+    currentUser.cntShare = 0;
+    currentUser.cntVisitShop = 16;
     print(currentUser.id.toString() + "=======" + currentUser.image.toString());
   }
 
