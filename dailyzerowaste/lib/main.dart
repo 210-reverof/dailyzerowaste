@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: '#dailyzerowaste',
+      debugShowCheckedModeBanner: false,
       theme: new ThemeData(scaffoldBackgroundColor: const Color(0x00000ff0)),
       home: Container(
         decoration: BoxDecoration(
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: FakeLoginPage(),   //나중에는 LoginPage()로 수정하고 login.dart 수정하기
+        child: FakeLoginPage(), //나중에는 LoginPage()로 수정하고 login.dart 수정하기
       ),
     );
   }
