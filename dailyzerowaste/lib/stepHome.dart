@@ -6,8 +6,6 @@ import 'pageTransition.dart';
 import 'stepHistory.dart';
 
 class StepHomePage extends StatefulWidget {
-  StepHomePage(User currentUser);
-
   @override
   State<StatefulWidget> createState() {
     return _step();

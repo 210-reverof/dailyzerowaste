@@ -12,8 +12,6 @@ import 'temp.dart';
 import 'zeroWasteShop.dart';
 
 class StepHistoryPage extends StatefulWidget {
-  StepHistoryPage(User currentUser);
-
   @override
   State<StatefulWidget> createState() {
     return _stepHistory();
@@ -21,20 +19,6 @@ class StepHistoryPage extends StatefulWidget {
 }
 
 class _stepHistory extends State<StepHistoryPage> {
-  int _selectedIndex = 0;
-  final List<Widget> _menu = [
-    //LoginPage(),
-    Temp(), // 1번
-    //StepHistoryPage(),
-    ZeroWasteShop(currentUser), // 2번
-    //PractieCheckPage(currentUser), // 3번
-    StepHomePage(currentUser),
-    //Temp(), // 4번
-    SearchPage(currentUser), // 4번
-    MyPage(currentUser), // 5번
-  ]; // 테스트용
-  //final List<Widget> _menu = [Feed(), ZeroWasteShop(), StepHomePage(), SearchPage(), MyPage()];
-
   @override
   Widget build(BuildContext context) {
     // 배경 이미지
