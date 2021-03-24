@@ -70,7 +70,7 @@ class _feed extends State<FeedPage> {
                 ),
                 // 검색창
                 Container(
-                  padding: EdgeInsets.only(left: 39, top: 40),
+                  padding: EdgeInsets.only(left: 39, top: 20),
                   child: Row(
                     children: <Widget>[
                       Center(
@@ -83,16 +83,16 @@ class _feed extends State<FeedPage> {
                               Text(
                                 "#daily zerowaste",
                                 style: TextStyle(
-                                  fontFamily: 'Quick-Pencil',
-                                  fontSize: 20,
+                                  fontFamily: 'Nanum-SquareB',
+                                  fontSize: 25,
                                   color: Color(0xff4f4b49),
                                 ),
                               ),
                               Text(
                                 "Share your DIY tips and get informations",
                                 style: TextStyle(
-                                  fontFamily: 'Quick-Pencil',
-                                  fontSize: 20,
+                                  fontFamily: 'Nanum-SquareR',
+                                  fontSize: 15,
                                   color: Color(0xff4f4b49),
                                 ),
                               ),
@@ -107,13 +107,13 @@ class _feed extends State<FeedPage> {
                               BoxShadow(
                                 color: Colors.grey[900],
                                 offset: Offset(2.0, 2.0),
-                                blurRadius: 15.0,
+                                blurRadius: 8.0,
                                 spreadRadius: 1.0,
                               ),
                               BoxShadow(
                                 color: Colors.white,
                                 offset: Offset(-4.0, -4.0),
-                                blurRadius: 15.0,
+                                blurRadius: 10.0,
                                 spreadRadius: 1.0,
                               ),
                             ],
@@ -124,13 +124,13 @@ class _feed extends State<FeedPage> {
                   ),
                 ),
 
-                SizedBox(height: 10),
+                SizedBox(height: 20),
 
                 Container(
                   width: 370.5,
                   padding: EdgeInsets.all(5),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       // 각 스텝들의 버튼, 처음 피드페이지 진입시에는 기존 유저 스텝버튼 활성화
                       Tab(
@@ -141,51 +141,53 @@ class _feed extends State<FeedPage> {
                         ),
                       ),
                       // 각 스텝들의 버튼, 처음 피드페이지 진입시에는 기존 유저 스텝버튼 활성화
-                      Wrap(
-                          spacing: 10.0,
-                          runSpacing: 20.0,
-                          children: selected
-                              .map((option) => new Container(
-                                  // margin: EdgeInsets.all(5),
-                                  decoration:
-                                      customBoxDecoration(option['isActive']),
-                                  child: InkWell(
-                                      onTap: () {
-                                        changeState(option);
-                                        if (option[
-                                            'isActive']) //option의 isActive가 true라면 ->
-                                        {
-                                          stepValues.add([option['title']]);
-                                          print("add");
-                                          print(stepValues);
-                                        } else {
-                                          int a;
-                                          for (int i = 0;
-                                              i < stepValues.length;
-                                              i++) {
-                                            if (stepValues[i] ==
-                                                [option['title']]) {
-                                              a = i;
+                      Container(
+                        padding: EdgeInsets.only(left: 25),
+                        child: Wrap(
+                            spacing: 17.0,
+                            runSpacing: 20.0,
+                            children: selected
+                                .map((option) => new Container(
+                                    // margin: EdgeInsets.all(5),
+                                    decoration:
+                                        customBoxDecoration(option['isActive']),
+                                    child: InkWell(
+                                        onTap: () {
+                                          changeState(option);
+                                          if (option[
+                                              'isActive']) //option의 isActive가 true라면 ->
+                                          {
+                                            stepValues.add([option['title']]);
+                                            print("add");
+                                            print(stepValues);
+                                          } else {
+                                            int a;
+                                            for (int i = 0;
+                                                i < stepValues.length;
+                                                i++) {
+                                              if (stepValues[i] ==
+                                                  [option['title']]) {
+                                                a = i;
+                                              }
                                             }
-                                          }
 
-                                          //stepValues.removeAt(a);
-                                          print("remove");
-                                          print([option['title']]);
-                                        }
-                                      },
-                                      child: Container(
-                                          padding: EdgeInsets.all(10),
-                                          child: Text('${option['title']}',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  fontFamily: 'Quick-Pencil',
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.normal,
-                                                  color: option['isActive']
-                                                      ? Colors.white
-                                                      : Colors.black87))))))
-                              .toList())
+                                            //stepValues.removeAt(a);
+                                            print("remove");
+                                            print([option['title']]);
+                                          }
+                                        },
+                                        child: Container(
+                                            padding: EdgeInsets.all(10),
+                                            child: Text('${option['title']}',
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    fontFamily: 'Quick-Pencil',
+                                                    fontSize: 20,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    color: Colors.black87))))))
+                                .toList()),
+                      )
                     ],
                   ),
                 ),
@@ -203,30 +205,10 @@ class _feed extends State<FeedPage> {
   // 토글 버튼 커스텀 박스
   customBoxDecoration(isActive) {
     return BoxDecoration(
-      color: isActive ? Color(0xff1763DD) : Colors.white,
-      border: Border(
-          left: BorderSide(color: Colors.black12, width: 1.0),
-          bottom: BorderSide(color: Colors.black12, width: 1.0),
-          top: BorderSide(color: Colors.black12, width: 1.0),
-          right: BorderSide(color: Colors.black12, width: 1.0)),
-      borderRadius: const BorderRadius.all(
-        Radius.circular(5.0),
-      ),
-    );
-  }
-
-  // 토글 버튼 커스텀 박스
-  customBoxDecoration1() {
-    return BoxDecoration(
-      color: Color(0xff1763DD),
-      border: Border(
-          left: BorderSide(color: Colors.black12, width: 1.0),
-          bottom: BorderSide(color: Colors.black12, width: 1.0),
-          top: BorderSide(color: Colors.black12, width: 1.0),
-          right: BorderSide(color: Colors.black12, width: 1.0)),
-      borderRadius: const BorderRadius.all(
-        Radius.circular(5.0),
-      ),
+      color: Color(0xFFFFFFFF).withOpacity(0.0),
+      border: isActive
+          ? Border(bottom: BorderSide(width: 1.0, color: Colors.black87))
+          : null,
     );
   }
 
@@ -292,28 +274,34 @@ class _feed extends State<FeedPage> {
       print(stepValues[i]);
       ar.add(makeCustomList1(context, stepValues[i]));
     }
-    ar.add(const Divider(
-      height: 20,
-      thickness: 5,
-      indent: 20,
-      endIndent: 20,
-    ));
+    ar.add(
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+              width: 129.67,
+              height: 3.76,
+              child: Image.asset("image/source_bar_2.png")),
+          Text(
+            "Full feed",
+            style: TextStyle(
+              fontFamily: 'Quick-Pencil',
+              fontSize: 25,
+              color: Color(0xff4f4b49),
+            ),
+          ),
+          SizedBox(
+              width: 129.67,
+              height: 3.76,
+              child: Image.asset("image/source_bar_2.png")),
+        ],
+      ),
+    );
 
     ar.add(makeGeneralList(context));
 
     print(ar);
-    return ListView(shrinkWrap: true, children: ar
-        //[
-        // makeCustomList1(context),
-        // const Divider(
-        //   height: 20,
-        //   thickness: 5,
-        //   indent: 20,
-        //   endIndent: 20,
-        // ),
-        // makeGeneralList(context),
-        //],
-        );
+    return ListView(shrinkWrap: true, children: ar);
   }
 
   //각 문서의 데이터를 인자로 갖고 리스트뷰_타일(각 사각항목)을 반환하는 함수
