@@ -25,13 +25,13 @@ class _bottomBar extends State<BottomBar> {
   int _selectedIndex = 0;
   final List<Widget> _menu = [
     //LoginPage(),
-    //Temp(), // 1번
+    Temp(), // 1번
     //StepHomePage(),
-    StepHendler(),
+    //StepHendler(),
     //StepHistoryPage(),
     ZeroWasteShop(currentUser), // 2번
-    PractieCheckPage(currentUser), // 3번
-    //Temp(), // 4번
+    StepHendler(), // 3번
+    //PractieCheckPage(currentUser), // 3번
     SearchPage(currentUser), // 4번
     MyPage(currentUser), // 5번
   ]; // 테스트용
