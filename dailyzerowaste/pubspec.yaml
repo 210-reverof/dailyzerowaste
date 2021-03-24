@@ -109,6 +109,8 @@ flutter:
    - family: Quick-Pencil
      fonts:
        - asset: assets/fonts/QuickPencil-Regular.ttf
+       - asset: assets/fonts/NanumSquareB.ttf
+       - asset: assets/fonts/NanumSquareR.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
