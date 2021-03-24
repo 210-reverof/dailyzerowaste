@@ -1,8 +1,13 @@
+import 'package:dailyzerowaste/login.dart';
 import 'package:flutter/material.dart';
 
+import 'model/user.dart';
+import 'pageTransition.dart';
 import 'stepHistory.dart';
 
 class StepHomePage extends StatefulWidget {
+  StepHomePage(User currentUser);
+
   @override
   State<StatefulWidget> createState() {
     return _step();
@@ -12,7 +17,6 @@ class StepHomePage extends StatefulWidget {
 class _step extends State<StepHomePage> {
   @override
   Widget build(BuildContext context) {
-    // 배경 이미지
     return Column(
       children: <Widget>[
         YourStepTitle(), // title

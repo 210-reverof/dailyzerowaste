@@ -3,15 +3,23 @@ import 'package:dailyzerowaste/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'feedupload.dart';
+import 'login.dart';
+import 'model/user.dart';
+import 'viewFeed.dart';
 
-class feedPage extends StatefulWidget {
+Record currentRecord;
+
+class FeedPage extends StatefulWidget {
+  FeedPage(User currentUser);
+
   @override
   State<StatefulWidget> createState() {
     return _feed();
   }
 }
 
-class _feed extends State<feedPage> {
+class _feed extends State<FeedPage> {
   String searchText;
   String customValue;
 
@@ -37,7 +45,11 @@ class _feed extends State<feedPage> {
                     width: 90,
                     height: 40,
                     child: FloatingActionButton(
-                      onPressed: () {},
+                      onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  FeedUploadPage(currentUser))),
                       child: Text(
                         "Writing",
                         style: TextStyle(
@@ -112,15 +124,18 @@ class _feed extends State<feedPage> {
                   ),
                 ),
 
+                SizedBox(height: 10),
+
                 Container(
                   width: 370.5,
+                  padding: EdgeInsets.all(5),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       // 각 스텝들의 버튼, 처음 피드페이지 진입시에는 기존 유저 스텝버튼 활성화
                       Tab(
                         icon: new Image.asset(
-                          "image/feed_step.png",
+                          "image/feed_icon.png",
                           width: 30,
                           height: 30,
                         ),
@@ -151,9 +166,7 @@ class _feed extends State<feedPage> {
                                             if (stepValues[i] ==
                                                 [option['title']]) {
                                               a = i;
-                                              print("ㅅㅂ");
                                             }
-                                            print("tlqkf...");
                                           }
 
                                           //stepValues.removeAt(a);
@@ -305,94 +318,106 @@ class _feed extends State<feedPage> {
 
   //각 문서의 데이터를 인자로 갖고 리스트뷰_타일(각 사각항목)을 반환하는 함수
   Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
-    final record = Record.fromSnapshot(data);
+    currentRecord = Record.fromSnapshot(data);
     List<Widget> tagArray = [];
 
-    for (int i = 0; i < record.tag.length; i++) {
+    for (int i = 0; i < currentRecord.selectedTags.length; i++) {
       //태그의 개수만큼 tagRectangle 생성 함수(생성자) 호출
-      tagArray.add(tagRectangle(record.tag[i])); //리스트에 추가
+      tagArray.add(tagRectangle(currentRecord.selectedTags[i])); //리스트에 추가
     }
 
-    return Padding(
-      padding: EdgeInsets.all(25),
-      child: Column(
-        children: <Widget>[
-          // 태그 3개
-          Row(children: tagArray),
-          Row(
+    return InkWell(
+      onTap: () => Navigator.push(context,
+          MaterialPageRoute(builder: (context) => ViewFeedPage(currentRecord))),
+      child: Container(
+        margin: EdgeInsets.all(15),
+        child: Container(
+          padding: EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            color: Color(0x334f4b49),
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+          ),
+          child: Column(
             children: <Widget>[
-              // 글의 사진
-              Container(
-                padding: EdgeInsets.all(5),
-                child: SizedBox(
-                  width: 124,
-                  height: 124,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Color(0xffbce0fd),
-                      border: Border.all(width: 1.0, color: Color(0xff4f4b49)),
+              // 태그 3개
+              Row(children: tagArray),
+              Row(
+                children: <Widget>[
+                  // 글의 사진
+                  Container(
+                    padding: EdgeInsets.all(5),
+                    child: SizedBox(
+                      width: 124,
+                      height: 124,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: NetworkImage(currentRecord.image),
+                                fit: BoxFit.cover)),
+                      ),
                     ),
                   ),
-                ),
-              ),
 
-              // 글 제목, 본문, 작성자
-              Container(
-                padding: EdgeInsets.only(left: 9, top: 5, right: 5, bottom: 5),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    // 글 제목
-                    Text(
-                      record.title.toString(),
-                      style: TextStyle(
-                        fontFamily: 'Quick-Pencil',
-                        fontSize: 20,
-                        color: Color(0xff4f4b49),
-                      ),
-                    ),
-                    SizedBox(height: 5),
-
-                    // 본문
-                    Text(
-                      record.text.toString(),
-                      style: TextStyle(
-                        fontFamily: 'Quick-Pencil',
-                        fontSize: 15,
-                        color: Color(0xff4f4b49),
-                      ),
-                    ),
-                    SizedBox(height: 10),
-
-                    // 작성자
-                    Row(
+                  // 글 제목, 본문, 작성자
+                  Container(
+                    padding:
+                        EdgeInsets.only(left: 9, top: 5, right: 5, bottom: 5),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        IconButton(
-                          padding: EdgeInsets.zero,
-                          icon: Icon(
-                            Icons.account_circle,
-                            size: 20,
-                          ),
-                          constraints: BoxConstraints(),
-                          onPressed: () {},
-                        ),
-                        SizedBox(width: 5),
+                        // 글 제목
                         Text(
-                          record.user.toString(),
+                          currentRecord.title.toString(),
+                          style: TextStyle(
+                            fontFamily: 'Quick-Pencil',
+                            fontSize: 20,
+                            color: Color(0xff4f4b49),
+                          ),
+                        ),
+                        SizedBox(height: 5),
+
+                        // 본문
+                        Text(
+                          currentRecord.text.toString(),
                           style: TextStyle(
                             fontFamily: 'Quick-Pencil',
                             fontSize: 15,
                             color: Color(0xff4f4b49),
                           ),
                         ),
+                        SizedBox(height: 10),
+
+                        // 작성자
+                        Row(
+                          children: <Widget>[
+                            IconButton(
+                              padding: EdgeInsets.zero,
+                              icon: Icon(
+                                Icons.account_circle,
+                                size: 20,
+                              ),
+                              constraints: BoxConstraints(),
+                              onPressed: () {},
+                            ),
+                            SizedBox(width: 5),
+                            Text(
+                              currentRecord.userName.toString(),
+                              style: TextStyle(
+                                fontFamily: 'Quick-Pencil',
+                                fontSize: 15,
+                                color: Color(0xff4f4b49),
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }
@@ -406,10 +431,24 @@ tagRectangle(str) {
       child: Container(
         padding: EdgeInsets.only(left: 11, top: 7, right: 11, bottom: 5),
         decoration: BoxDecoration(
-            color: Color(0x00000000),
-            border: Border.all(width: 1.0, color: Color(0xff4f4b49)),
+            image: DecorationImage(
+                image: AssetImage("image/select_background.png"),
+                fit: BoxFit.fill),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.5),
+                spreadRadius: 0.1,
+                blurRadius: 0.5,
+                offset: Offset(3, 3), // changes position of shadow
+              ),
+            ],
+            color: Color(0xffffffff),
             borderRadius: BorderRadius.all(Radius.circular(7))),
-        child: Text('$str'),
+        child: Text('$str',
+            style: TextStyle(
+                fontFamily: '1HoonDdukbokki',
+                fontSize: 11,
+                color: Colors.white)),
       ),
     ),
   );

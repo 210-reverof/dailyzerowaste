@@ -1,22 +1,26 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'user.dart';
+
 class Record {
-  final String title;
-  final String text;
-  final String user;
-  final List<dynamic> image;
-  final List<dynamic> tag;
-  final List<dynamic> step;
-  final DocumentReference reference;
+  String title;
+  String text;
+  String userId;
+  String userName;
+  String image;
+  List<dynamic> selectedTags;
+  List<dynamic> selectedTargets;
+  DocumentReference reference;
 
   Record({
     this.image,
     this.reference,
-    this.tag,
+    this.selectedTags,
     this.text,
     this.title,
-    this.step,
-    this.user,
+    this.selectedTargets,
+    this.userId,
+    this.userName,
   });
 
   Record.fromMap(Map<String, dynamic> map,
@@ -25,10 +29,25 @@ class Record {
         title = map['title'],
         text = map['text'],
         image = map['image'],
-        tag = map['tag'],
-        step = map['step'],
-        user = map['user'];
+        selectedTags = map['selectedTags'],
+        selectedTargets = map['selectedTargets'],
+        userId = map['userId'],
+        userName = map['userName'];
 
   Record.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data(), reference: snapshot.reference);
+
+  factory Record.fromDocumnet(DocumentSnapshot doc) {
+    Map getDocs = doc.data();
+    return Record(
+      image: getDocs["image"],
+      reference: getDocs["reference"],
+      userId: getDocs["userId"],
+      userName: getDocs["userId"],
+      title: getDocs["title"],
+      text: getDocs["text"],
+      selectedTags: getDocs["selectedTags"],
+      selectedTargets: getDocs["selectedTargets"],
+    );
+  }
 }
