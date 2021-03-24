@@ -100,9 +100,15 @@ class _search extends State<SearchPage> {
       tagArray.add(tagRectangle(record.tag[i])); //리스트에 추가
     }
 
-    return Padding(
-      padding: EdgeInsets.all(25),
-      child: Column(
+    return Container(
+      margin: EdgeInsets.all(15),
+      child: Container(
+        padding: EdgeInsets.all(5),
+        decoration: BoxDecoration(
+                      color: Color(0x334f4b49),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+        child: Column(
         children: <Widget>[
           // 태그 3개
           Row(children: tagArray),
@@ -181,6 +187,7 @@ class _search extends State<SearchPage> {
           ),
         ],
       ),
+    ),
     );
   }
 }
@@ -193,10 +200,23 @@ tagRectangle(str) {
       child: Container(
         padding: EdgeInsets.only(left: 11, top: 7, right: 11, bottom: 5),
         decoration: BoxDecoration(
-            color: Color(0x00000000),
-            border: Border.all(width: 1.0, color: Color(0xff4f4b49)),
+          image: DecorationImage(
+              image: AssetImage("image/select_background.png"),
+              fit: BoxFit.fill),
+              boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.5),
+                spreadRadius: 0.1,
+                blurRadius: 0.5,
+                offset: Offset(3, 3), // changes position of shadow
+              ),
+            ],
+            color: Color(0xffffffff),
             borderRadius: BorderRadius.all(Radius.circular(7))),
-        child: Text('$str'),
+        child: Text('$str', style: TextStyle(
+                                                fontFamily: '1HoonDdukbokki',
+                                                fontSize: 11,
+                                                color:  Colors.white)),
       ),
     ),
   );
