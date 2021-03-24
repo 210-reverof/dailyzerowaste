@@ -3,6 +3,7 @@ import 'package:dailyzerowaste/login.dart';
 import 'package:dailyzerowaste/model/user.dart';
 import 'package:flutter/material.dart';
 import 'login.dart';
+import 'versions.dart';
 
 class MyPage extends StatefulWidget {
   MyPage(User currentUser);
@@ -82,7 +83,7 @@ class _myPage extends State<MyPage> {
                     InkWell(
                         onTap: () {},
                         child: Text(
-                          'settings',
+                          'step information',
                           style: TextStyle(
                             fontFamily: 'Quick-Pencil',
                             fontSize: 20,
@@ -92,7 +93,8 @@ class _myPage extends State<MyPage> {
                     Image.asset('image/source_bar_2.png'),
                     SizedBox(height: 10.7),
                     InkWell(
-                        onTap: () {},
+                        onTap: () => Navigator.push(
+                          context, MaterialPageRoute(builder: (context) => VersionPage(currentUser))),
                         child: Text(
                           'Version',
                           style: TextStyle(

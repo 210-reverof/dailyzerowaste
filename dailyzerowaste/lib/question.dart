@@ -98,6 +98,8 @@ class _question extends State<QuestionPage> {
     if (form.validate()) {
       form.save();
 
+      Scaffold.of(context)
+          .showSnackBar(SnackBar(content: Text("Hello," + user.nickname.toString())));
       print(user.nickname.toString() + " " + user.step.toString());
       Timer(Duration(seconds: 1), () {
         Navigator.pop(context, user);
