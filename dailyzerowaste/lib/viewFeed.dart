@@ -1,8 +1,9 @@
-import 'package:dailyzerowaste/model/user.dart';
 import 'package:flutter/material.dart';
+import 'feedpage.dart';
+import 'model/record.dart';
 
 class ViewFeedPage extends StatefulWidget {
-  ViewFeedPage(User currentUser);
+  ViewFeedPage(Record currentRecord);
 
   @override
   State<StatefulWidget> createState() {
@@ -52,7 +53,7 @@ class _viewFeed extends State<ViewFeedPage> {
                     Wrap(
                         spacing: 10.0,
                         runSpacing: 20.0,
-                        children: selectedTagBoxes
+                        children: currentRecord.selectedTags
                             .map((option) => new Container(
                                 // margin: EdgeInsets.all(5),
                                 decoration: customBoxDecoration(),
@@ -75,7 +76,10 @@ class _viewFeed extends State<ViewFeedPage> {
                   Container(
                     height: 311,
                     width: 311,
-                    color: Color(0xff4f4b49),
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: NetworkImage(currentRecord.image),
+                            fit: BoxFit.cover)),
                   ),
 
                   SizedBox(height: 21),
@@ -83,7 +87,7 @@ class _viewFeed extends State<ViewFeedPage> {
                   //제목
                   Container(
                       width: 311,
-                      child: Text("dddddddddddddddd",
+                      child: Text(currentRecord.title,
                           overflow: TextOverflow.visible,
                           style: TextStyle(
                               fontFamily: 'Quick-Pencil',
@@ -96,7 +100,7 @@ class _viewFeed extends State<ViewFeedPage> {
                   // 본문 내용
                   Container(
                       width: 311,
-                      child: Text("dddddddddddddddd",
+                      child: Text(currentRecord.text,
                           overflow: TextOverflow.visible,
                           style: TextStyle(
                               fontFamily: 'Quick-Pencil',

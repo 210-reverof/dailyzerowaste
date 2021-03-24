@@ -64,6 +64,7 @@ class _feedUpload extends State<FeedUploadPage> {
 
         if (!currentFocus.hasPrimaryFocus) {
           currentFocus.unfocus();
+
         }},
         child: Scaffold(
         body: Container(

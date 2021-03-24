@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'feedupload.dart';
 import 'login.dart';
 import 'model/user.dart';
+import 'viewFeed.dart';
+
+Record currentRecord;
 
 class FeedPage extends StatefulWidget {
   FeedPage(User currentUser);
@@ -43,7 +46,10 @@ class _feed extends State<FeedPage> {
                     height: 40,
                     child: FloatingActionButton(
                       onPressed: () => Navigator.push(
-                          context, MaterialPageRoute(builder: (context) => FeedUploadPage(currentUser))),
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  FeedUploadPage(currentUser))),
                       child: Text(
                         "Writing",
                         style: TextStyle(
@@ -310,106 +316,109 @@ class _feed extends State<FeedPage> {
         );
   }
 
-
-
   //각 문서의 데이터를 인자로 갖고 리스트뷰_타일(각 사각항목)을 반환하는 함수
   Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
-    final record = Record.fromSnapshot(data);
+    currentRecord = Record.fromSnapshot(data);
     List<Widget> tagArray = [];
 
-    for (int i = 0; i < record.selectedTags.length; i++) {
+    for (int i = 0; i < currentRecord.selectedTags.length; i++) {
       //태그의 개수만큼 tagRectangle 생성 함수(생성자) 호출
-      tagArray.add(tagRectangle(record.selectedTags[i])); //리스트에 추가
+      tagArray.add(tagRectangle(currentRecord.selectedTags[i])); //리스트에 추가
     }
 
-    return Container(
-      margin: EdgeInsets.all(15),
+    return InkWell(
+      onTap: () => Navigator.push(context,
+          MaterialPageRoute(builder: (context) => ViewFeedPage(currentRecord))),
       child: Container(
-        padding: EdgeInsets.all(5),
-        decoration: BoxDecoration(
-                      color: Color(0x334f4b49),
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
-        child: Column(
-        children: <Widget>[
-          // 태그 3개
-          Row(children: tagArray),
-          Row(
+        margin: EdgeInsets.all(15),
+        child: Container(
+          padding: EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            color: Color(0x334f4b49),
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+          ),
+          child: Column(
             children: <Widget>[
-              // 글의 사진
-              Container(
-                padding: EdgeInsets.all(5),
-                child: SizedBox(
-                  width: 124,
-                  height: 124,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Color(0xffbce0fd),
-                      border: Border.all(width: 1.0, color: Color(0xff4f4b49)),
+              // 태그 3개
+              Row(children: tagArray),
+              Row(
+                children: <Widget>[
+                  // 글의 사진
+                  Container(
+                    padding: EdgeInsets.all(5),
+                    child: SizedBox(
+                      width: 124,
+                      height: 124,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: NetworkImage(currentRecord.image),
+                                fit: BoxFit.cover)),
+                      ),
                     ),
                   ),
-                ),
-              ),
 
-              // 글 제목, 본문, 작성자
-              Container(
-                padding: EdgeInsets.only(left: 9, top: 5, right: 5, bottom: 5),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    // 글 제목
-                    Text(
-                      record.title.toString(),
-                      style: TextStyle(
-                        fontFamily: 'Quick-Pencil',
-                        fontSize: 20,
-                        color: Color(0xff4f4b49),
-                      ),
-                    ),
-                    SizedBox(height: 5),
-
-                    // 본문
-                    Text(
-                      record.text.toString(),
-                      style: TextStyle(
-                        fontFamily: 'Quick-Pencil',
-                        fontSize: 15,
-                        color: Color(0xff4f4b49),
-                      ),
-                    ),
-                    SizedBox(height: 10),
-
-                    // 작성자
-                    Row(
+                  // 글 제목, 본문, 작성자
+                  Container(
+                    padding:
+                        EdgeInsets.only(left: 9, top: 5, right: 5, bottom: 5),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        IconButton(
-                          padding: EdgeInsets.zero,
-                          icon: Icon(
-                            Icons.account_circle,
-                            size: 20,
-                          ),
-                          constraints: BoxConstraints(),
-                          onPressed: () {},
-                        ),
-                        SizedBox(width: 5),
+                        // 글 제목
                         Text(
-                          record.userName.toString(),
+                          currentRecord.title.toString(),
+                          style: TextStyle(
+                            fontFamily: 'Quick-Pencil',
+                            fontSize: 20,
+                            color: Color(0xff4f4b49),
+                          ),
+                        ),
+                        SizedBox(height: 5),
+
+                        // 본문
+                        Text(
+                          currentRecord.text.toString(),
                           style: TextStyle(
                             fontFamily: 'Quick-Pencil',
                             fontSize: 15,
                             color: Color(0xff4f4b49),
                           ),
                         ),
+                        SizedBox(height: 10),
+
+                        // 작성자
+                        Row(
+                          children: <Widget>[
+                            IconButton(
+                              padding: EdgeInsets.zero,
+                              icon: Icon(
+                                Icons.account_circle,
+                                size: 20,
+                              ),
+                              constraints: BoxConstraints(),
+                              onPressed: () {},
+                            ),
+                            SizedBox(width: 5),
+                            Text(
+                              currentRecord.userName.toString(),
+                              style: TextStyle(
+                                fontFamily: 'Quick-Pencil',
+                                fontSize: 15,
+                                color: Color(0xff4f4b49),
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ],
           ),
-        ],
+        ),
       ),
-    ),
     );
   }
 }
@@ -422,10 +431,10 @@ tagRectangle(str) {
       child: Container(
         padding: EdgeInsets.only(left: 11, top: 7, right: 11, bottom: 5),
         decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage("image/select_background.png"),
-              fit: BoxFit.fill),
-              boxShadow: [
+            image: DecorationImage(
+                image: AssetImage("image/select_background.png"),
+                fit: BoxFit.fill),
+            boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.5),
                 spreadRadius: 0.1,
@@ -435,10 +444,11 @@ tagRectangle(str) {
             ],
             color: Color(0xffffffff),
             borderRadius: BorderRadius.all(Radius.circular(7))),
-        child: Text('$str', style: TextStyle(
-                                                fontFamily: '1HoonDdukbokki',
-                                                fontSize: 11,
-                                                color:  Colors.white)),
+        child: Text('$str',
+            style: TextStyle(
+                fontFamily: '1HoonDdukbokki',
+                fontSize: 11,
+                color: Colors.white)),
       ),
     ),
   );

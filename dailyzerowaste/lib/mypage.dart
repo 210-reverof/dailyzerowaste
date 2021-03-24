@@ -2,6 +2,7 @@ import 'contact.dart';
 import 'package:dailyzerowaste/login.dart';
 import 'package:dailyzerowaste/model/user.dart';
 import 'package:flutter/material.dart';
+import 'stepInfo.dart';
 import 'login.dart';
 import 'versions.dart';
 
@@ -81,7 +82,8 @@ class _myPage extends State<MyPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     InkWell(
-                        onTap: () {},
+                        onTap: () => Navigator.push(
+                          context, MaterialPageRoute(builder: (context) => StepInfoPage(currentUser))),
                         child: Text(
                           'step information',
                           style: TextStyle(
