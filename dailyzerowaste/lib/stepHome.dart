@@ -13,25 +13,32 @@ class _step extends State<StepHomePage> {
   @override
   Widget build(BuildContext context) {
     // 배경 이미지
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("image/background.png"),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: Scaffold(
-        body: ListView(
-          padding: EdgeInsets.all(0),
-          children: <Widget>[
-            StepTopTabBar(), // step, history 탭바
-            YourStepTitle(), // title
-            YourStepInfo(), // step info
-            YourTierStatus(), // tier status
-          ],
-        ),
-      ),
+    return Column(
+      children: <Widget>[
+        YourStepTitle(), // title
+        YourStepInfo(), // step info
+        YourTierStatus(), // tier status
+      ],
     );
+    // Container(
+    //   decoration: BoxDecoration(
+    //     image: DecorationImage(
+    //       image: AssetImage("image/background.png"),
+    //       fit: BoxFit.cover,
+    //     ),
+    //   ),
+    //   child: Scaffold(
+    //     body: ListView(
+    //       padding: EdgeInsets.all(0),
+    //       children: <Widget>[
+    //         StepTopTabBar(), // step, history 탭바
+    //         YourStepTitle(), // title
+    //         YourStepInfo(), // step info
+    //         YourTierStatus(), // tier status
+    //       ],
+    //     ),
+    //   ),
+    // );
   }
 }
 

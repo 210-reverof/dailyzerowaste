@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:dailyzerowaste/model/user.dart';
+import 'stepHandler.dart';
 import 'stepHistory.dart';
 import 'login.dart';
 import 'mypage.dart';
@@ -25,10 +26,11 @@ class _bottomBar extends State<BottomBar> {
   final List<Widget> _menu = [
     //LoginPage(),
     //Temp(), // 1번
-    StepHomePage(),
+    //StepHomePage(),
+    StepHendler(),
     //StepHistoryPage(),
     ZeroWasteShop(currentUser), // 2번
-   PractieCheckPage(currentUser), // 3번
+    PractieCheckPage(currentUser), // 3번
     //Temp(), // 4번
     SearchPage(currentUser), // 4번
     MyPage(currentUser), // 5번
