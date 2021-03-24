@@ -95,9 +95,9 @@ class _search extends State<SearchPage> {
     final record = Record.fromSnapshot(data);
     List<Widget> tagArray = [];
 
-    for (int i = 0; i < record.tag.length; i++) {
+    for (int i = 0; i < record.selectedTags.length; i++) {
       //태그의 개수만큼 tagRectangle 생성 함수(생성자) 호출
-      tagArray.add(tagRectangle(record.tag[i])); //리스트에 추가
+      tagArray.add(tagRectangle(record.selectedTags[i])); //리스트에 추가
     }
 
     return Container(
@@ -171,7 +171,7 @@ class _search extends State<SearchPage> {
                         ),
                         SizedBox(width: 5),
                         Text(
-                          record.user.toString(),
+                          record.userName.toString(),
                           style: TextStyle(
                             fontFamily: 'Quick-Pencil',
                             fontSize: 15,

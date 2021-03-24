@@ -27,10 +27,10 @@ class _feedUpload extends State<FeedUploadPage> {
   ];
 
   List selectedTargetBoxes = [
-    {'title': 'for beginner', 'isActive': false},
-    {'title': 'for intermediate', 'isActive': false},
-    {'title': 'for expert', 'isActive': false},
-    {'title': 'for celcbrity', 'isActive': false},
+    {'title': 'beginner', 'isActive': false},
+    {'title': 'intermediate', 'isActive': false},
+    {'title': 'expert', 'isActive': false},
+    {'title': 'celcbrity', 'isActive': false},
   ];
 
   List selectedTags = [];
@@ -360,7 +360,8 @@ final userReference =
 
       // 작성글 셋팅된 값으로 db에 set
       userReference.doc().set({
-        'user': currentUser.id,
+        'userName': currentUser.username,
+        'userId': currentUser.id,
         'title': title,
         'text': text,
         'image': image,

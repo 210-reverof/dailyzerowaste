@@ -3,20 +3,22 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Record {
   final String title;
   final String text;
-  final String user;
-  final List<dynamic> image;
-  final List<dynamic> tag;
-  final List<dynamic> step;
+  final String userId;
+  final String userName;
+  final String image;
+  final List<dynamic> selectedTags;
+  final List<dynamic> selectedTargets;
   final DocumentReference reference;
 
   Record({
     this.image,
     this.reference,
-    this.tag,
+    this.selectedTags,
     this.text,
     this.title,
-    this.step,
-    this.user,
+    this.selectedTargets,
+    this.userId,
+    this.userName,
   });
 
   Record.fromMap(Map<String, dynamic> map,
@@ -25,9 +27,10 @@ class Record {
         title = map['title'],
         text = map['text'],
         image = map['image'],
-        tag = map['tag'],
-        step = map['step'],
-        user = map['user'];
+        selectedTags = map['selectedTags'],
+        selectedTargets = map['selectedTargets'],
+        userId = map['userId'],
+        userName = map['userName'];
 
   Record.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data(), reference: snapshot.reference);

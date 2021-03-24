@@ -3,8 +3,13 @@ import 'package:dailyzerowaste/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'feedupload.dart';
+import 'login.dart';
+import 'model/user.dart';
 
 class FeedPage extends StatefulWidget {
+  FeedPage(User currentUser);
+
   @override
   State<StatefulWidget> createState() {
     return _feed();
@@ -37,7 +42,8 @@ class _feed extends State<FeedPage> {
                     width: 90,
                     height: 40,
                     child: FloatingActionButton(
-                      onPressed: () {},
+                      onPressed: () => Navigator.push(
+                          context, MaterialPageRoute(builder: (context) => FeedUploadPage(currentUser))),
                       child: Text(
                         "Writing",
                         style: TextStyle(
@@ -112,10 +118,11 @@ class _feed extends State<FeedPage> {
                   ),
                 ),
 
-                SizedBox(height: 20,),
+                SizedBox(height: 10),
 
                 Container(
                   width: 370.5,
+                  padding: EdgeInsets.all(5),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -153,9 +160,7 @@ class _feed extends State<FeedPage> {
                                             if (stepValues[i] ==
                                                 [option['title']]) {
                                               a = i;
-                                              print("ㅅㅂ");
                                             }
-                                            print("tlqkf...");
                                           }
 
                                           //stepValues.removeAt(a);
@@ -305,14 +310,16 @@ class _feed extends State<FeedPage> {
         );
   }
 
+
+
   //각 문서의 데이터를 인자로 갖고 리스트뷰_타일(각 사각항목)을 반환하는 함수
   Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
     final record = Record.fromSnapshot(data);
     List<Widget> tagArray = [];
 
-    for (int i = 0; i < record.tag.length; i++) {
+    for (int i = 0; i < record.selectedTags.length; i++) {
       //태그의 개수만큼 tagRectangle 생성 함수(생성자) 호출
-      tagArray.add(tagRectangle(record.tag[i])); //리스트에 추가
+      tagArray.add(tagRectangle(record.selectedTags[i])); //리스트에 추가
     }
 
     return Container(
@@ -386,7 +393,7 @@ class _feed extends State<FeedPage> {
                         ),
                         SizedBox(width: 5),
                         Text(
-                          record.user.toString(),
+                          record.userName.toString(),
                           style: TextStyle(
                             fontFamily: 'Quick-Pencil',
                             fontSize: 15,
