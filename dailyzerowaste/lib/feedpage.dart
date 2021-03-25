@@ -344,25 +344,30 @@ class _feed extends State<FeedPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         // 글 제목
-                        Text(
-                          currentRecord.title.toString(),
-                          style: TextStyle(
-                            fontFamily: 'Quick-Pencil',
-                            fontSize: 20,
-                            color: Color(0xff4f4b49),
-                          ),
-                        ),
+                        Container(
+                            width: 250,
+                            child: Text(
+                              currentRecord.title.toString(),
+                              style: TextStyle(
+                                fontFamily: 'Quick-Pencil',
+                                fontSize: 20,
+                                color: Color(0xff4f4b49),
+                              ),
+                            )),
                         SizedBox(height: 5),
 
                         // 본문
-                        Text(
-                          currentRecord.text.toString(),
-                          style: TextStyle(
-                            fontFamily: 'Quick-Pencil',
-                            fontSize: 15,
-                            color: Color(0xff4f4b49),
-                          ),
-                        ),
+                        Container(
+                            width: 250,
+                            child: Text(
+                              currentRecord.text.toString(),
+                              overflow: TextOverflow.visible,
+                              style: TextStyle(
+                                fontFamily: 'Quick-Pencil',
+                                fontSize: 15,
+                                color: Color(0xff4f4b49),
+                              ),
+                            )),
                         SizedBox(height: 10),
 
                         // 작성자

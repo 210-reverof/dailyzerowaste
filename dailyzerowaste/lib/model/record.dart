@@ -5,6 +5,7 @@ import 'user.dart';
 class Record {
   String title;
   String text;
+  String userImage;
   String userId;
   String userName;
   String image;
@@ -16,6 +17,7 @@ class Record {
     this.image,
     this.reference,
     this.selectedTags,
+    this.userImage,
     this.text,
     this.title,
     this.selectedTargets,
@@ -32,7 +34,8 @@ class Record {
         selectedTags = map['selectedTags'],
         selectedTargets = map['selectedTargets'],
         userId = map['userId'],
-        userName = map['userName'];
+        userName = map['userName'],
+        userImage = map['userImage'];
 
   Record.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data(), reference: snapshot.reference);
@@ -48,6 +51,7 @@ class Record {
       text: getDocs["text"],
       selectedTags: getDocs["selectedTags"],
       selectedTargets: getDocs["selectedTargets"],
+      userImage: getDocs["userImage"],
     );
   }
 }

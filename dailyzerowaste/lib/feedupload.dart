@@ -39,8 +39,9 @@ class _feedUpload extends State<FeedUploadPage> {
   String title;
   String text;
   File _imageFile;
+  final DateTime timestamp = DateTime.now();
 
-    final picker = ImagePicker();
+  final picker = ImagePicker();
 
   Future pickImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
@@ -351,16 +352,17 @@ class _feedUpload extends State<FeedUploadPage> {
     UploadTask uploadTask = firebaseStorageRef.putFile(_imageFile);
     TaskSnapshot taskSnapshot = await uploadTask;
     taskSnapshot.ref.getDownloadURL().then(
-          (value) => { image = value, saveUserInfoToFirestore(context)},
+          (value) => { image = value, saveInfoToFirestore(context)},
     );
   }
 
-  saveUserInfoToFirestore(BuildContext context) async {
+  saveInfoToFirestore(BuildContext context) async {
 final userReference =
     FirebaseFirestore.instance.collection('feed');
 
       // 작성글 셋팅된 값으로 db에 set
       userReference.doc().set({
+        'userImage':currentUser.image,
         'userName': currentUser.username,
         'userId': currentUser.id,
         'title': title,
@@ -368,6 +370,7 @@ final userReference =
         'image': image,
         'selectedTags':selectedTags,
         'selectedTargets':selectedTargets,
+        'timestamp': timestamp,
       });
   }
 }

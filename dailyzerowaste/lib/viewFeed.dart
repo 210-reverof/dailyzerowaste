@@ -1,3 +1,4 @@
+import 'package:dailyzerowaste/profile.dart';
 import 'package:flutter/material.dart';
 import 'feedpage.dart';
 import 'model/record.dart';
@@ -107,6 +108,37 @@ class _viewFeed extends State<ViewFeedPage> {
                               fontSize: 20,
                               fontWeight: FontWeight.normal,
                               color: Color(0xff403e3d)))),
+
+                  SizedBox(height: 200),
+
+                  // 작성자 정보
+                  InkWell(
+                    onTap: () => Navigator.push(context,
+          MaterialPageRoute(builder: (context) => ProfilePage(currentRecord))),
+                    child:
+                  Container(
+                      child: Column(
+                    children: [
+                      Container(
+                        width: 72,
+                        height: 72,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: NetworkImage(currentRecord.userImage)),
+                            border: Border.all(width: 1, color: Colors.black),
+                            borderRadius: BorderRadius.circular(50)),
+                      ),
+
+                      SizedBox(height: 20),
+
+                      Text(currentRecord.userName,
+                      style: TextStyle(
+                              fontFamily: 'Quick-Pencil',
+                              fontSize: 30,
+                              fontWeight: FontWeight.normal,
+                              color: Color(0xff403e3d)))
+                    ],
+                  ))),
                 ],
               ),
             ],

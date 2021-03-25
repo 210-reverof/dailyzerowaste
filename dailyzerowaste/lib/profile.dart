@@ -1,69 +1,79 @@
-//model 폴더 및 record 파일 추가
-//yaml 파일에  firebase_storage: ^8.0.0 추가하고 import
-//main함수 호출 비동기 설정 및 DB 초기화
-
+import 'package:dailyzerowaste/feedpage.dart';
 import 'package:dailyzerowaste/model/record.dart';
-import 'package:dailyzerowaste/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dailyzerowaste/model/user.dart';
 import 'package:dailyzerowaste/viewFeed.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-class SearchPage extends StatefulWidget {
-  SearchPage(User currentUser);
+class ProfilePage extends StatefulWidget {
+  ProfilePage(Record currentRecord);
 
   @override
   State<StatefulWidget> createState() {
-    return _search();
+    return _profile();
   }
 }
 
-class _search extends State<SearchPage> {
+class _profile extends State<ProfilePage> {
   String searchText;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        //만약 바탕을 터치하면 포커스 제거하기 (키보드 내려가도록)
-        FocusScopeNode currentFocus = FocusScope.of(context);
-
-        if (!currentFocus.hasPrimaryFocus) {
-          currentFocus.unfocus();
-        }
-      },
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("image/background.png"),
+          fit: BoxFit.cover,
+        ),
+      ),
       child: Scaffold(
         body: Container(
           child: Center(
             child: Column(
               children: <Widget>[
-                // 검색창
-                Container(
-                  padding: EdgeInsets.only(left: 39, top: 79),
-                  child: Row(
+                 // header
+                  SizedBox(height: 64),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
+                      SizedBox(width: 36),
                       Container(
-                        width: 370.5,
-                        child: TextFormField(onChanged: (val) {
-                          //텍스트폼필드에 변화가 있을 때마다
-                          setState(() {
-                            searchText = val; //검색텍스트 갱신
-                          });
-                        }),
-                      ),
-                      IconButton(
-                        icon: Icon(
-                          Icons.search,
-                          size: 27,
+                        width: 26,
+                        child: InkWell(
+                          child: Image.asset('image/source_direction.png'),
+                          onTap: () => Navigator.pop(context),
                         ),
-                        onPressed: () {},
                       ),
                     ],
                   ),
-                ),
 
-                //검색결과 -> 스트림빌더 생성 함수(생성자) 호출
-                _buildBody(context, searchText)
+                  Container(
+                      child: Column(
+                    children: [
+                      Container(
+                        width: 72,
+                        height: 72,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: NetworkImage(currentRecord.userImage)),
+                            border: Border.all(width: 1, color: Colors.black),
+                            borderRadius: BorderRadius.circular(50)),
+                      ),
+
+                      SizedBox(height: 20),
+
+                      Text(currentRecord.userName,
+                      style: TextStyle(
+                              fontFamily: 'Quick-Pencil',
+                              fontSize: 30,
+                              fontWeight: FontWeight.normal,
+                              color: Color(0xff403e3d)))
+                    ],
+                  )),
+
+                  SizedBox(height: 25),
+
+
+                //사용자 작성글-> 스트림빌더 생성 함수(생성자) 호출
+                _buildBody(context)
               ],
             ),
           ),
@@ -73,12 +83,13 @@ class _search extends State<SearchPage> {
   }
 
   // 텍스트폼필드의 값을 인자로 갖고, 스트림빌더를 반환하는 함수
-  Widget _buildBody(BuildContext context, String val) {
+  Widget _buildBody(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
         //동적 데이터 활용을 위해 스트림 형성
         stream: FirebaseFirestore.instance
             .collection('feed')
-            .where('title', isGreaterThanOrEqualTo: val) //텍스트폼필드 값을 쿼리문에 이용
+            .where('userName',
+                isEqualTo: currentRecord.userName) //텍스트폼필드 값을 쿼리문에 이용
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
