@@ -30,7 +30,7 @@ class _feedUpload extends State<FeedUploadPage> {
     {'title': 'beginner', 'isActive': false},
     {'title': 'intermediate', 'isActive': false},
     {'title': 'expert', 'isActive': false},
-    {'title': 'celcbrity', 'isActive': false},
+    {'title': 'celebrity', 'isActive': false},
   ];
 
   List selectedTags = [];
