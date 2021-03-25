@@ -9,6 +9,7 @@ class User {
   String bio;
   String image;
   String step;
+  String timestamp;
   int cntDIY;
   int cntVisitShop;
   int cntCheck;
@@ -23,6 +24,7 @@ class User {
     this.bio,
     this.image,
     this.step,
+    this.timestamp,
     this.cntDIY,
     this.cntVisitShop,
     this.cntCheck,
@@ -40,10 +42,12 @@ class User {
         bio: getDocs["bio"],
         image: getDocs["image"],
         step: getDocs["step"],
+        timestamp: getDocs["timestamp"],
         cntDIY: getDocs["cntDIY"],
         cntVisitShop: getDocs["cntVisitShop"],
         cntCheck: getDocs["cntCheck"],
         cntShare: getDocs["cntShare"],
+
     );
   }
 
