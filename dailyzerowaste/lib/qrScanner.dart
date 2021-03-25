@@ -24,6 +24,9 @@ class _QRScanner extends State<StepHomePage> {
     //스캔 시작 - 이때 스캔 될때까지 blocking
     String barcode = await scanner.scan();
     //스캔 완료하면 _output 에 문자열 저장하면서 상태 변경 요청.
-    setState(() => _marketID = barcode);
+    setState(() {
+      print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + _marketID); // debug only
+      _marketID = barcode;
+    });
   }
 }
