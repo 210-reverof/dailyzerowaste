@@ -1,4 +1,5 @@
 import 'package:dailyzerowaste/login.dart';
+import 'package:dailyzerowaste/practicecheck.dart';
 import 'package:flutter/material.dart';
 
 import 'PopUpDialog/DIYDialog.dart';
