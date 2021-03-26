@@ -88,6 +88,8 @@ class _shop extends State<ZeroWasteShop> {
             },
           ),
           ShopListButton(),
+
+          // shop info 움직이는 창
           AnimatedPositioned(
             duration: const Duration(milliseconds: 400), // info 창 올라오는 속도
             curve: Curves.easeInOut,
