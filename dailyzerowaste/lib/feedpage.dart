@@ -3,6 +3,7 @@ import 'package:dailyzerowaste/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'PopUpDialog/feedInfoDialog.dart';
 import 'feedupload.dart';
 import 'login.dart';
 import 'model/user.dart';
@@ -133,12 +134,17 @@ class _feed extends State<FeedPage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       // 각 스텝들의 버튼, 처음 피드페이지 진입시에는 기존 유저 스텝버튼 활성화
-                      Tab(
-                        icon: new Image.asset(
-                          "image/feed_icon.png",
-                          width: 30,
-                          height: 30,
+                      InkWell(
+                        child: Tab(
+                          icon: new Image.asset(
+                            "image/feed_icon.png",
+                            width: 30,
+                            height: 30,
+                          ),
                         ),
+                        onTap: () async {
+                          await FeedInfoPopUpHelper.confirm(context);
+                        },
                       ),
                       // 각 스텝들의 버튼, 처음 피드페이지 진입시에는 기존 유저 스텝버튼 활성화
                       Container(
