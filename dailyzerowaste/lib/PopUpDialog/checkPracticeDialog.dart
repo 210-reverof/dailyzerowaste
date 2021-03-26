@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../login.dart';
+import '../practicecheck.dart';
+
 class CPPopUpMessageDialog extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -57,7 +60,11 @@ class _cpPopUpMessageDialog extends State<CPPopUpMessageDialog> {
                   ),
                 ),
               ),
-              onTap: () {}, // popup에서 OK 누르면 띄워질 화면
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => PracticeCheckPage(
+                          currentUser))), // popup에서 OK 누르면 띄워질 화면
             ),
           ],
         ),
