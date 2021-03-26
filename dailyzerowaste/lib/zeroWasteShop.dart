@@ -18,68 +18,65 @@ class ZeroWasteShop extends StatefulWidget {
 }
 
 class _shop extends State<ZeroWasteShop> {
-  Completer<GoogleMapController> _mapController = Completer();
-  MapType _googleMapType = MapType.normal;
+  Completer<GoogleMapController> _controller = Completer();
 
-  CameraPosition _initialCameraPosition = CameraPosition(
-    target: LatLng(36.769691, 126.931705),
-    zoom: 17,
-  );
+  static const LatLng _center = const LatLng(36.769691, 126.931705);
 
-  void _onMapCreated(GoogleMapController controller) {
-    //if (!_mapController.isCompleted) {
-    _mapController.complete(controller);
-    //}
+  final Set<Marker> _markers = {};
+
+  LatLng _lastMapPosition = _center;
+
+  MapType _currentMapType = MapType.normal;
+
+  void _addMarker(LatLng point) {
+    setState(() {
+      _markers.add(Marker(
+        // This marker id can be anything that uniquely identifies each marker.
+        markerId: MarkerId(_lastMapPosition.toString()),
+        position: point,
+        infoWindow: InfoWindow(
+          title: '지존 컴(소)공',
+          snippet: 'sollutiob 언제 끝나..?',
+        ),
+        icon: BitmapDescriptor.defaultMarker,
+      ));
+    });
   }
 
-  // 현재 위치 불러오기
-  void _currentLocation() async {
-    final GoogleMapController controller = await _mapController.future;
-    LocationData currentLocation;
-    var location = new Location();
-    try {
-      currentLocation = await location.getLocation();
-    } on Exception {
-      currentLocation = null;
-    }
+  void _onCameraMove(CameraPosition position) {
+    _lastMapPosition = position.target;
+  }
 
-    controller.animateCamera(CameraUpdate.newCameraPosition(
-      CameraPosition(
-        bearing: 0,
-        target: LatLng(currentLocation.latitude, currentLocation.longitude),
-        zoom: 17.0,
-      ),
-    ));
+  void _onMapCreated(GoogleMapController controller) {
+    _controller.complete(controller);
   }
 
   @override
   Widget build(BuildContext context) {
-    // 배경 이미지
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("image/background.png"),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: Scaffold(
+    //파이어베이스 스트림빌드 생성해서 data 수만큼 _addMarker을 추가할겁니당 ~
+    _addMarker(_center);
+    _addMarker(new LatLng(36.769691, 126.231705)); //임의로 하나 찍어본 포인트
+
+    return Scaffold(
         body: Stack(
           children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-              child: GoogleMap(
-                mapType: _googleMapType,
-                onMapCreated: _onMapCreated,
-                initialCameraPosition: _initialCameraPosition,
-                myLocationButtonEnabled: true,
-                myLocationEnabled: true,
+            GoogleMap(
+              onMapCreated: _onMapCreated,
+              initialCameraPosition: CameraPosition(
+                target: _center,
+                zoom: 17.0,
               ),
+              mapType: _currentMapType,
+              markers: _markers,
+              onCameraMove: _onCameraMove,
+              myLocationButtonEnabled: true,
+              myLocationEnabled: true,
             ),
+
             ShopListButton(),
           ],
         ),
-      ),
-    );
+      );
   }
 }
 
@@ -185,6 +182,7 @@ class ShopInfo extends StatelessWidget {
     );
   }
 }
+
 
 class ShopListButton extends StatelessWidget {
   const ShopListButton({
