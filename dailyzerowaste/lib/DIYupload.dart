@@ -177,7 +177,8 @@ class _diyUpload extends State<DIYUploadPage> {
                       ),
                       onTap: () {
                         uploadImageToFirebase(context);
-                        Navigator.pop(context);
+                        Navigator.popUntil(context,
+                            ModalRoute.withName(Navigator.defaultRouteName));
                       },
                     ),
                   ),
