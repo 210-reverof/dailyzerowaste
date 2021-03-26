@@ -298,7 +298,11 @@ class YourTierStatus extends StatelessWidget {
                     ),
                   ),
                   onTap: () async {
-                    return await PopUpHelper.confirm(context);
+                    await PopUpHelper.confirm(context);
+                    await Scaffold.of(context).showSnackBar(SnackBar(
+                        duration: const Duration(seconds: 2),
+                        backgroundColor: Color(0xff4f4b49),
+                        content: Text("Success scanning QR Code")));
                   },
                 ),
               ],
@@ -465,7 +469,13 @@ class _popUpMessageDialog extends State<PopUpMessageDialog> {
     //스캔 시작 - 이때 스캔 될때까지 blocking
     String barcode = await scanner.scan();
     //스캔 완료하면 _output 에 문자열 저장하면서 상태 변경 요청.
-    setState(() => _marketID = barcode);
+    setState(() {
+      _marketID = barcode;
+
+      // 다시 step페이지로 이동
+      Navigator.popUntil(
+          context, ModalRoute.withName(Navigator.defaultRouteName));
+    });
   }
 
   _popUpMessage(BuildContext context) => Container(
@@ -489,7 +499,7 @@ class _popUpMessageDialog extends State<PopUpMessageDialog> {
                   style: TextStyle(fontFamily: 'Nanum-SquareR', fontSize: 21),
                 ),
                 Text(
-                  'barcode',
+                  'QR Code',
                   style: TextStyle(fontFamily: 'Nanum-SquareB', fontSize: 21),
                 ),
               ],
