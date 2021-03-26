@@ -123,7 +123,11 @@ class _practiceCheck extends State<PracticeCheckPage> {
                       ),
                       onTap: () {
                         updatepractice(context);
-                        Navigator.pop(context);
+                        // Navigator.pop(context);
+
+                        // 다시 step페이지로 이동
+                        Navigator.popUntil(context,
+                            ModalRoute.withName(Navigator.defaultRouteName));
                       },
                     ),
                   ),
@@ -171,7 +175,6 @@ class _practiceCheck extends State<PracticeCheckPage> {
       'step': currentUser.step,
       'timestamp': currentUser.timestamp,
     });
-
   }
 
   //질문 당 하나의 체크박스 세트
