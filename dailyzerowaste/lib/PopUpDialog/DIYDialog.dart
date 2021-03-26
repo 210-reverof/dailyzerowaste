@@ -1,4 +1,6 @@
+import 'package:dailyzerowaste/DIYupload.dart';
 import 'package:flutter/material.dart';
+import 'package:dailyzerowaste/login.dart';
 
 class DIYPopUpMessageDialog extends StatefulWidget {
   @override
@@ -62,7 +64,8 @@ class _diyPopUpMessageDialog extends State<DIYPopUpMessageDialog> {
                   ),
                 ),
               ),
-              onTap: () {}, // popup에서 OK 누르면 띄워질 화면
+              onTap: () => Navigator.push(context,
+          MaterialPageRoute(builder: (context) => DIYUploadPage(currentUser))), // popup에서 OK 누르면 띄워질 화면
             ),
           ],
         ),

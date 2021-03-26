@@ -1,16 +1,12 @@
-import 'package:dailyzerowaste/stepHandler.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dailyzerowaste/model/DIY.dart';
+import 'package:dailyzerowaste/viewDIY.dart';
 import 'package:flutter/material.dart';
 
-import 'package:dailyzerowaste/model/user.dart';
-
 import 'login.dart';
-import 'mypage.dart';
-import 'practicecheck.dart';
-import 'search.dart';
-import 'stepHome.dart';
-import 'temp.dart';
-import 'zeroWasteShop.dart';
 
+
+DIY currentDIY;
 class StepHistoryPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -19,1251 +15,157 @@ class StepHistoryPage extends StatefulWidget {
 }
 
 class _stepHistory extends State<StepHistoryPage> {
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        // DIY Container
-        Container(
+    return Expanded(child:Container(
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
+      child: Scaffold(
+        body: Center(
+            child: ListView(
+              children: <Widget>[
+                SizedBox(height: 30),
+                _buildBody(context, currentUser.username),
+                //검색결과 -> 스트림빌더 생성 함수(생성자) 호출
+              ],
+            ),
+          ),
+    ),
+      ));
+  }
+
+  // 텍스트폼필드의 값을 인자로 갖고, 스트림빌더를 반환하는 함수
+  Widget _buildBody(BuildContext context, String val) {
+    return StreamBuilder<QuerySnapshot>(
+        //동적 데이터 활용을 위해 스트림 형성
+        stream: FirebaseFirestore.instance
+            .collection('DIY')
+           // .where('username', isEqualTo: val) //텍스트폼필드 값을 쿼리문에 이용
+            .snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return LinearProgressIndicator();
+          }
+
+          return _buildList(context, snapshot.data.docs); //리스트뷰 생성 함수(생성자) 호출
+        });
+  }
+
+  //쿼리문 스냅샷 문서를 인자로 갖고 리스트뷰를 반환하는 함수
+  Widget _buildList(BuildContext context, List<DocumentSnapshot> snapshot) {
+    return Expanded(
+        child: ListView(
+      scrollDirection: Axis.vertical,
+      shrinkWrap: true,
+      padding: const EdgeInsets.only(top: 20.0),
+      children: snapshot
+          .map((data) => _buildListItem(context, data))
+          .toList(), //문서마다 리스트뷰_타일 생성 함수(생성자) 호출
+    ));
+  }
+
+  //각 문서의 데이터를 인자로 갖고 리스트뷰_타일(각 사각항목)을 반환하는 함수
+  Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
+    currentDIY = DIY.fromSnapshot(data);
+    List<Widget> tagArray = [];
+
+    return InkWell(
+      onTap: () => Navigator.push(context,
+          MaterialPageRoute(builder: (context) => ViewDIYPage(currentDIY))),
+      child: Container(
+        margin: EdgeInsets.all(15),
+        child: Container(
+          padding: EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            color: Color(0x334f4b49),
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+          ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Container(
-                padding: EdgeInsets.only(left: 36),
-                child: Text(
-                  'DIY',
-                  style: TextStyle(
-                    fontFamily: 'Quick-Pencil',
-                    fontSize: 33,
-                    color: Color(0xff4f4b49),
+              Row(
+                children: <Widget>[
+                  // 글의 사진
+                  Container(
+                    padding: EdgeInsets.all(5),
+                    child: SizedBox(
+                      width: 124,
+                      height: 124,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: NetworkImage(currentDIY.image),
+                                fit: BoxFit.cover)),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 29.5, right: 36),
-                padding: EdgeInsets.only(top: 22, bottom: 28.7),
-                child: Column(
-                  children: <Widget>[
-                    // 칭호 윗줄
-                    Container(
-                      child: Row(
-                        children: <Widget>[
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
 
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+                  // 글 제목, 본문, 작성자
+                  Container(
+                    padding:
+                        EdgeInsets.only(left: 9, top: 5, right: 5, bottom: 5),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        // 글 제목
+                        Container(
+                            width: 250,
+                            child: Text(
+                              currentDIY.title.toString(),
+                              style: TextStyle(
+                                fontFamily: 'Quick-Pencil',
+                                fontSize: 20,
+                                color: Color(0xff4f4b49),
+                              ),
+                            )),
+                        SizedBox(height: 5),
 
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+                        // 본문
+                        Container(
+                            width: 250,
+                            child: Text(
+                              currentDIY.text.toString(),
+                              overflow: TextOverflow.visible,
+                              style: TextStyle(
+                                fontFamily: 'Quick-Pencil',
+                                fontSize: 15,
+                                color: Color(0xff4f4b49),
+                              ),
+                            )),
+                        SizedBox(height: 10),
 
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
+                        // 작성자
+                        Row(
+                          children: <Widget>[
+                            IconButton(
+                              padding: EdgeInsets.zero,
+                              icon: Icon(
+                                Icons.account_circle,
+                                size: 20,
+                              ),
+                              constraints: BoxConstraints(),
+                              onPressed: () {},
                             ),
-                          ),
-                        ],
-                      ),
+                            SizedBox(width: 5),
+                            Text(
+                              currentDIY.userName.toString(),
+                              style: TextStyle(
+                                fontFamily: 'Quick-Pencil',
+                                fontSize: 15,
+                                color: Color(0xff4f4b49),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-
-                    // 칭호 아랫줄
-                    Container(
-                      child: Row(
-                        children: <Widget>[
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ],
           ),
         ),
-
-        // 구분선
-        Container(
-          width: 342.94,
-          child: Image.asset('image/source_bar_2.png'),
-        ),
-
-        // Visit zerowaste shop Container
-        Container(
-          padding: EdgeInsets.only(top: 28.7),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                padding: EdgeInsets.only(left: 36),
-                child: Text(
-                  'Visit zerowaste shop',
-                  style: TextStyle(
-                    fontFamily: 'Quick-Pencil',
-                    fontSize: 33,
-                    color: Color(0xff4f4b49),
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 29.5, right: 36),
-                padding: EdgeInsets.only(top: 22, bottom: 28.7),
-                child: Column(
-                  children: <Widget>[
-                    // 칭호 윗줄
-                    Container(
-                      child: Row(
-                        children: <Widget>[
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    // 칭호 아랫줄
-                    Container(
-                      child: Row(
-                        children: <Widget>[
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-
-        // 구분선
-        Container(
-          width: 342.94,
-          child: Image.asset('image/source_bar_2.png'),
-        ),
-
-        // Check practice Container
-        Container(
-          padding: EdgeInsets.only(top: 28.7),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                padding: EdgeInsets.only(left: 36),
-                child: Text(
-                  'Check practice',
-                  style: TextStyle(
-                    fontFamily: 'Quick-Pencil',
-                    fontSize: 33,
-                    color: Color(0xff4f4b49),
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 29.5, right: 36),
-                padding: EdgeInsets.only(top: 22, bottom: 28.7),
-                child: Column(
-                  children: <Widget>[
-                    // 칭호 윗줄
-                    Container(
-                      child: Row(
-                        children: <Widget>[
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    // 칭호 아랫줄
-                    Container(
-                      child: Row(
-                        children: <Widget>[
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-
-        // 구분선
-        Container(
-          width: 342.94,
-          child: Image.asset('image/source_bar_2.png'),
-        ),
-
-        // Share hashtags Container
-        Container(
-          padding: EdgeInsets.only(top: 28.7),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                padding: EdgeInsets.only(left: 36),
-                child: Text(
-                  'Share hashtags',
-                  style: TextStyle(
-                    fontFamily: 'Quick-Pencil',
-                    fontSize: 33,
-                    color: Color(0xff4f4b49),
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 29.5, right: 36),
-                padding: EdgeInsets.only(top: 22, bottom: 28.7),
-                child: Column(
-                  children: <Widget>[
-                    // 칭호 윗줄
-                    Container(
-                      child: Row(
-                        children: <Widget>[
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    // 칭호 아랫줄
-                    Container(
-                      child: Row(
-                        children: <Widget>[
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          // 개별 칭호 요소
-                          Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width: 86,
-                                  height: 86,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'image/tier/check_beginner.png'),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '2020.03.11',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  '1st DIY',
-                                  style: TextStyle(
-                                    fontFamily: 'Quick-Pencil',
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
+      ),
     );
   }
 }

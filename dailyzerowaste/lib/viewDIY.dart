@@ -1,11 +1,9 @@
-import 'package:dailyzerowaste/profile.dart';
+import 'package:dailyzerowaste/model/DIY.dart';
 import 'package:flutter/material.dart';
-import 'feedpage.dart';
-import 'model/record.dart';
 import 'stepHistory.dart';
 
-class ViewFeedPage extends StatefulWidget {
-  ViewFeedPage(Record currentRecord);
+class ViewDIYPage extends StatefulWidget {
+  ViewDIYPage(DIY currentDIY);
 
   @override
   State<StatefulWidget> createState() {
@@ -13,7 +11,7 @@ class ViewFeedPage extends StatefulWidget {
   }
 }
 
-class _viewFeed extends State<ViewFeedPage> {
+class _viewFeed extends State<ViewDIYPage> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
@@ -47,38 +45,13 @@ class _viewFeed extends State<ViewFeedPage> {
 
                   SizedBox(height: 25),
 
-                  //태그 박스들
-                  Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    SizedBox(width: 52.82),
-                    Wrap(
-                        spacing: 10.0,
-                        runSpacing: 20.0,
-                        children: currentRecord.selectedTags
-                            .map((option) => new Container(
-                                // margin: EdgeInsets.all(5),
-                                decoration: customBoxDecoration(),
-                                child: Container(
-                                    height: 20,
-                                    padding: EdgeInsets.all(5),
-                                    child: Text('$option',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontFamily: '1HoonDdukbokki',
-                                            fontSize: 11,
-                                            fontWeight: FontWeight.normal,
-                                            color: Colors.white)))))
-                            .toList()),
-                  ]),
-
-                  SizedBox(height: 21),
-
                   //사진
                   Container(
                     height: 311,
                     width: 311,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: NetworkImage(currentRecord.image),
+                            image: NetworkImage(currentDIY.image),
                             fit: BoxFit.cover)),
                   ),
 
@@ -87,7 +60,7 @@ class _viewFeed extends State<ViewFeedPage> {
                   //제목
                   Container(
                       width: 311,
-                      child: Text(currentRecord.title,
+                      child: Text(currentDIY.title,
                           overflow: TextOverflow.visible,
                           style: TextStyle(
                               fontFamily: 'Quick-Pencil',
@@ -100,44 +73,13 @@ class _viewFeed extends State<ViewFeedPage> {
                   // 본문 내용
                   Container(
                       width: 311,
-                      child: Text(currentRecord.text,
+                      child: Text(currentDIY.text,
                           overflow: TextOverflow.visible,
                           style: TextStyle(
                               fontFamily: 'Quick-Pencil',
                               fontSize: 20,
                               fontWeight: FontWeight.normal,
                               color: Color(0xff403e3d)))),
-
-                  SizedBox(height: 200),
-
-                  // 작성자 정보
-                  InkWell(
-                    onTap: () => Navigator.push(context,
-          MaterialPageRoute(builder: (context) => ProfilePage(currentRecord))),
-                    child:
-                  Container(
-                      child: Column(
-                    children: [
-                      Container(
-                        width: 72,
-                        height: 72,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: NetworkImage(currentRecord.userImage)),
-                            border: Border.all(width: 1, color: Colors.black),
-                            borderRadius: BorderRadius.circular(50)),
-                      ),
-
-                      SizedBox(height: 20),
-
-                      Text(currentRecord.userName,
-                      style: TextStyle(
-                              fontFamily: 'Quick-Pencil',
-                              fontSize: 30,
-                              fontWeight: FontWeight.normal,
-                              color: Color(0xff403e3d)))
-                    ],
-                  ))),
                 ],
               ),
             ],

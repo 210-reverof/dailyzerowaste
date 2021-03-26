@@ -1,3 +1,4 @@
+import 'package:dailyzerowaste/DIYupload.dart';
 import 'package:dailyzerowaste/login.dart';
 import 'package:dailyzerowaste/practicecheck.dart';
 import 'package:flutter/material.dart';

@@ -27,8 +27,8 @@ class _stepHandler extends State<StepHendler> {
         body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          child: ListView(
-            padding: EdgeInsets.all(0),
+          child: Column(
+            //padding: EdgeInsets.all(0),
             children: <Widget>[
               Container(
                 child: (STEP_TAB_INDEX == 0)
