@@ -1,13 +1,12 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:dailyzerowaste/model/user.dart';
 import 'package:flutter/material.dart';
 import 'login.dart';
 
-class PractieCheckPage extends StatefulWidget {
-  PractieCheckPage(User currentUser);
+class PracticeCheckPage extends StatefulWidget {
+  PracticeCheckPage(User currentUser);
 
   @override
   State<StatefulWidget> createState() {
@@ -17,7 +16,7 @@ class PractieCheckPage extends StatefulWidget {
 
 List _q = [0, 0, 0, 0];
 
-class _practiceCheck extends State<PractieCheckPage> {
+class _practiceCheck extends State<PracticeCheckPage> {
   Widget build(BuildContext context) {
     print(_q);
     return Container(
@@ -63,9 +62,10 @@ class _practiceCheck extends State<PractieCheckPage> {
 
                   SizedBox(height: 30),
 
-                  Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [selectTitle("2. Have you visited the Zero waste shop recently?")]),
+                  Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    selectTitle(
+                        "2. Have you visited the Zero waste shop recently?")
+                  ]),
 
                   SizedBox(height: 20),
 
@@ -73,9 +73,10 @@ class _practiceCheck extends State<PractieCheckPage> {
 
                   SizedBox(height: 30),
 
-                  Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [selectTitle("3. Have you shared a zero waste life with the people around you?")]),
+                  Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    selectTitle(
+                        "3. Have you shared a zero waste life with the people around you?")
+                  ]),
 
                   SizedBox(height: 20),
 
@@ -83,9 +84,9 @@ class _practiceCheck extends State<PractieCheckPage> {
 
                   SizedBox(height: 30),
 
-                  Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [selectTitle("4. Are you living a zero waste life?")]),
+                  Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    selectTitle("4. Are you living a zero waste life?")
+                  ]),
 
                   SizedBox(height: 20),
 
@@ -121,7 +122,7 @@ class _practiceCheck extends State<PractieCheckPage> {
                         ],
                       ),
                       onTap: () {
-                        // updatepractice(context); //user 모델을 수정해야하기 때문에 다른 분들 작업에 영향이 갈까봐 잠시 주석
+                        updatepractice(context);
                         Navigator.pop(context);
                       },
                     ),
@@ -137,9 +138,9 @@ class _practiceCheck extends State<PractieCheckPage> {
 
   selectTitle(str) {
     return Container(
-      width: 450,
+        width: 450,
         child: Text(str,
-        overflow: TextOverflow.visible,
+            overflow: TextOverflow.visible,
             style: TextStyle(
                 fontFamily: 'Quick-Pencil',
                 fontSize: 23,
@@ -147,13 +148,30 @@ class _practiceCheck extends State<PractieCheckPage> {
         padding: EdgeInsets.only(left: 52.82));
   }
 
-  updatepractice(BuildContext context, int pracNum) async {
-    final userReference = FirebaseFirestore.instance.collection('user');
+  updatepractice(BuildContext context) async {
+    final userReference = FirebaseFirestore.instance.collection('users');
+
+    print('cnt' + currentUser.cntCheck.toString());
+
+    currentUser.cntCheck += 1;
 
     // 체크박스 셋팅된 값으로 db에 set
     userReference.doc(currentUser.id).set({
-      'practice': pracNum,
+      'id': currentUser.id,
+      'profileName': currentUser.profileName,
+      'username': currentUser.username,
+      'cntDIY': currentUser.cntDIY,
+      'cntVisitShop': currentUser.cntVisitShop,
+      'cntCheck': currentUser.cntCheck,
+      'cntShare': currentUser.cntShare,
+      'url': currentUser.url,
+      'email': currentUser.email,
+      'bio': '',
+      'image': currentUser.image,
+      'step': currentUser.step,
+      'timestamp': currentUser.timestamp,
     });
+
   }
 
   //질문 당 하나의 체크박스 세트

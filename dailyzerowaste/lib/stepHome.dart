@@ -1,4 +1,5 @@
 import 'package:dailyzerowaste/login.dart';
+import 'package:dailyzerowaste/practicecheck.dart';
 import 'package:flutter/material.dart';
 
 import 'package:qrscan/qrscan.dart' as scanner; //qrscan 패키지를 scanner 별칭으로 사용.
@@ -367,7 +368,8 @@ class YourTierStatus extends StatelessWidget {
                       borderRadius: BorderRadius.circular(100),
                     ),
                   ),
-                  onTap: () {},
+                  onTap: () => Navigator.push(
+          context, MaterialPageRoute(builder: (context) => PracticeCheckPage(currentUser))),
                 ),
               ],
             ),
