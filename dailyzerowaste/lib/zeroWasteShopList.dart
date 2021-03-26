@@ -76,8 +76,9 @@ class ShopInfoInList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: InkWell(
+    return InkWell(
+      child: Container(
+        padding: EdgeInsets.only(top: 10),
         child: Column(
           children: <Widget>[
             Row(
@@ -114,8 +115,8 @@ class ShopInfoInList extends StatelessWidget {
             ),
           ],
         ),
-        onTap: () {},
       ),
+      onTap: () {},
     );
   }
 }
