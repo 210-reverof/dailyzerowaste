@@ -77,6 +77,7 @@ flutter:
    - image/source_direction.png
    - image/source_selection_bar.png
    - image/shop_info.png
+   - image/shop_info_cut.png
    - image/feed_icon.png
    - image/try_button.png
    - image/bottom_navigator/home.png

@@ -8,6 +8,9 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'zeroWasteShopList.dart';
 
+const double PIN_VISIBLE_POSITION = 0;
+const double PIN_INVISIBLE_POSITION = -220;
+
 class ZeroWasteShop extends StatefulWidget {
   ZeroWasteShop(User currentUser);
 
@@ -28,6 +31,8 @@ class _shop extends State<ZeroWasteShop> {
 
   MapType _currentMapType = MapType.normal;
 
+  double pinPillPosition = PIN_VISIBLE_POSITION;
+
   void _addMarker(LatLng point) {
     setState(() {
       _markers.add(Marker(
@@ -39,6 +44,11 @@ class _shop extends State<ZeroWasteShop> {
           snippet: 'sollutiob 언제 끝나..?',
         ),
         icon: BitmapDescriptor.defaultMarker,
+        onTap: () {
+          setState(() {
+            this.pinPillPosition = PIN_VISIBLE_POSITION;
+          });
+        },
       ));
     });
   }
@@ -58,25 +68,37 @@ class _shop extends State<ZeroWasteShop> {
     _addMarker(new LatLng(36.769691, 126.231705)); //임의로 하나 찍어본 포인트
 
     return Scaffold(
-        body: Stack(
-          children: <Widget>[
-            GoogleMap(
-              onMapCreated: _onMapCreated,
-              initialCameraPosition: CameraPosition(
-                target: _center,
-                zoom: 17.0,
-              ),
-              mapType: _currentMapType,
-              markers: _markers,
-              onCameraMove: _onCameraMove,
-              myLocationButtonEnabled: true,
-              myLocationEnabled: true,
+      body: Stack(
+        children: <Widget>[
+          GoogleMap(
+            onMapCreated: _onMapCreated,
+            initialCameraPosition: CameraPosition(
+              target: _center,
+              zoom: 17.0,
             ),
-
-            ShopListButton(),
-          ],
-        ),
-      );
+            mapType: _currentMapType,
+            markers: _markers,
+            onCameraMove: _onCameraMove,
+            myLocationButtonEnabled: true,
+            myLocationEnabled: true,
+            onTap: (LatLng loc) {
+              setState(() {
+                this.pinPillPosition = PIN_INVISIBLE_POSITION;
+              });
+            },
+          ),
+          ShopListButton(),
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 400), // info 창 올라오는 속도
+            curve: Curves.easeInOut,
+            left: 0,
+            right: 0,
+            bottom: this.pinPillPosition,
+            child: ShopInfo(),
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -88,22 +110,24 @@ class ShopInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(0),
-      padding: EdgeInsets.all(0),
+      //margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
+      margin: EdgeInsets.only(bottom: 0),
+      padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("image/shop_info.png"),
-          fit: BoxFit.cover,
+          image: AssetImage("image/shop_info_cut.png"),
+          fit: BoxFit.fill,
         ),
       ),
       child: Column(
         children: <Widget>[
           Container(
+            padding: EdgeInsets.only(top: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  'AlmangMarket',
+                  'AlmongMarket',
                   style: TextStyle(
                     fontFamily: 'Quick-Pencil',
                     fontSize: 25,
@@ -182,7 +206,6 @@ class ShopInfo extends StatelessWidget {
     );
   }
 }
-
 
 class ShopListButton extends StatelessWidget {
   const ShopListButton({
