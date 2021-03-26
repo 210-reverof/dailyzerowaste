@@ -34,32 +34,36 @@ class _stepInfoFeed extends State<StepInfoPage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       SizedBox(width: 36),
-                      Container(
-                        width: 26,
-                        child: InkWell(
+                      InkWell(
+                        child: Container(
+                          width: 26,
                           child: Image.asset('image/source_direction.png'),
-                          onTap: () => Navigator.pop(context),
+                        ),
+                        onTap: () => Navigator.pop(context),
+                      ),
+                      SizedBox(width: 70),
+                      //제목
+                      Container(
+                        //width: 311,
+                        child: Text(
+                          "step information",
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.visible,
+                          style: TextStyle(
+                            fontFamily: 'Quick-Pencil',
+                            fontSize: 30,
+                            fontWeight: FontWeight.normal,
+                            color: Color(0xff403e3d),
+                          ),
                         ),
                       ),
                     ],
                   ),
-
-                  SizedBox(height: 30),
-
-                  //제목
+                  SizedBox(height: 65.19),
                   Container(
-                      width: 311,
-                      child: Text("step information",
-                          textAlign: TextAlign.center,
-                          overflow: TextOverflow.visible,
-                          style: TextStyle(
-                              fontFamily: 'Quick-Pencil',
-                              fontSize: 30,
-                              fontWeight: FontWeight.normal,
-                              color: Color(0xff403e3d)))),
-
-                  SizedBox(height: 10),
-
+                    padding: EdgeInsets.only(left: 36, right: 36),
+                    child: Image.asset('image/step_info.png'),
+                  ),
                 ],
               ),
             ],

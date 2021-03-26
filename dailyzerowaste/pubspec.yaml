@@ -66,6 +66,7 @@ flutter:
   assets:
    - image/logo.jpg
    - image/info.png
+   - image/step_info.png
    - image/info_desc.png
    - image/background.png
    - image/default_bg.png
