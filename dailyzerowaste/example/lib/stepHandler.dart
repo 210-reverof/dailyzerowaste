@@ -176,7 +176,7 @@ class _stepHandler extends State<StepHendler> {
                       ),
               ),
               Container(
-                height: MediaQuery.of(context).size.height - 192,
+                height: MediaQuery.of(context).size.height - 197,
                 child: ListView(
                   children: <Widget>[
                     Container(

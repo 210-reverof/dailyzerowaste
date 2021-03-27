@@ -4,6 +4,6 @@
 4    package="com.shekarmudaliyar.social_share" >
 5
 6    <uses-sdk android:minSdkVersion="16" />
-6-->/Users/jolla/Desktop/dailyzerowaste/dailyzerowaste/android/src/main/AndroidManifest.xml
+6-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\android\src\main\AndroidManifest.xml
 7
 8</manifest>

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/jolla/Desktop/dailyzerowaste/dailyzerowaste/example/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml",
+            "outputFile": "C:\\Users\\user\\Desktop\\dailyzerowaste\\dailyzerowaste\\dailyzerowaste\\example\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
             "map": [
                 {
-                    "source": "/Users/jolla/.gradle/caches/transforms-2/files-2.1/72e9bc9417c6c5f5cf305841afc14800/appcompat-1.1.0/res/values-v23/values-v23.xml",
+                    "source": "C:\\Users\\user\\.gradle\\caches\\transforms-2\\files-2.1\\72e9bc9417c6c5f5cf305841afc14800\\appcompat-1.1.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,20,34,35,36,37,41,42,43,44",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -15,7 +15,7 @@
                     }
                 },
                 {
-                    "source": "/Users/jolla/.gradle/caches/transforms-2/files-2.1/d3e5035c5fe37addc102a390121eddcd/cardview-1.0.0/res/values-v23/values-v23.xml",
+                    "source": "C:\\Users\\user\\.gradle\\caches\\transforms-2\\files-2.1\\d3e5035c5fe37addc102a390121eddcd\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

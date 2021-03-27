@@ -9,6 +9,7 @@ class DIY {
   String userId;
   String userName;
   String image;
+  int cnt;
   Timestamp timestamp;
   DocumentReference reference;
 
@@ -21,6 +22,7 @@ class DIY {
     this.userId,
     this.userName,
     this.timestamp,
+    this.cnt,
   });
 
   DIY.fromMap(Map<String, dynamic> map,
@@ -32,7 +34,8 @@ class DIY {
         userId = map['userId'],
         userName = map['userName'],
         userImage = map['userImage'],
-        timestamp = map['timestamp'];
+        timestamp = map['timestamp'],
+        cnt = map['cnt'];
 
   DIY.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data(), reference: snapshot.reference);
@@ -48,6 +51,7 @@ class DIY {
       text: getDocs["text"],
       userImage: getDocs["userImage"],
       timestamp: getDocs["timestamp"],
+      cnt: getDocs["cnt"],
     );
   }
 }

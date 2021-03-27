@@ -254,6 +254,7 @@ final userReference =
 
       // 작성글 셋팅된 값으로 db에 set
       userReference.doc().set({
+        'cnt':currentUser.cntDIY,
         'userImage':currentUser.image,
         'userName': currentUser.username,
         'userId': currentUser.id,

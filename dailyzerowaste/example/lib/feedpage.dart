@@ -313,8 +313,9 @@ class _feed extends State<FeedPage> {
     }
 
     return InkWell(
-      onTap: () => Navigator.push(context,
-          MaterialPageRoute(builder: (context) => ViewFeedPage(currentRecord))),
+      onTap: () { final Record here = currentRecord;
+        Navigator.push(context,
+          MaterialPageRoute(builder: (context) => ViewFeedPage(here)));},
       child: Container(
         margin: EdgeInsets.all(15),
         child: Container(
