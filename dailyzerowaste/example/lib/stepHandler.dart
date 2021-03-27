@@ -33,7 +33,7 @@ class _stepHandler extends State<StepHendler> {
               Container(
                 child: (STEP_TAB_INDEX == 0)
                     ? Container(
-                        padding: EdgeInsets.fromLTRB(45, 61.2, 45, 25.2),
+                        padding: EdgeInsets.fromLTRB(45, 61.2, 45, 0),
                         child: Stack(
                           children: <Widget>[
                             // 탭 배경 이미지
@@ -104,7 +104,7 @@ class _stepHandler extends State<StepHendler> {
                         ),
                       )
                     : Container(
-                        padding: EdgeInsets.fromLTRB(45, 61.2, 45, 25.2),
+                        padding: EdgeInsets.fromLTRB(45, 61.2, 45, 0),
                         child: Stack(
                           children: <Widget>[
                             // 탭 배경 이미지
@@ -176,9 +176,16 @@ class _stepHandler extends State<StepHendler> {
                       ),
               ),
               Container(
-                  child: (STEP_TAB_INDEX == 0)
-                      ? StepHomePage()
-                      : StepHistoryPage()),
+                height: MediaQuery.of(context).size.height - 192,
+                child: ListView(
+                  children: <Widget>[
+                    Container(
+                        child: (STEP_TAB_INDEX == 0)
+                            ? StepHomePage()
+                            : StepHistoryPage()),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

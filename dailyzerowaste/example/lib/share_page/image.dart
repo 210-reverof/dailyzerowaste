@@ -40,20 +40,22 @@ class _TextOverImage extends State<TextOverImage> {
         child: Column(
           children: <Widget>[
             SizedBox(
-              height: 30,
+              height: 64,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Container(
-                  width: 26,
-                  child: InkWell(
+                SizedBox(width: 36),
+                InkWell(
+                  child: Container(
+                    width: 26,
                     child: Image.asset('image/source_direction.png'),
-                    onTap: () => Navigator.pop(context),
                   ),
+                  onTap: () => Navigator.pop(context),
                 ),
               ],
             ),
+            SizedBox(height: 41),
             // 캡쳐 바운더리 잡기
             RepaintBoundary(
               key: globalKey,
@@ -83,37 +85,55 @@ class _TextOverImage extends State<TextOverImage> {
                 ),
               ),
             ),
-            Container(
-              width: 271,
-              height: 55,
-              decoration: customBox(),
-              child: Center(
-                child: InkWell(
-                  onTap: _capture,
-                  child: Text("Save"),
+            SizedBox(height: 74),
+            InkWell(
+              child: Container(
+                width: 271,
+                height: 55,
+                decoration: customBox(),
+                child: Center(
+                  child: Text(
+                    "Add decotter",
+                    style: TextStyle(
+                      fontFamily: 'Quick-Pencil',
+                      color: Color(0xff4f4b49),
+                      fontSize: 25,
+                    ),
+                  ),
                 ),
               ),
+              onTap: _capture,
             ),
             SizedBox(
               height: 30,
             ),
-            Container(
-              width: 271,
-              height: 55,
-              decoration: customBox(),
-              child: Center(
-                child: InkWell(
-                  onTap: () {
-                    // social_share => 고른 위의 파일의 경로를 가지고 story에 업로드한다.
-                    SocialShare.shareInstagramStory(file.path, "#ffffff",
-                            "#000000", "https://deep-link-url")
-                        .then((data) {
-                      print(data);
-                    });
-                  },
-                  child: Text("Share"),
+            InkWell(
+              child: Container(
+                width: 271,
+                height: 55,
+                decoration: customBox(),
+                child: Center(
+                  child: Text(
+                    "Share",
+                    style: TextStyle(
+                      fontFamily: 'Quick-Pencil',
+                      color: Color(0xff4f4b49),
+                      fontSize: 25,
+                    ),
+                  ),
                 ),
               ),
+              onTap: () {
+                // social_share => 고른 위의 파일의 경로를 가지고 story에 업로드한다.
+                SocialShare.shareInstagramStory(file.path, "#ffffff", "#000000",
+                        "https://deep-link-url")
+                    .then((data) {
+                  print(data);
+                });
+                // 다시 step페이지로 이동
+                Navigator.popUntil(
+                    context, ModalRoute.withName(Navigator.defaultRouteName));
+              },
             ),
           ],
         ),

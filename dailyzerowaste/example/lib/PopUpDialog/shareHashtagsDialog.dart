@@ -1,3 +1,4 @@
+import 'package:dailyzerowaste/share_page/image.dart';
 import 'package:flutter/material.dart';
 
 class SHPopUpMessageDialog extends StatefulWidget {
@@ -67,7 +68,11 @@ class _shPopUpMessageDialog extends State<SHPopUpMessageDialog> {
                   ),
                 ),
               ),
-              onTap: () {}, // popup에서 OK 누르면 띄워질 화면
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          TextOverImage())), // popup에서 OK 누르면 띄워질 화면
             ),
           ],
         ),
