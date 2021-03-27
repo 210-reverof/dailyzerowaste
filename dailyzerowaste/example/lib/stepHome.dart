@@ -110,32 +110,8 @@ class _step extends State<StepHomePage> {
               SizedBox(width: 29),
               Column(
                 children: <Widget>[
-                  SizedBox(height: 81.48),
-
-                  // Try again 버튼
-                  // Container(
-                  //   width: 87,
-                  //   height: 24.18,
-                  //   decoration: BoxDecoration(
-                  //     border: Border.all(
-                  //       width: 1.5,
-                  //       color: Color(0xff4f4b49),
-                  //     ),
-                  //     borderRadius: BorderRadius.circular(50),
-                  //   ),
-                  //   child: Center(
-                  //     child: InkWell(
-                  //       child: Text(
-                  //         'Try again',
-                  //         style: TextStyle(
-                  //           fontFamily: 'Quick-Pencil',
-                  //           fontSize: 15,
-                  //           color: Color(0xff4f4b49),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
+                  // 조화를 위해 위쪽 여백 삭제
+                  //SizedBox(height: 81.48),
 
                   // 퍼센티지
                   Container(
@@ -317,7 +293,7 @@ class _step extends State<StepHomePage> {
                         ],
                       ),
                     ),
-                    SizedBox(width: 25),
+                    SizedBox(width: 33),
 
                     // TRY 버튼
                     InkWell(
@@ -404,7 +380,7 @@ class _step extends State<StepHomePage> {
                         ],
                       ),
                     ),
-                    SizedBox(width: 31),
+                    SizedBox(width: 35),
 
                     // TRY 버튼
                     InkWell(
@@ -490,7 +466,7 @@ class _step extends State<StepHomePage> {
                         ],
                       ),
                     ),
-                    SizedBox(width: 31),
+                    SizedBox(width: 35),
 
                     // TRY 버튼
                     InkWell(
