@@ -21,6 +21,24 @@ final postsReference =
 final DateTime timestamp = DateTime.now();
 User currentUser;
 
+  resetter() async {
+    userReference.doc(currentUser.id).set({
+      'id': currentUser.id,
+      'profileName': currentUser.profileName,
+      'username': currentUser.username,
+      'cntDIY': currentUser.cntDIY,
+      'cntVisitShop': currentUser.cntVisitShop,
+      'cntCheck': currentUser.cntCheck,
+      'cntShare': currentUser.cntShare,
+      'url': currentUser.url,
+      'email': currentUser.email,
+      'bio': '',
+      'image': currentUser.image,
+      'step': currentUser.step,
+      'timestamp': currentUser.timestamp,
+    });
+  }
+
 class LoginPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -94,8 +112,8 @@ class _login extends State<LoginPage> {
         'username': username.nickname,
         'cntDIY': username.init[0],
         'cntVisitShop': username.init[1],
-        'cntCheck': 0,
-        'cntShare': 0,
+        'cntCheck': username.init[2],
+        'cntShare': username.init[3],
         'url': gCurrentUser.photoUrl,
         'email': gCurrentUser.email,
         'bio': '',
@@ -175,6 +193,24 @@ class _login extends State<LoginPage> {
 }*/
 
 User currentUser;
+
+  resetter() async {
+    FirebaseFirestore.instance.collection('users').doc(currentUser.id).set({
+      'id': currentUser.id,
+      'profileName': currentUser.profileName,
+      'username': currentUser.username,
+      'cntDIY': currentUser.cntDIY,
+      'cntVisitShop': currentUser.cntVisitShop,
+      'cntCheck': currentUser.cntCheck,
+      'cntShare': currentUser.cntShare,
+      'url': currentUser.url,
+      'email': currentUser.email,
+      'bio': '',
+      'image': currentUser.image,
+      'step': currentUser.step,
+      'timestamp': currentUser.timestamp,
+    });
+  }
 
 class FakeLoginPage extends StatefulWidget {
   @override

@@ -9,7 +9,7 @@ class User {
   String bio;
   String image;
   String step;
-  String timestamp;
+  Timestamp timestamp;
   int cntDIY;
   int cntVisitShop;
   int cntCheck;

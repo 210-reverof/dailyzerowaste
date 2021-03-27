@@ -31,7 +31,7 @@ comfirm(str, ReturnNickname user) async {
       .then((value) {
     if (value.docs.isEmpty) {
       Fluttertoast.showToast(
-          msg: "사용 가능한 닉네임입니다",
+          msg: "You can use this nickname!",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 1,
@@ -41,7 +41,7 @@ comfirm(str, ReturnNickname user) async {
     } else {
       user.nickname = "";
       Fluttertoast.showToast(
-          msg: "사용 불가한 닉네임입니다",
+          msg: "Try another nickname",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 1,
@@ -55,7 +55,7 @@ comfirm(str, ReturnNickname user) async {
 class ReturnNickname {
   String nickname;
   String step;
-  List init = [0,0];
+  List init = [0,0,0,0];
 
   ReturnNickname({this.nickname, this.step});
 
@@ -86,13 +86,38 @@ class _question extends State<QuestionPage> {
     checkStep();
 
 
-    if (user.step == "" || user.nickname == "") return;
+    if (user.step == "" || user.nickname == "") {
+      Fluttertoast.showToast(
+          msg: "Comfirm your nickname",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0);
+      return;}
 
     if (user.step == "e1") {
+            Fluttertoast.showToast(
+          msg: "You have to answer all questions",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0);
       return;
     }
 
     if (user.step == "e2") {
+            Fluttertoast.showToast(
+          msg: "You have to answer 'yes' for the last question",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0);
       return;
     }
 
@@ -132,10 +157,14 @@ class _question extends State<QuestionPage> {
 
     if (_q1 == 1 && _q2 >= 2 && _q3 >= 2) {
       user.step = "intermediate";
+      user.init[2] = 20;
+      user.init[3] = 15;
     }
 
     if (_q1 == 1 && _q2 >= 3 && _q3 >= 3) {
       user.step = "expert";
+      user.init[2] = 40;
+      user.init[3] = 30;
     }
   }
 
