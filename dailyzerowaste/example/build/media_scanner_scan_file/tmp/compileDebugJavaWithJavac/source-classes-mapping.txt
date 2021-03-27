@@ -1,0 +1,2 @@
+com/noysi/media_scanner_scan_file/BuildConfig.java
+ com.noysi.media_scanner_scan_file.BuildConfig

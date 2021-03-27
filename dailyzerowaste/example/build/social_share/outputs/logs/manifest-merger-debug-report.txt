@@ -1,0 +1,21 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/jolla/Desktop/dailyzerowaste/dailyzerowaste/android/src/main/AndroidManifest.xml:1:1-4:12
+INJECTED from /Users/jolla/Desktop/dailyzerowaste/dailyzerowaste/android/src/main/AndroidManifest.xml:1:1-4:12
+INJECTED from /Users/jolla/Desktop/dailyzerowaste/dailyzerowaste/android/src/main/AndroidManifest.xml:1:1-4:12
+	package
+		ADDED from /Users/jolla/Desktop/dailyzerowaste/dailyzerowaste/android/src/main/AndroidManifest.xml:3:5-47
+		INJECTED from /Users/jolla/Desktop/dailyzerowaste/dailyzerowaste/android/src/main/AndroidManifest.xml
+		INJECTED from /Users/jolla/Desktop/dailyzerowaste/dailyzerowaste/android/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Users/jolla/Desktop/dailyzerowaste/dailyzerowaste/android/src/main/AndroidManifest.xml:2:5-51
+	xmlns:android
+		ADDED from /Users/jolla/Desktop/dailyzerowaste/dailyzerowaste/android/src/main/AndroidManifest.xml:1:11-69
+uses-sdk
+INJECTED from /Users/jolla/Desktop/dailyzerowaste/dailyzerowaste/android/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/jolla/Desktop/dailyzerowaste/dailyzerowaste/android/src/main/AndroidManifest.xml
+INJECTED from /Users/jolla/Desktop/dailyzerowaste/dailyzerowaste/android/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/jolla/Desktop/dailyzerowaste/dailyzerowaste/android/src/main/AndroidManifest.xml
+		ADDED from /Users/jolla/Desktop/dailyzerowaste/dailyzerowaste/android/src/main/AndroidManifest.xml
+		INJECTED from /Users/jolla/Desktop/dailyzerowaste/dailyzerowaste/android/src/main/AndroidManifest.xml
