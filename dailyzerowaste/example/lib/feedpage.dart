@@ -39,12 +39,13 @@ class _feed extends State<FeedPage> {
         child: Container(
           child: Center(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Container(
                   padding: EdgeInsets.only(left: 320, top: 41),
                   child: SizedBox(
-                    width: 90,
-                    height: 40,
+                    width: 68,
+                    height: 30,
                     child: FloatingActionButton(
                       onPressed: () => Navigator.push(
                           context,
@@ -61,9 +62,9 @@ class _feed extends State<FeedPage> {
                       ),
                       backgroundColor: Color(0x4F4B4966),
                       shape: RoundedRectangleBorder(
-                        side: BorderSide(color: Colors.black, width: 1.0),
+                        side: BorderSide(color: Color(0xff4f4b49), width: 1.0),
                         borderRadius: BorderRadius.all(
-                          Radius.circular(18.0),
+                          Radius.circular(13),
                         ),
                       ),
                     ),
@@ -71,21 +72,22 @@ class _feed extends State<FeedPage> {
                 ),
                 // 검색창
                 Container(
-                  padding: EdgeInsets.only(left: 39, top: 20),
+                  padding: EdgeInsets.only(left: 26, top: 14),
                   child: Row(
                     children: <Widget>[
                       Center(
                         child: Container(
-                          padding: EdgeInsets.only(left: 10, top: 30),
-                          width: 400,
-                          height: 100,
+                          width: 362,
+                          height: 86,
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
                                 "#daily zerowaste",
                                 style: TextStyle(
                                   fontFamily: 'Nanum-SquareB',
-                                  fontSize: 25,
+                                  fontSize: 21,
                                   color: Color(0xff4f4b49),
                                 ),
                               ),
@@ -93,7 +95,7 @@ class _feed extends State<FeedPage> {
                                 "Share your DIY tips and get informations",
                                 style: TextStyle(
                                   fontFamily: 'Nanum-SquareR',
-                                  fontSize: 15,
+                                  fontSize: 12,
                                   color: Color(0xff4f4b49),
                                 ),
                               ),
@@ -125,13 +127,13 @@ class _feed extends State<FeedPage> {
                   ),
                 ),
 
-                SizedBox(height: 20),
+                SizedBox(height: 17),
 
                 Container(
                   width: 370.5,
                   padding: EdgeInsets.all(5),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       // 각 스텝들의 버튼, 처음 피드페이지 진입시에는 기존 유저 스텝버튼 활성화
                       InkWell(
@@ -148,7 +150,7 @@ class _feed extends State<FeedPage> {
                       ),
                       // 각 스텝들의 버튼, 처음 피드페이지 진입시에는 기존 유저 스텝버튼 활성화
                       Container(
-                        padding: EdgeInsets.only(left: 25),
+                        //padding: EdgeInsets.only(left: 25),
                         child: Wrap(
                             spacing: 17.0,
                             runSpacing: 20.0,
@@ -331,8 +333,8 @@ class _feed extends State<FeedPage> {
                   Container(
                     padding: EdgeInsets.all(5),
                     child: SizedBox(
-                      width: 124,
-                      height: 124,
+                      width: 112,
+                      height: 112,
                       child: Container(
                         decoration: BoxDecoration(
                             image: DecorationImage(
@@ -351,7 +353,7 @@ class _feed extends State<FeedPage> {
                       children: <Widget>[
                         // 글 제목
                         Container(
-                            width: 250,
+                            width: 217,
                             child: Text(
                               currentRecord.title.toString(),
                               style: TextStyle(
@@ -364,7 +366,7 @@ class _feed extends State<FeedPage> {
 
                         // 본문
                         Container(
-                            width: 250,
+                            width: 217,
                             child: Text(
                               currentRecord.text.toString(),
                               overflow: TextOverflow.visible,
