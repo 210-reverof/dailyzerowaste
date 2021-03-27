@@ -15,6 +15,7 @@ class StepHomePage extends StatefulWidget {
 }
 
 int percent;
+int practices;
 
 class _step extends State<StepHomePage> {
   int calcPercentage() {
@@ -31,39 +32,34 @@ class _step extends State<StepHomePage> {
           ? 25
           : (currentUser.cntShare / 20) * 25;
     } else if (currentUser.step == "intermediate") {
-      print("here");
-      print(currentUser.cntVisitShop);
-
       per[0] = currentUser.cntVisitShop > 1 ? 25 : 0;
-      per[1] = (currentUser.cntVisitShop - 5 / 5) > 1
+      per[1] = ((currentUser.cntVisitShop - 5) / 5) > 1
           ? 25
-          : (currentUser.cntVisitShop - 5 / 5) * 25;
-      per[2] = (currentUser.cntCheck - 20 / 20) > 1
+          : ((currentUser.cntVisitShop - 5) / 5) * 25;
+      per[2] = ((currentUser.cntCheck - 20) / 20) > 1
           ? 25
-          : (currentUser.cntCheck - 20 / 20) * 25;
-      per[3] = (currentUser.cntShare - 15 / 15) > 1
+          : ((currentUser.cntCheck - 20) / 20) * 25;
+      per[3] = ((currentUser.cntShare - 15) / 15) > 1
           ? 25
-          : (currentUser.cntShare - 15 / 20) * 25;
+          : ((currentUser.cntShare - 15) / 20) * 25;
     } else if (currentUser.step == "expert") {
-      per[0] = (currentUser.cntVisitShop - 1 / 1) > 1
+      per[0] = ((currentUser.cntVisitShop - 1) / 1) > 1
           ? 25
-          : (currentUser.cntVisitShop - 1 / 1) * 25;
-      per[1] = (currentUser.cntVisitShop - 10 / 5) > 1
+          : ((currentUser.cntVisitShop - 1) / 1) * 25;
+      per[1] = ((currentUser.cntVisitShop - 10) / 5) > 1
           ? 25
-          : (currentUser.cntVisitShop - 5 / 5) * 25;
-      per[2] = (currentUser.cntCheck - 40 / 20) > 1
+          : ((currentUser.cntVisitShop - 5) / 5) * 25;
+      per[2] = ((currentUser.cntCheck - 40) / 20) > 1
           ? 25
-          : (currentUser.cntCheck - 20 / 20) * 25;
-      per[3] = (currentUser.cntShare - 30 / 15) > 1
+          : ((currentUser.cntCheck - 20) / 20) * 25;
+      per[3] = ((currentUser.cntShare - 30) / 15) > 1
           ? 25
-          : (currentUser.cntShare - 15 / 20) * 25;
+          : ((currentUser.cntShare - 15) / 20) * 25;
     }
 
     double sum = 0;
 
     for (int i = 0; i < 4; i++) {
-      print(currentUser.cntVisitShop - 5 / 5);
-      print("rrrrrrrrrrrrrr" + i.toString() + "tttt" + per[i].toString());
       sum += per[i];
     }
 
@@ -78,6 +74,10 @@ class _step extends State<StepHomePage> {
   @override
   Widget build(BuildContext context) {
     percent = calcPercentage();
+    practices = currentUser.cntShare +
+        currentUser.cntVisitShop +
+        currentUser.cntDIY +
+        currentUser.cntCheck;
 
     return Column(
       children: <Widget>[
@@ -156,7 +156,7 @@ class _step extends State<StepHomePage> {
                     children: <Widget>[
                       Container(
                         child: Text(
-                          '26',
+                          practices.toString(),
                           style: TextStyle(
                             fontFamily: 'Quick-Pencil',
                             fontSize: 25,
@@ -253,8 +253,20 @@ class _step extends State<StepHomePage> {
                             content: Text("Success")));
                         setState(() {
                           currentUser.cntDIY += 1;
-                          resetter();
+                          currentUser.step =
+                              (percent == 100) && currentUser.step == "beginner"
+                                  ? "intermediate"
+                                  : currentUser.step;
+                          currentUser.step = (percent == 100) &&
+                                  currentUser.step == "intermediate"
+                              ? "expert"
+                              : currentUser.step;
                           percent = calcPercentage();
+                          practices = currentUser.cntShare +
+                              currentUser.cntVisitShop +
+                              currentUser.cntDIY +
+                              currentUser.cntCheck;
+                          resetter();
                         });
                       },
                     ),
@@ -295,7 +307,7 @@ class _step extends State<StepHomePage> {
                           ),
                           SizedBox(height: 13),
                           Text(
-                            '3 PRACTICES',
+                            currentUser.cntVisitShop.toString() + " PRACTICES",
                             style: TextStyle(
                               fontFamily: 'Quick-Pencil',
                               fontSize: 32,
@@ -328,8 +340,20 @@ class _step extends State<StepHomePage> {
                             content: Text("Success scanning QR Code")));
                         setState(() {
                           currentUser.cntVisitShop += 1;
-                          resetter();
+                          currentUser.step =
+                              (percent == 100) && currentUser.step == "beginner"
+                                  ? "intermediate"
+                                  : currentUser.step;
+                          currentUser.step = (percent == 100) &&
+                                  currentUser.step == "intermediate"
+                              ? "expert"
+                              : currentUser.step;
                           percent = calcPercentage();
+                          practices = currentUser.cntShare +
+                              currentUser.cntVisitShop +
+                              currentUser.cntDIY +
+                              currentUser.cntCheck;
+                          resetter();
                         });
                       },
                     ),
@@ -370,7 +394,7 @@ class _step extends State<StepHomePage> {
                           ),
                           SizedBox(height: 13),
                           Text(
-                            '3 PRACTICES',
+                            currentUser.cntCheck.toString() + " PRACTICES",
                             style: TextStyle(
                               fontFamily: 'Quick-Pencil',
                               fontSize: 32,
@@ -401,10 +425,21 @@ class _step extends State<StepHomePage> {
                             duration: const Duration(seconds: 2),
                             backgroundColor: Color(0xff4f4b49),
                             content: Text("Success")));
-                            setState(() {
-                          currentUser.cntDIY += 1;
-                          resetter();
+                        setState(() {
+                          currentUser.step =
+                              (percent == 100) && currentUser.step == "beginner"
+                                  ? "intermediate"
+                                  : currentUser.step;
+                          currentUser.step = (percent == 100) &&
+                                  currentUser.step == "intermediate"
+                              ? "expert"
+                              : currentUser.step;
                           percent = calcPercentage();
+                          practices = currentUser.cntShare +
+                              currentUser.cntVisitShop +
+                              currentUser.cntDIY +
+                              currentUser.cntCheck;
+                          resetter();
                         });
                       },
                     ),
@@ -445,7 +480,7 @@ class _step extends State<StepHomePage> {
                           ),
                           SizedBox(height: 13),
                           Text(
-                            '3 PRACTICES',
+                            currentUser.cntShare.toString() + " PRACTICES",
                             style: TextStyle(
                               fontFamily: 'Quick-Pencil',
                               fontSize: 32,
@@ -521,413 +556,6 @@ class YourStepTitle extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-// step info
-class YourStepInfo extends StatelessWidget {
-  const YourStepInfo({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(left: 59, right: 59),
-      child: Row(
-        children: <Widget>[
-          // 여기서 나무가 자라요
-          Container(
-            width: 176,
-            height: 176,
-            decoration: BoxDecoration(
-                image: currentUser.step == "beginnger"
-                    ? DecorationImage(
-                        image: AssetImage('image/tree/tree_beginner.png'),
-                      )
-                    : currentUser.step == "intermediate"
-                        ? DecorationImage(
-                            image:
-                                AssetImage('image/tree/tree_intermediate.png'),
-                          )
-                        : DecorationImage(
-                            image: AssetImage('image/tree/tree_expert.png')),
-                borderRadius: BorderRadius.circular(100)),
-          ),
-          SizedBox(width: 29),
-          Column(
-            children: <Widget>[
-              SizedBox(height: 81.48),
-
-              // Try again 버튼
-              // Container(
-              //   width: 87,
-              //   height: 24.18,
-              //   decoration: BoxDecoration(
-              //     border: Border.all(
-              //       width: 1.5,
-              //       color: Color(0xff4f4b49),
-              //     ),
-              //     borderRadius: BorderRadius.circular(50),
-              //   ),
-              //   child: Center(
-              //     child: InkWell(
-              //       child: Text(
-              //         'Try again',
-              //         style: TextStyle(
-              //           fontFamily: 'Quick-Pencil',
-              //           fontSize: 15,
-              //           color: Color(0xff4f4b49),
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // ),
-
-              // 퍼센티지
-              Container(
-                padding: EdgeInsets.only(top: 6.5),
-                child: Text(
-                  percent.toString() + "%",
-                  style: TextStyle(
-                    fontFamily: 'Quick-Pencil',
-                    fontSize: 60,
-                    color: Color(0xff4f4b49),
-                  ),
-                ),
-              ),
-
-              // Practice Count
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    child: Text(
-                      '26',
-                      style: TextStyle(
-                        fontFamily: 'Quick-Pencil',
-                        fontSize: 25,
-                        color: Color(0xff4f4b49),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    child: Text(
-                      'PRACTICES',
-                      style: TextStyle(
-                        fontFamily: 'Quick-Pencil',
-                        fontSize: 25,
-                        color: Color(0xff4f4b49),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// tier status
-class YourTierStatus extends StatelessWidget {
-  const YourTierStatus({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(left: 33, right: 44, top: 34),
-      child: Column(
-        children: <Widget>[
-          // 첫번째 칭호
-          Container(
-            padding: EdgeInsets.all(0), // padding initialize
-            child: Row(
-              children: <Widget>[
-                // 칭호 사진
-                Container(
-                  width: 106,
-                  height: 106,
-                  decoration: BoxDecoration(
-                    //border: Border.all(width: 1, color: Colors.black), // debug only
-                    image: DecorationImage(
-                      image: AssetImage('image/tier/DIY_beginner.png'),
-                    ),
-                  ),
-                ),
-
-                // 어떤 분야의 칭호인지
-                Container(
-                  padding: EdgeInsets.only(left: 7),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        'DIY',
-                        style: TextStyle(
-                          fontFamily: 'Quick-Pencil',
-                          fontSize: 20,
-                          color: Color(0xff4f4b49),
-                        ),
-                      ),
-                      SizedBox(height: 13),
-                      Text(
-                        '3 PRACTICES',
-                        style: TextStyle(
-                          fontFamily: 'Quick-Pencil',
-                          fontSize: 32,
-                          color: Color(0xff4f4b49),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(width: 31),
-
-                // TRY 버튼
-                InkWell(
-                  child: Container(
-                    width: 55,
-                    height: 55,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('image/try_button.png'),
-                      ),
-                      //border: Border.all(width: 1, color: Colors.black), // debug only
-                      borderRadius: BorderRadius.circular(100),
-                    ),
-                  ),
-                  onTap: () async {
-                    // await DIYPopUpHelper.confirm(context);
-                    // await Scaffold.of(context).showSnackBar(SnackBar(
-                    //     duration: const Duration(seconds: 2),
-                    //     backgroundColor: Color(0xff4f4b49),
-                    //     content: Text("Success")));
-                    setState() {
-                      percent = 30;
-                    }
-                  },
-                ),
-              ],
-            ),
-          ),
-
-          // 두번째 칭호
-          Container(
-            padding: EdgeInsets.all(0), // padding initialize
-            child: Row(
-              children: <Widget>[
-                // 칭호 사진
-                Container(
-                  width: 106,
-                  height: 106,
-                  decoration: BoxDecoration(
-                    //border: Border.all(width: 1, color: Colors.black), // debug only
-                    image: DecorationImage(
-                      image: AssetImage('image/tier/shop_beginner.png'),
-                    ),
-                  ),
-                ),
-
-                // 어떤 분야의 칭호인지
-                Container(
-                  padding: EdgeInsets.only(left: 7),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        'Visit zerowaste shop',
-                        style: TextStyle(
-                          fontFamily: 'Quick-Pencil',
-                          fontSize: 20,
-                          color: Color(0xff4f4b49),
-                        ),
-                      ),
-                      SizedBox(height: 13),
-                      Text(
-                        '3 PRACTICES',
-                        style: TextStyle(
-                          fontFamily: 'Quick-Pencil',
-                          fontSize: 32,
-                          color: Color(0xff4f4b49),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(width: 25),
-
-                // TRY 버튼
-                InkWell(
-                  child: Container(
-                    width: 55,
-                    height: 55,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('image/try_button.png'),
-                      ),
-                      //border: Border.all(width: 1, color: Colors.black), // debug only
-                      borderRadius: BorderRadius.circular(100),
-                    ),
-                  ),
-                  onTap: () async {
-                    await ZWSPopUpHelper.confirm(context);
-                    await Scaffold.of(context).showSnackBar(SnackBar(
-                        duration: const Duration(seconds: 2),
-                        backgroundColor: Color(0xff4f4b49),
-                        content: Text("Success scanning QR Code")));
-                  },
-                ),
-              ],
-            ),
-          ),
-
-          // 세번째 칭호
-          Container(
-            padding: EdgeInsets.all(0), // padding initialize
-            child: Row(
-              children: <Widget>[
-                // 칭호 사진
-                Container(
-                  width: 106,
-                  height: 106,
-                  decoration: BoxDecoration(
-                    //border: Border.all(width: 1, color: Colors.black), // debug only
-                    image: DecorationImage(
-                      image: AssetImage('image/tier/check_beginner.png'),
-                    ),
-                  ),
-                ),
-
-                // 어떤 분야의 칭호인지
-                Container(
-                  padding: EdgeInsets.only(left: 7),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        'Check practice',
-                        style: TextStyle(
-                          fontFamily: 'Quick-Pencil',
-                          fontSize: 20,
-                          color: Color(0xff4f4b49),
-                        ),
-                      ),
-                      SizedBox(height: 13),
-                      Text(
-                        '3 PRACTICES',
-                        style: TextStyle(
-                          fontFamily: 'Quick-Pencil',
-                          fontSize: 32,
-                          color: Color(0xff4f4b49),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(width: 31),
-
-                // TRY 버튼
-                InkWell(
-                  child: Container(
-                    width: 55,
-                    height: 55,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('image/try_button.png'),
-                      ),
-                      //border: Border.all(width: 1, color: Colors.black), // debug only
-                      borderRadius: BorderRadius.circular(100),
-                    ),
-                  ),
-                  onTap: () async {
-                    await CPPopUpHelper.confirm(context);
-                    await Scaffold.of(context).showSnackBar(SnackBar(
-                        duration: const Duration(seconds: 2),
-                        backgroundColor: Color(0xff4f4b49),
-                        content: Text("Success")));
-                  },
-                ),
-              ],
-            ),
-          ),
-
-          // 네번째 칭호
-          Container(
-            padding: EdgeInsets.all(0), // padding initialize
-            child: Row(
-              children: <Widget>[
-                // 칭호 사진
-                Container(
-                  width: 106,
-                  height: 106,
-                  decoration: BoxDecoration(
-                    //border: Border.all(width: 1, color: Colors.black), // debug only
-                    image: DecorationImage(
-                      image: AssetImage('image/tier/share_beginner.png'),
-                    ),
-                  ),
-                ),
-
-                // 어떤 분야의 칭호인지
-                Container(
-                  padding: EdgeInsets.only(left: 7),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        'Share hashtags',
-                        style: TextStyle(
-                          fontFamily: 'Quick-Pencil',
-                          fontSize: 20,
-                          color: Color(0xff4f4b49),
-                        ),
-                      ),
-                      SizedBox(height: 13),
-                      Text(
-                        '3 PRACTICES',
-                        style: TextStyle(
-                          fontFamily: 'Quick-Pencil',
-                          fontSize: 32,
-                          color: Color(0xff4f4b49),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(width: 31),
-
-                // TRY 버튼
-                InkWell(
-                  child: Container(
-                    width: 55,
-                    height: 55,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('image/try_button.png'),
-                      ),
-                      //border: Border.all(width: 1, color: Colors.black), // debug only
-                      borderRadius: BorderRadius.circular(100),
-                    ),
-                  ),
-                  onTap: () async {
-                    await SHPopUpHelper.confirm(context);
-                    await Scaffold.of(context).showSnackBar(SnackBar(
-                        duration: const Duration(seconds: 2),
-                        backgroundColor: Color(0xff4f4b49),
-                        content: Text("Success")));
-                  },
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }
