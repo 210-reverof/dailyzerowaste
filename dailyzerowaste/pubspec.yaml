@@ -97,6 +97,9 @@ flutter:
    - image/tier/shop_beginner.png
    - image/tier/shop_expert.png
    - image/tier/shop_intermediate.png
+   - image/tree/tree_beginner.png
+   - image/tree/tree_expert.png
+   - image/tree/tree_intermediate.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
