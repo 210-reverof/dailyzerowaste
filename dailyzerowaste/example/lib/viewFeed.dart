@@ -1,6 +1,7 @@
 import 'package:dailyzerowaste/profile.dart';
 import 'package:flutter/material.dart';
 import 'model/record.dart';
+import 'login.dart';
 
 class ViewFeedPage extends StatefulWidget {
   Record currentRecord;
@@ -112,7 +113,7 @@ class _viewFeed extends State<ViewFeedPage> {
                   // 작성자 정보
                   InkWell(
                     onTap: () => Navigator.push(context,
-          MaterialPageRoute(builder: (context) => ProfilePage(widget.currentRecord))),
+          MaterialPageRoute(builder: (context) => ProfilePage(currentRecord: widget.currentRecord))),
                     child:
                   Container(
                       child: Column(

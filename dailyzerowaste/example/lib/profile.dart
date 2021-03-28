@@ -3,9 +3,12 @@ import 'package:dailyzerowaste/model/record.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dailyzerowaste/viewFeed.dart';
 import 'package:flutter/material.dart';
+import 'login.dart';
 
 class ProfilePage extends StatefulWidget {
-  ProfilePage(Record currentRecord);
+  Record currentRecord;
+  ProfilePage({@required this.currentRecord});
+
 
   @override
   State<StatefulWidget> createState() {
@@ -53,14 +56,14 @@ class _profile extends State<ProfilePage> {
                         height: 72,
                         decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: NetworkImage(currentRecord.userImage)),
+                                image: NetworkImage(widget.currentRecord.userImage)),
                             border: Border.all(width: 1, color: Colors.black),
                             borderRadius: BorderRadius.circular(50)),
                       ),
 
                       SizedBox(height: 20),
 
-                      Text(currentRecord.userName,
+                      Text(widget.currentRecord.userName,
                       style: TextStyle(
                               fontFamily: 'Quick-Pencil',
                               fontSize: 30,
@@ -89,7 +92,7 @@ class _profile extends State<ProfilePage> {
         stream: FirebaseFirestore.instance
             .collection('feed')
             .where('userName',
-                isEqualTo: currentRecord.userName) //텍스트폼필드 값을 쿼리문에 이용
+                isEqualTo: widget.currentRecord.userName) //텍스트폼필드 값을 쿼리문에 이용
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
