@@ -217,18 +217,11 @@ class _HomePageState extends State<HomePage> {
               });
             },
             child: SizedBox(
-              width: 300,
-              height: 300,
+              width: 200,
+              height: 200,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Center(
-                  child: Text("Zero Hero",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 28.0,
-                          color: Colors.black)),
-                ),
+                child: Center(child: Image.asset("image/decotter.png")),
               ),
             )),
       ),

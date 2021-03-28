@@ -87,6 +87,7 @@ flutter:
    - image/shop_info.png
    - image/shop_info_cut.png
    - image/feed_icon.png
+   - image/decotter.png
    - image/try_button.png
    - image/bottom_navigator/home.png
    - image/bottom_navigator/location.png
