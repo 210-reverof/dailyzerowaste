@@ -3,11 +3,13 @@ import 'dart:async';
 import 'dart:ui' as ui;
 import 'dart:typed_data';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:media_scanner_scan_file/media_scanner_scan_file.dart';
 import 'check_permission.dart';
+import 'package:dailyzerowaste/login.dart';
 
 import 'package:image_picker/image_picker.dart';
 import 'package:social_share/social_share.dart';
@@ -19,6 +21,7 @@ class TextOverImage extends StatefulWidget {
 
 class _TextOverImage extends State<TextOverImage> {
   var globalKey = new GlobalKey(); // 위젯 캡쳐를 위한 globalkey
+  final DateTime timestamp = DateTime.now();
 
   var scanfile;
 
@@ -130,6 +133,7 @@ class _TextOverImage extends State<TextOverImage> {
                     .then((data) {
                   print(data);
                 });
+
                 // 다시 step페이지로 이동
                 Navigator.popUntil(
                     context, ModalRoute.withName(Navigator.defaultRouteName));
@@ -139,6 +143,44 @@ class _TextOverImage extends State<TextOverImage> {
         ),
       ),
     );
+  }
+
+  saveInfoToFirestore(BuildContext context) async {
+final userReference =
+    FirebaseFirestore.instance.collection('SocialShare');
+
+      // 작성글 셋팅된 값으로 db에 set
+      userReference.doc().set({
+        'cnt':currentUser.cntCheck,
+        'userName': currentUser.username,
+        'userId': currentUser.id,
+        'timestamp': timestamp,
+      });
+  }
+
+  updatepractice(BuildContext context) async {
+    final userReference = FirebaseFirestore.instance.collection('users');
+
+    print('cnt' + currentUser.cntCheck.toString());
+
+    currentUser.cntShare += 1;
+
+    // 체크박스 셋팅된 값으로 db에 set
+    userReference.doc(currentUser.id).set({
+      'id': currentUser.id,
+      'profileName': currentUser.profileName,
+      'username': currentUser.username,
+      'cntDIY': currentUser.cntDIY,
+      'cntVisitShop': currentUser.cntVisitShop,
+      'cntCheck': currentUser.cntCheck,
+      'cntShare': currentUser.cntShare,
+      'url': currentUser.url,
+      'email': currentUser.email,
+      'bio': '',
+      'image': currentUser.image,
+      'step': currentUser.step,
+      'timestamp': currentUser.timestamp,
+    });
   }
 
   customBox() {

@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:dailyzerowaste/login.dart';
 
 import 'package:qrscan/qrscan.dart' as scanner;
 
@@ -23,6 +25,29 @@ class _zwsPopUpMessageDialog extends State<ZWSPopUpMessageDialog> {
     );
   }
 
+      updatepractice(BuildContext context) async {
+    final userReference = FirebaseFirestore.instance.collection('users');
+
+    currentUser.cntVisitShop += 1;
+
+    // 체크박스 셋팅된 값으로 db에 set
+    userReference.doc(currentUser.id).set({
+      'id': currentUser.id,
+      'profileName': currentUser.profileName,
+      'username': currentUser.username,
+      'cntDIY': currentUser.cntDIY,
+      'cntVisitShop': currentUser.cntVisitShop,
+      'cntCheck': currentUser.cntCheck,
+      'cntShare': currentUser.cntShare,
+      'url': currentUser.url,
+      'email': currentUser.email,
+      'bio': '',
+      'image': currentUser.image,
+      'step': currentUser.step,
+      'timestamp': currentUser.timestamp,
+    });
+  }
+
   //비동기 함수
   Future _scan() async {
     // 되긴 됐는데 비동기 프로그래밍을 좀 더 공부해봐야할 듯
@@ -33,6 +58,8 @@ class _zwsPopUpMessageDialog extends State<ZWSPopUpMessageDialog> {
     //스캔 완료하면 _output 에 문자열 저장하면서 상태 변경 요청.
     setState(() {
       _marketID = barcode;
+
+      updatepractice(context);
 
       // 다시 step페이지로 이동
       Navigator.popUntil(

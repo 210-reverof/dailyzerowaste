@@ -173,11 +173,19 @@ class _step extends State<StepHomePage> {
                       width: 106,
                       height: 106,
                       decoration: BoxDecoration(
-                        //border: Border.all(width: 1, color: Colors.black), // debug only
-                        image: DecorationImage(
-                          image: AssetImage('image/tier/DIY_beginner.png'),
-                        ),
-                      ),
+                    image: currentUser.cntDIY >= 10
+                        ? DecorationImage(
+                            image: AssetImage('image/tier/DIY_expert.png'),
+                          )
+                        : currentUser.cntDIY >= 1
+                            ? DecorationImage(
+                                image: AssetImage(
+                                    'image/tier/DIY_intermediate.png'),
+                              )
+                            : DecorationImage(
+                                image:
+                                    AssetImage('image/tier/DIY_beginner.png')),
+                    borderRadius: BorderRadius.circular(100)),
                     ),
 
                     // 어떤 분야의 칭호인지
@@ -228,7 +236,6 @@ class _step extends State<StepHomePage> {
                             backgroundColor: Color(0xff4f4b49),
                             content: Text("Success")));
                         setState(() {
-                          currentUser.cntDIY += 1;
                           currentUser.step =
                               (percent == 100) && currentUser.step == "beginner"
                                   ? "intermediate"
@@ -260,11 +267,19 @@ class _step extends State<StepHomePage> {
                       width: 106,
                       height: 106,
                       decoration: BoxDecoration(
-                        //border: Border.all(width: 1, color: Colors.black), // debug only
-                        image: DecorationImage(
-                          image: AssetImage('image/tier/shop_beginner.png'),
-                        ),
-                      ),
+                    image: currentUser.cntVisitShop >= 16
+                        ? DecorationImage(
+                            image: AssetImage('image/tier/shop_expert.png'),
+                          )
+                        : currentUser.cntVisitShop >= 6
+                            ? DecorationImage(
+                                image: AssetImage(
+                                    'image/tier/shop_intermediate.png'),
+                              )
+                            : DecorationImage(
+                                image:
+                                    AssetImage('image/tier/shop_beginner.png')),
+                    borderRadius: BorderRadius.circular(100)),
                     ),
 
                     // 어떤 분야의 칭호인지
@@ -329,6 +344,7 @@ class _step extends State<StepHomePage> {
                               currentUser.cntVisitShop +
                               currentUser.cntDIY +
                               currentUser.cntCheck;
+
                           resetter();
                         });
                       },
@@ -347,11 +363,19 @@ class _step extends State<StepHomePage> {
                       width: 106,
                       height: 106,
                       decoration: BoxDecoration(
-                        //border: Border.all(width: 1, color: Colors.black), // debug only
-                        image: DecorationImage(
-                          image: AssetImage('image/tier/check_beginner.png'),
-                        ),
-                      ),
+                    image: currentUser.cntCheck >= 41
+                        ? DecorationImage(
+                            image: AssetImage('image/tier/check_expert.png'),
+                          )
+                        : currentUser.cntCheck >= 21
+                            ? DecorationImage(
+                                image: AssetImage(
+                                    'image/tier/check_intermediate.png'),
+                              )
+                            : DecorationImage(
+                                image:
+                                    AssetImage('image/tier/check_beginner.png')),
+                    borderRadius: BorderRadius.circular(100)),
                     ),
 
                     // 어떤 분야의 칭호인지
@@ -433,11 +457,19 @@ class _step extends State<StepHomePage> {
                       width: 106,
                       height: 106,
                       decoration: BoxDecoration(
-                        //border: Border.all(width: 1, color: Colors.black), // debug only
-                        image: DecorationImage(
-                          image: AssetImage('image/tier/share_beginner.png'),
-                        ),
-                      ),
+                    image: currentUser.cntDIY >= 16
+                        ? DecorationImage(
+                            image: AssetImage('image/tier/shop_expert.png'),
+                          )
+                        : currentUser.cntDIY >= 31
+                            ? DecorationImage(
+                                image: AssetImage(
+                                    'image/tier/shop_intermediate.png'),
+                              )
+                            : DecorationImage(
+                                image:
+                                    AssetImage('image/tier/shop_beginner.png')),
+                    borderRadius: BorderRadius.circular(100)),
                     ),
 
                     // 어떤 분야의 칭호인지
@@ -487,6 +519,23 @@ class _step extends State<StepHomePage> {
                             duration: const Duration(seconds: 2),
                             backgroundColor: Color(0xff4f4b49),
                             content: Text("Success")));
+                        setState(() {
+                          currentUser.cntShare += 1;
+                          currentUser.step =
+                              (percent == 100) && currentUser.step == "beginner"
+                                  ? "intermediate"
+                                  : currentUser.step;
+                          currentUser.step = (percent == 100) &&
+                                  currentUser.step == "intermediate"
+                              ? "expert"
+                              : currentUser.step;
+                          percent = calcPercentage();
+                          practices = currentUser.cntShare +
+                              currentUser.cntVisitShop +
+                              currentUser.cntDIY +
+                              currentUser.cntCheck;
+                          resetter();
+                        });
                       },
                     ),
                   ],

@@ -177,6 +177,8 @@ class _diyUpload extends State<DIYUploadPage> {
                       ),
                       onTap: () {
                         uploadImageToFirebase(context);
+                        updatepractice(context);
+
                         Navigator.popUntil(context,
                             ModalRoute.withName(Navigator.defaultRouteName));
                       },
@@ -190,6 +192,29 @@ class _diyUpload extends State<DIYUploadPage> {
       ),
     ),
     );
+  }
+
+    updatepractice(BuildContext context) async {
+    final userReference = FirebaseFirestore.instance.collection('users');
+
+    currentUser.cntDIY += 1;
+
+    // 체크박스 셋팅된 값으로 db에 set
+    userReference.doc(currentUser.id).set({
+      'id': currentUser.id,
+      'profileName': currentUser.profileName,
+      'username': currentUser.username,
+      'cntDIY': currentUser.cntDIY,
+      'cntVisitShop': currentUser.cntVisitShop,
+      'cntCheck': currentUser.cntCheck,
+      'cntShare': currentUser.cntShare,
+      'url': currentUser.url,
+      'email': currentUser.email,
+      'bio': '',
+      'image': currentUser.image,
+      'step': currentUser.step,
+      'timestamp': currentUser.timestamp,
+    });
   }
 
   selectTitle(str) {

@@ -17,6 +17,8 @@ class PracticeCheckPage extends StatefulWidget {
 List _q = [0, 0, 0, 0];
 
 class _practiceCheck extends State<PracticeCheckPage> {
+  final DateTime timestamp = DateTime.now();
+
   Widget build(BuildContext context) {
     print(_q);
     return Container(
@@ -123,6 +125,8 @@ class _practiceCheck extends State<PracticeCheckPage> {
                       ),
                       onTap: () {
                         updatepractice(context);
+                        saveInfoToFirestore(context);
+
                         // Navigator.pop(context);
 
                         // 다시 step페이지로 이동
@@ -150,6 +154,19 @@ class _practiceCheck extends State<PracticeCheckPage> {
                 fontSize: 23,
                 color: Color(0xff4f4b49))),
         padding: EdgeInsets.only(left: 52.82));
+  }
+
+  saveInfoToFirestore(BuildContext context) async {
+final userReference =
+    FirebaseFirestore.instance.collection('PracticeCheck');
+
+      // 작성글 셋팅된 값으로 db에 set
+      userReference.doc().set({
+        'cnt':currentUser.cntCheck,
+        'userName': currentUser.username,
+        'userId': currentUser.id,
+        'timestamp': timestamp,
+      });
   }
 
   updatepractice(BuildContext context) async {
