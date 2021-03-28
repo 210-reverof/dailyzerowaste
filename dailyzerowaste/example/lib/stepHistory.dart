@@ -137,6 +137,7 @@ class _stepHistory extends State<StepHistoryPage> {
     return Expanded(
         child: ListView(
       scrollDirection: Axis.vertical,
+      physics: ClampingScrollPhysics(),
       shrinkWrap: true,
       padding: const EdgeInsets.only(top: 20.0),
       children: snapshot
