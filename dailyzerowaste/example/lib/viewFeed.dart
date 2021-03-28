@@ -1,11 +1,11 @@
 import 'package:dailyzerowaste/profile.dart';
 import 'package:flutter/material.dart';
-import 'feedpage.dart';
 import 'model/record.dart';
-import 'stepHistory.dart';
+import 'login.dart';
 
 class ViewFeedPage extends StatefulWidget {
-  ViewFeedPage(Record currentRecord);
+  Record currentRecord;
+  ViewFeedPage({@required this.currentRecord});
 
   @override
   State<StatefulWidget> createState() {
@@ -53,7 +53,7 @@ class _viewFeed extends State<ViewFeedPage> {
                     Wrap(
                         spacing: 10.0,
                         runSpacing: 20.0,
-                        children: currentRecord.selectedTags
+                        children: widget.currentRecord.selectedTags
                             .map((option) => new Container(
                                 // margin: EdgeInsets.all(5),
                                 decoration: customBoxDecoration(),
@@ -78,7 +78,7 @@ class _viewFeed extends State<ViewFeedPage> {
                     width: 311,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: NetworkImage(currentRecord.image),
+                            image: NetworkImage(widget.currentRecord.image),
                             fit: BoxFit.cover)),
                   ),
 
@@ -87,7 +87,7 @@ class _viewFeed extends State<ViewFeedPage> {
                   //제목
                   Container(
                       width: 311,
-                      child: Text(currentRecord.title,
+                      child: Text(widget.currentRecord.title,
                           overflow: TextOverflow.visible,
                           style: TextStyle(
                               fontFamily: 'Quick-Pencil',
@@ -100,7 +100,7 @@ class _viewFeed extends State<ViewFeedPage> {
                   // 본문 내용
                   Container(
                       width: 311,
-                      child: Text(currentRecord.text,
+                      child: Text(widget.currentRecord.text,
                           overflow: TextOverflow.visible,
                           style: TextStyle(
                               fontFamily: 'Quick-Pencil',
@@ -113,7 +113,7 @@ class _viewFeed extends State<ViewFeedPage> {
                   // 작성자 정보
                   InkWell(
                     onTap: () => Navigator.push(context,
-          MaterialPageRoute(builder: (context) => ProfilePage(currentRecord))),
+          MaterialPageRoute(builder: (context) => ProfilePage(currentRecord: widget.currentRecord))),
                     child:
                   Container(
                       child: Column(
@@ -123,14 +123,14 @@ class _viewFeed extends State<ViewFeedPage> {
                         height: 72,
                         decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: NetworkImage(currentRecord.userImage)),
+                                image: NetworkImage(widget.currentRecord.userImage)),
                             border: Border.all(width: 1, color: Colors.black),
                             borderRadius: BorderRadius.circular(50)),
                       ),
 
                       SizedBox(height: 20),
 
-                      Text(currentRecord.userName,
+                      Text(widget.currentRecord.userName,
                       style: TextStyle(
                               fontFamily: 'Quick-Pencil',
                               fontSize: 30,
@@ -168,11 +168,5 @@ class _viewFeed extends State<ViewFeedPage> {
         Radius.circular(5.0),
       ),
     );
-  }
-
-  changeState(item) {
-    setState(() {
-      item['isActive'] = !item['isActive'];
-    });
   }
 }

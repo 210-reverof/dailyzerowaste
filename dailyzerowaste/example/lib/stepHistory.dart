@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 
 import 'login.dart';
 
-
 DIY currentDIY;
 
 int diynum = 0;
+
 class StepHistoryPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -21,25 +21,25 @@ class _stepHistory extends State<StepHistoryPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(child:Container(
+    return Expanded(
+        child: Container(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
       child: Scaffold(
         body: Center(
-            child: ListView(
-              children: <Widget>[
-                SizedBox(height: 30),
-                Expanded(
-                  child: makeList(context, currentUserName)),
-                //검색결과 -> 스트림빌더 생성 함수(생성자) 호출
-              ],
-            ),
+          child: ListView(
+            children: <Widget>[
+              SizedBox(height: 30),
+              Expanded(child: makeList(context, currentUserName)),
+              //검색결과 -> 스트림빌더 생성 함수(생성자) 호출
+            ],
           ),
-    ),
-      ));
+        ),
+      ),
+    ));
   }
 
-    Widget makeGeneralList(BuildContext context) {
+  Widget makeGeneralList(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
         //동적 데이터 활용을 위해 스트림 형성
         stream: FirebaseFirestore.instance
@@ -61,7 +61,7 @@ class _stepHistory extends State<StepHistoryPage> {
         //동적 데이터 활용을 위해 스트림 형성
         stream: FirebaseFirestore.instance
             .collection('DIY')
-          //  .where('username', isEqualTo: str) //텍스트폼필드 값을 쿼리문에 이용
+            //  .where('username', isEqualTo: str) //텍스트폼필드 값을 쿼리문에 이용
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
@@ -89,14 +89,13 @@ class _stepHistory extends State<StepHistoryPage> {
         });
   }
 
-    Widget makeList(BuildContext context, List val) {
+  Widget makeList(BuildContext context, List val) {
     List<Widget> ar = [];
-       ar.add(
+    ar.add(
       Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          SizedBox(
-              width: 40),
+          SizedBox(width: 40),
           Text(
             "DIY",
             style: TextStyle(
@@ -113,8 +112,7 @@ class _stepHistory extends State<StepHistoryPage> {
       Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          SizedBox(
-              width: 40),
+          SizedBox(width: 40),
           Text(
             "Visit zero wasteshop",
             style: TextStyle(
@@ -130,8 +128,8 @@ class _stepHistory extends State<StepHistoryPage> {
     //ar.add(makeCustomList2(context, currentUserName));
 
     print(ar);
-    return Container( height: 700,
-    child: ListView( shrinkWrap: true, children: ar));
+    return Container(
+        height: 700, child: ListView(shrinkWrap: true, children: ar));
   }
 
   //쿼리문 스냅샷 문서를 인자로 갖고 리스트뷰를 반환하는 함수
@@ -149,14 +147,17 @@ class _stepHistory extends State<StepHistoryPage> {
 
   //각 문서의 데이터를 인자로 갖고 리스트뷰_타일(각 사각항목)을 반환하는 함수
   Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
-    currentDIY = DIY.fromSnapshot(data);
-    List<Widget> tagArray = [];
+    final currentDIY = DIY.fromSnapshot(data);
 
     return InkWell(
-      onTap: () => Navigator.push(context,
-          MaterialPageRoute(builder: (context) => ViewDIYPage(currentDIY))),
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ViewDIYPage(currentDIY: currentDIY)));
+      },
       child: Container(
-        margin: EdgeInsets.fromLTRB(20,5,20,10),
+        margin: EdgeInsets.fromLTRB(20, 5, 20, 10),
         child: Container(
           padding: EdgeInsets.all(5),
           decoration: BoxDecoration(
@@ -175,19 +176,20 @@ class _stepHistory extends State<StepHistoryPage> {
                       height: 70,
                       child: Container(
                         decoration: BoxDecoration(
-                    image: currentUser.cntDIY >= 10
-                        ? DecorationImage(
-                            image: AssetImage('image/tier/DIY_expert.png'),
-                          )
-                        : currentUser.cntDIY >= 1
-                            ? DecorationImage(
-                                image: AssetImage(
-                                    'image/tier/DIY_intermediate.png'),
-                              )
-                            : DecorationImage(
-                                image:
-                                    AssetImage('image/tier/DIY_beginner.png')),
-                    borderRadius: BorderRadius.circular(100)),
+                            image: currentUser.cntDIY >= 10
+                                ? DecorationImage(
+                                    image:
+                                        AssetImage('image/tier/DIY_expert.png'),
+                                  )
+                                : currentUser.cntDIY >= 1
+                                    ? DecorationImage(
+                                        image: AssetImage(
+                                            'image/tier/DIY_intermediate.png'),
+                                      )
+                                    : DecorationImage(
+                                        image: AssetImage(
+                                            'image/tier/DIY_beginner.png')),
+                            borderRadius: BorderRadius.circular(100)),
                       ),
                     ),
                   ),
@@ -203,7 +205,7 @@ class _stepHistory extends State<StepHistoryPage> {
                         Container(
                             width: 250,
                             child: Text(
-                        "NO. " + currentDIY.cnt.toString(),
+                              "NO. " + currentDIY.cnt.toString(),
                               style: TextStyle(
                                 fontFamily: 'Quick-Pencil',
                                 fontSize: 20,

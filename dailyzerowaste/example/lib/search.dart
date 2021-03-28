@@ -2,6 +2,7 @@
 //yaml 파일에  firebase_storage: ^8.0.0 추가하고 import
 //main함수 호출 비동기 설정 및 DB 초기화
 
+import 'package:dailyzerowaste/feedpage.dart';
 import 'package:dailyzerowaste/model/record.dart';
 import 'package:dailyzerowaste/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -113,8 +114,9 @@ class _search extends State<SearchPage> {
     }
 
     return InkWell(
-      onTap: () => Navigator.push(context,
-          MaterialPageRoute(builder: (context) => ViewFeedPage(currentRecord))),
+      onTap: () { print(currentRecord.title);
+        Navigator.push(context,
+          MaterialPageRoute(builder: (context) => ViewFeedPage(currentRecord: currentRecord)));},
       child: Container(
         margin: EdgeInsets.all(15),
         child: Container(
