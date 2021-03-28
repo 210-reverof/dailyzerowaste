@@ -457,11 +457,11 @@ class _step extends State<StepHomePage> {
                       width: 106,
                       height: 106,
                       decoration: BoxDecoration(
-                    image: currentUser.cntDIY >= 16
+                    image: currentUser.cntShare >= 16
                         ? DecorationImage(
                             image: AssetImage('image/tier/shop_expert.png'),
                           )
-                        : currentUser.cntDIY >= 31
+                        : currentUser.cntShare >= 31
                             ? DecorationImage(
                                 image: AssetImage(
                                     'image/tier/shop_intermediate.png'),
