@@ -23,6 +23,7 @@ class Store {
   Store.fromMap(Map<String, dynamic> map,
       {this.reference}) // 생성자 리다이렉팅 : 특정 생성자에게 처리를 위임할 수 있음
       : assert(map['name'] != null),
+        name = map['name'],
         url = map['URL'],
         address = map['address'],
         hours = map['hours'],
@@ -36,6 +37,7 @@ class Store {
   factory Store.fromDocumnet(DocumentSnapshot doc) {
     Map getDocs = doc.data();
     return Store(
+      name: getDocs["name"],
       url: getDocs["URL"],
       address: getDocs["address"],
       hours: getDocs["hours"],
