@@ -10,23 +10,23 @@ class Store {
   double longitude;
   DocumentReference reference;
 
-  Store ({
+  Store({
     this.url,
-  this.address,
-  this.hours,
-  this.name,
-  this.phone,
-  this.latitude,
-  this.longitude,
+    this.address,
+    this.hours,
+    this.name,
+    this.phone,
+    this.latitude,
+    this.longitude,
   });
 
-  Store .fromMap(Map<String, dynamic> map,
+  Store.fromMap(Map<String, dynamic> map,
       {this.reference}) // 생성자 리다이렉팅 : 특정 생성자에게 처리를 위임할 수 있음
-      : assert(map['title'] != null),
+      : assert(map['name'] != null),
         url = map['URL'],
         address = map['address'],
         hours = map['hours'],
-        phone = map['latitude'],
+        phone = map['phone'],
         latitude = map['latitude'],
         longitude = map['longitude'];
 
@@ -35,7 +35,7 @@ class Store {
 
   factory Store.fromDocumnet(DocumentSnapshot doc) {
     Map getDocs = doc.data();
-    return Store (
+    return Store(
       url: getDocs["URL"],
       address: getDocs["address"],
       hours: getDocs["hours"],

@@ -240,7 +240,7 @@ class _feed extends State<FeedPage> {
         //동적 데이터 활용을 위해 스트림 형성
         stream: FirebaseFirestore.instance
             .collection('feed')
-            .where('step', isEqualTo: str) //텍스트폼필드 값을 쿼리문에 이용
+            .where('selectedTargets', isEqualTo: str) //텍스트폼필드 값을 쿼리문에 이용
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
@@ -313,9 +313,11 @@ class _feed extends State<FeedPage> {
     }
 
     return InkWell(
-      onTap: () { final Record here = currentRecord;
+      onTap: () {
+        final Record here = currentRecord;
         Navigator.push(context,
-          MaterialPageRoute(builder: (context) => ViewFeedPage(here)));},
+            MaterialPageRoute(builder: (context) => ViewFeedPage(here)));
+      },
       child: Container(
         margin: EdgeInsets.all(15),
         child: Container(
