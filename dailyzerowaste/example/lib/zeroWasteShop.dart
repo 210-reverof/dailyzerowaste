@@ -13,6 +13,8 @@ import 'zeroWasteShopList.dart';
 const double PIN_VISIBLE_POSITION = 0;
 const double PIN_INVISIBLE_POSITION = -220;
 
+Store currentStore;
+
 class ZeroWasteShop extends StatefulWidget {
   ZeroWasteShop(User currentUser);
 
@@ -58,23 +60,22 @@ class _shop extends State<ZeroWasteShop> {
   double pinPillPosition = PIN_INVISIBLE_POSITION;
 
   void _addMarker(LatLng point) {
-    setState(() {
-      _markers.add(Marker(
-        // This marker id can be anything that uniquely identifies each marker.
-        markerId: MarkerId(_lastMapPosition.toString()),
-        position: point,
-        infoWindow: InfoWindow(
-          title: '지존 컴(소)공',
-          snippet: 'sollutiob 언제 끝나..?',
-        ),
-        icon: BitmapDescriptor.defaultMarker,
-        onTap: () {
-          setState(() {
-            this.pinPillPosition = PIN_VISIBLE_POSITION;
-          });
-        },
-      ));
-    });
+    _lastMapPosition = point;
+    _markers.add(Marker(
+      // This marker id can be anything that uniquely identifies each marker.
+      markerId: MarkerId(_lastMapPosition.toString()),
+      position: point,
+      infoWindow: InfoWindow(
+        title: currentStore.name,
+        snippet: currentStore.address,
+      ),
+      icon: BitmapDescriptor.defaultMarker,
+      onTap: () {
+        setState(() {
+          this.pinPillPosition = PIN_VISIBLE_POSITION;
+        });
+      },
+    ));
   }
 
   void _onCameraMove(CameraPosition position) {
@@ -127,7 +128,7 @@ class _shop extends State<ZeroWasteShop> {
   //각 문서의 데이터를 인자로 갖고 리스트뷰_타일(각 사각항목)을 반환하는 함수
   Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
     print("hi");
-    final currentStore = Store.fromSnapshot(data);
+    currentStore = Store.fromSnapshot(data);
     _addMarker(new LatLng(currentStore.latitude, currentStore.longitude));
 
     print(currentStore.name);
@@ -140,8 +141,8 @@ class _shop extends State<ZeroWasteShop> {
   @override
   Widget build(BuildContext context) {
     //파이어베이스 스트림빌드 생성해서 data 수만큼 _addMarker을 추가할겁니당 ~
-    _addMarker(_center);
-    _addMarker(new LatLng(36.769691, 126.231705)); //임의로 하나 찍어본 포인트
+    // _addMarker(_center);
+    // _addMarker(new LatLng(36.769691, 126.231705)); //임의로 하나 찍어본 포인트
     _buildBody(context);
     _currentLocation();
 
