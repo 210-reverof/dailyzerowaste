@@ -1,11 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dailyzerowaste/model/DIY.dart';
+import 'package:dailyzerowaste/model/check.dart';
 import 'package:dailyzerowaste/viewDIY.dart';
 import 'package:flutter/material.dart';
 
 import 'login.dart';
 
 DIY currentDIY;
+Check currentCheck;
 
 int diynum = 0;
 
@@ -39,7 +41,7 @@ class _stepHistory extends State<StepHistoryPage> {
     ));
   }
 
-    Widget makeList(BuildContext context, List val) {
+  Widget makeList(BuildContext context, List val) {
     List<Widget> ar = [];
     ar.add(
       Row(
@@ -58,30 +60,98 @@ class _stepHistory extends State<StepHistoryPage> {
       ),
     );
     ar.add(makeCustomList1(context, currentUserName));
+
     ar.add(
-      Row(
+      Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          SizedBox(width: 40),
-          Text(
-            "Visit zero wasteshop",
-            style: TextStyle(
-              fontFamily: 'Quick-Pencil',
-              fontSize: 40,
-              color: Color(0xff4f4b49),
-            ),
+          SizedBox(height: 40),
+          SizedBox(
+            width: 342.94,
+            height: 9.96,
+            child: Image.asset("image/source_bar_2.png"),
           ),
+          SizedBox(height: 40),
+          Row(
+            children: [
+              SizedBox(width: 40),
+              Text(
+                "Visit zero wasteshop",
+                style: TextStyle(
+                  fontFamily: 'Quick-Pencil',
+                  fontSize: 40,
+                  color: Color(0xff4f4b49),
+                ),
+              ),
+            ],
+          )
         ],
       ),
     );
-
     ar.add(makeCustomList2(context, currentUserName));
+
+    ar.add(
+      Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          SizedBox(height: 40),
+          SizedBox(
+            width: 342.94,
+            height: 9.96,
+            child: Image.asset("image/source_bar_2.png"),
+          ),
+          SizedBox(height: 40),
+          Row(
+            children: [
+              SizedBox(width: 40),
+              Text(
+                "Check Practice",
+                style: TextStyle(
+                  fontFamily: 'Quick-Pencil',
+                  fontSize: 40,
+                  color: Color(0xff4f4b49),
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+    ar.add(makeCustomList3(context, currentUserName));
+
+    ar.add(
+      Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          SizedBox(height: 40),
+          SizedBox(
+            width: 342.94,
+            height: 9.96,
+            child: Image.asset("image/source_bar_2.png"),
+          ),
+          SizedBox(height: 40),
+          Row(
+            children: [
+              SizedBox(width: 40),
+              Text(
+                "Share hashtags",
+                style: TextStyle(
+                  fontFamily: 'Quick-Pencil',
+                  fontSize: 40,
+                  color: Color(0xff4f4b49),
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+    ar.add(makeCustomList4(context, currentUserName));
 
     print(ar);
     return Container(
         height: 700, child: ListView(shrinkWrap: true, children: ar));
   }
-
 
   // 텍스트폼필드의 값을 인자로 갖고, 스트림빌더를 반환하는 함수
   Widget makeCustomList1(BuildContext context, List str) {
@@ -100,7 +170,7 @@ class _stepHistory extends State<StepHistoryPage> {
         });
   }
 
-    // 텍스트폼필드의 값을 인자로 갖고, 스트림빌더를 반환하는 함수
+  // 텍스트폼필드의 값을 인자로 갖고, 스트림빌더를 반환하는 함수
   Widget makeCustomList2(BuildContext context, List str) {
     return StreamBuilder<QuerySnapshot>(
         //동적 데이터 활용을 위해 스트림 형성
@@ -117,7 +187,7 @@ class _stepHistory extends State<StepHistoryPage> {
         });
   }
 
-      // 텍스트폼필드의 값을 인자로 갖고, 스트림빌더를 반환하는 함수
+  // 텍스트폼필드의 값을 인자로 갖고, 스트림빌더를 반환하는 함수
   Widget makeCustomList3(BuildContext context, List str) {
     return StreamBuilder<QuerySnapshot>(
         //동적 데이터 활용을 위해 스트림 형성
@@ -134,7 +204,7 @@ class _stepHistory extends State<StepHistoryPage> {
         });
   }
 
-        // 텍스트폼필드의 값을 인자로 갖고, 스트림빌더를 반환하는 함수
+  // 텍스트폼필드의 값을 인자로 갖고, 스트림빌더를 반환하는 함수
   Widget makeCustomList4(BuildContext context, List str) {
     return StreamBuilder<QuerySnapshot>(
         //동적 데이터 활용을 위해 스트림 형성
@@ -165,7 +235,7 @@ class _stepHistory extends State<StepHistoryPage> {
     ));
   }
 
-    //쿼리문 스냅샷 문서를 인자로 갖고 리스트뷰를 반환하는 함수
+  //쿼리문 스냅샷 문서를 인자로 갖고 리스트뷰를 반환하는 함수
   Widget _buildList2(BuildContext context, List<DocumentSnapshot> snapshot) {
     return Expanded(
         child: ListView(
@@ -179,7 +249,7 @@ class _stepHistory extends State<StepHistoryPage> {
     ));
   }
 
-    //쿼리문 스냅샷 문서를 인자로 갖고 리스트뷰를 반환하는 함수
+  //쿼리문 스냅샷 문서를 인자로 갖고 리스트뷰를 반환하는 함수
   Widget _buildList3(BuildContext context, List<DocumentSnapshot> snapshot) {
     return Expanded(
         child: ListView(
@@ -193,7 +263,7 @@ class _stepHistory extends State<StepHistoryPage> {
     ));
   }
 
-    //쿼리문 스냅샷 문서를 인자로 갖고 리스트뷰를 반환하는 함수
+  //쿼리문 스냅샷 문서를 인자로 갖고 리스트뷰를 반환하는 함수
   Widget _buildList4(BuildContext context, List<DocumentSnapshot> snapshot) {
     return Expanded(
         child: ListView(
@@ -301,7 +371,7 @@ class _stepHistory extends State<StepHistoryPage> {
     );
   }
 
-    //각 문서의 데이터를 인자로 갖고 리스트뷰_타일(각 사각항목)을 반환하는 함수
+  //각 문서의 데이터를 인자로 갖고 리스트뷰_타일(각 사각항목)을 반환하는 함수
   Widget _buildListItem2(BuildContext context, DocumentSnapshot data) {
     final currentDIY = DIY.fromSnapshot(data);
 
@@ -327,19 +397,20 @@ class _stepHistory extends State<StepHistoryPage> {
                       height: 70,
                       child: Container(
                         decoration: BoxDecoration(
-                    image: currentUser.cntVisitShop >= 16
-                        ? DecorationImage(
-                            image: AssetImage('image/tier/shop_expert.png'),
-                          )
-                        : currentUser.cntVisitShop >= 6
-                            ? DecorationImage(
-                                image: AssetImage(
-                                    'image/tier/shop_intermediate.png'),
-                              )
-                            : DecorationImage(
-                                image:
-                                    AssetImage('image/tier/shop_beginner.png')),
-                    borderRadius: BorderRadius.circular(100)),
+                            image: currentUser.cntVisitShop >= 16
+                                ? DecorationImage(
+                                    image: AssetImage(
+                                        'image/tier/shop_expert.png'),
+                                  )
+                                : currentUser.cntVisitShop >= 6
+                                    ? DecorationImage(
+                                        image: AssetImage(
+                                            'image/tier/shop_intermediate.png'),
+                                      )
+                                    : DecorationImage(
+                                        image: AssetImage(
+                                            'image/tier/shop_beginner.png')),
+                            borderRadius: BorderRadius.circular(100)),
                       ),
                     ),
                   ),
@@ -389,8 +460,8 @@ class _stepHistory extends State<StepHistoryPage> {
     );
   }
 
-    Widget _buildListItem3(BuildContext context, DocumentSnapshot data) {
-    final currentDIY = DIY.fromSnapshot(data);
+  Widget _buildListItem3(BuildContext context, DocumentSnapshot data) {
+    final currentCheck = Check.fromSnapshot(data);
 
     return InkWell(
       onTap: () {},
@@ -414,19 +485,20 @@ class _stepHistory extends State<StepHistoryPage> {
                       height: 70,
                       child: Container(
                         decoration: BoxDecoration(
-                    image: currentUser.cntCheck >= 41
-                        ? DecorationImage(
-                            image: AssetImage('image/tier/check_expert.png'),
-                          )
-                        : currentUser.cntCheck >= 21
-                            ? DecorationImage(
-                                image: AssetImage(
-                                    'image/tier/check_intermediate.png'),
-                              )
-                            : DecorationImage(
-                                image:
-                                    AssetImage('image/tier/check_beginner.png')),
-                    borderRadius: BorderRadius.circular(100)),
+                            image: currentUser.cntCheck >= 41
+                                ? DecorationImage(
+                                    image: AssetImage(
+                                        'image/tier/check_expert.png'),
+                                  )
+                                : currentUser.cntCheck >= 21
+                                    ? DecorationImage(
+                                        image: AssetImage(
+                                            'image/tier/check_intermediate.png'),
+                                      )
+                                    : DecorationImage(
+                                        image: AssetImage(
+                                            'image/tier/check_beginner.png')),
+                            borderRadius: BorderRadius.circular(100)),
                       ),
                     ),
                   ),
@@ -442,7 +514,7 @@ class _stepHistory extends State<StepHistoryPage> {
                         Container(
                             width: 250,
                             child: Text(
-                              "NO. " + currentDIY.cnt.toString(),
+                              "NO. " + currentCheck.cnt.toString(),
                               style: TextStyle(
                                 fontFamily: 'Quick-Pencil',
                                 fontSize: 20,
@@ -455,7 +527,7 @@ class _stepHistory extends State<StepHistoryPage> {
                         Container(
                             width: 250,
                             child: Text(
-                              currentDIY.timestamp.toDate().toString(),
+                              currentCheck.timestamp.toDate().toString(),
                               overflow: TextOverflow.visible,
                               style: TextStyle(
                                 fontFamily: 'Quick-Pencil',
@@ -476,7 +548,7 @@ class _stepHistory extends State<StepHistoryPage> {
     );
   }
 
-    Widget _buildListItem4(BuildContext context, DocumentSnapshot data) {
+  Widget _buildListItem4(BuildContext context, DocumentSnapshot data) {
     final currentDIY = DIY.fromSnapshot(data);
 
     return InkWell(
@@ -501,19 +573,20 @@ class _stepHistory extends State<StepHistoryPage> {
                       height: 70,
                       child: Container(
                         decoration: BoxDecoration(
-                    image: currentUser.cntShare >= 16
-                        ? DecorationImage(
-                            image: AssetImage('image/tier/shop_expert.png'),
-                          )
-                        : currentUser.cntShare >= 31
-                            ? DecorationImage(
-                                image: AssetImage(
-                                    'image/tier/shop_intermediate.png'),
-                              )
-                            : DecorationImage(
-                                image:
-                                    AssetImage('image/tier/shop_beginner.png')),
-                    borderRadius: BorderRadius.circular(100)),
+                            image: currentUser.cntShare >= 16
+                                ? DecorationImage(
+                                    image: AssetImage(
+                                        'image/tier/shop_expert.png'),
+                                  )
+                                : currentUser.cntShare >= 31
+                                    ? DecorationImage(
+                                        image: AssetImage(
+                                            'image/tier/shop_intermediate.png'),
+                                      )
+                                    : DecorationImage(
+                                        image: AssetImage(
+                                            'image/tier/shop_beginner.png')),
+                            borderRadius: BorderRadius.circular(100)),
                       ),
                     ),
                   ),

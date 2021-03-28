@@ -143,7 +143,7 @@ class _shop extends State<ZeroWasteShop> {
     //파이어베이스 스트림빌드 생성해서 data 수만큼 _addMarker을 추가할겁니당 ~
     // _addMarker(_center);
     // _addMarker(new LatLng(36.769691, 126.231705)); //임의로 하나 찍어본 포인트
-    _buildBody(context);
+
     _currentLocation();
 
     return Scaffold(
@@ -195,6 +195,8 @@ class _shop extends State<ZeroWasteShop> {
             bottom: this.pinPillPosition,
             child: ShopInfo(),
           ),
+
+          _buildBody(context),
         ],
       ),
     );
