@@ -304,7 +304,7 @@ class _feed extends State<FeedPage> {
 
   //각 문서의 데이터를 인자로 갖고 리스트뷰_타일(각 사각항목)을 반환하는 함수
   Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
-    currentRecord = Record.fromSnapshot(data);
+    final currentRecord = Record.fromSnapshot(data);
     List<Widget> tagArray = [];
 
     for (int i = 0; i < currentRecord.selectedTags.length; i++) {
@@ -316,7 +316,7 @@ class _feed extends State<FeedPage> {
       onTap: () {
         final Record here = currentRecord;
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => ViewFeedPage(here)));
+            MaterialPageRoute(builder: (context) => ViewFeedPage(currentRecord: currentRecord,)));
       },
       child: Container(
         margin: EdgeInsets.all(15),

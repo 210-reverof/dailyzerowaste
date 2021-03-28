@@ -1,10 +1,10 @@
 import 'package:dailyzerowaste/model/DIY.dart';
 import 'package:flutter/material.dart';
-import 'stepHistory.dart';
+//import 'stepHistory.dart';
 
 class ViewDIYPage extends StatefulWidget {
-  ViewDIYPage(DIY currentDIY);
-
+  DIY currentDIY;
+  ViewDIYPage({@required this.currentDIY});
   @override
   State<StatefulWidget> createState() {
     return _viewFeed();
@@ -51,7 +51,7 @@ class _viewFeed extends State<ViewDIYPage> {
                     width: 311,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: NetworkImage(currentDIY.image),
+                            image: NetworkImage(widget.currentDIY.image),
                             fit: BoxFit.cover)),
                   ),
 
@@ -60,7 +60,7 @@ class _viewFeed extends State<ViewDIYPage> {
                   //제목
                   Container(
                       width: 311,
-                      child: Text(currentDIY.title,
+                      child: Text(widget.currentDIY.title,
                           overflow: TextOverflow.visible,
                           style: TextStyle(
                               fontFamily: 'Quick-Pencil',
@@ -73,7 +73,7 @@ class _viewFeed extends State<ViewDIYPage> {
                   // 본문 내용
                   Container(
                       width: 311,
-                      child: Text(currentDIY.text,
+                      child: Text(widget.currentDIY.text,
                           overflow: TextOverflow.visible,
                           style: TextStyle(
                               fontFamily: 'Quick-Pencil',

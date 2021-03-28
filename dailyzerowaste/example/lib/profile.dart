@@ -125,7 +125,7 @@ class _profile extends State<ProfilePage> {
 
     return InkWell(
       onTap: () => Navigator.push(context,
-          MaterialPageRoute(builder: (context) => ViewFeedPage(currentRecord))),
+          MaterialPageRoute(builder: (context) => ViewFeedPage(currentRecord: currentRecord))),
       child: Container(
         margin: EdgeInsets.all(15),
         child: Container(
