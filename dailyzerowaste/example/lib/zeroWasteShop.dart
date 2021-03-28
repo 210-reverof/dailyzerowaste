@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dailyzerowaste/model/store.dart';
 import 'package:dailyzerowaste/model/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -61,6 +63,87 @@ class _shop extends State<ZeroWasteShop> {
     _controller.complete(controller);
   }
 
+    // 텍스트폼필드의 값을 인자로 갖고, 스트림빌더를 반환하는 함수
+  Widget _buildBody(BuildContext context) {
+    return StreamBuilder<QuerySnapshot>(
+        //동적 데이터 활용을 위해 스트림 형성
+        stream: FirebaseFirestore.instance
+            .collection('stores')
+            .snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return LinearProgressIndicator();
+          }
+
+          return _buildList(context, snapshot.data.docs); //리스트뷰 생성 함수(생성자) 호출
+        });
+  }
+
+  //쿼리문 스냅샷 문서를 인자로 갖고 리스트뷰를 반환하는 함수
+  Widget _buildList(BuildContext context, List<DocumentSnapshot> snapshot) {
+    return Expanded(
+        child: ListView(
+      scrollDirection: Axis.vertical,
+      shrinkWrap: true,
+      padding: const EdgeInsets.only(
+        top: 20.0),
+      children: snapshot
+          .map((data) => _buildListItem(context, data))
+          .toList(), //문서마다 리스트뷰_타일 생성 함수(생성자) 호출
+    ));
+  }
+
+  //각 문서의 데이터를 인자로 갖고 리스트뷰_타일(각 사각항목)을 반환하는 함수
+  Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
+    print("hi");
+    final currentStore = Store.fromSnapshot(data);
+    _addMarker(new LatLng(currentStore.latitude, currentStore.longitude));
+
+    print(currentStore.name);
+    return InkWell(
+      onTap: () {},
+      child: Container(
+        // padding: EdgeInsets.only(top: 10),
+        // child: Column(
+        //   children: <Widget>[
+        //     Row(
+        //       mainAxisAlignment: MainAxisAlignment.center,
+        //       children: <Widget>[
+        //         Text(
+        //           currentStore.name,
+        //           style: TextStyle(
+        //             fontFamily: 'Quick-Pencil',
+        //             fontSize: 25,
+        //           ),
+        //         ),
+        //         SizedBox(width: 189),
+        //         Text(
+        //           '3km',
+        //           style: TextStyle(
+        //             fontFamily: 'Quick-Pencil',
+        //             fontSize: 25,
+        //           ),
+        //         ),
+        //       ],
+        //     ),
+        //     Text(
+        //       currentStore.address,
+        //       style: TextStyle(
+        //         fontFamily: 'Quick-Pencil',
+        //         fontSize: 16,
+        //       ),
+        //     ),
+        //     Container(
+        //       padding: EdgeInsets.only(top: 8, bottom: 8),
+        //       width: 342.94,
+        //       child: Image.asset('image/source_bar_2.png'),
+        //     ),
+        //   ],
+        // ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     //파이어베이스 스트림빌드 생성해서 data 수만큼 _addMarker을 추가할겁니당 ~
@@ -74,7 +157,7 @@ class _shop extends State<ZeroWasteShop> {
             onMapCreated: _onMapCreated,
             initialCameraPosition: CameraPosition(
               target: _center,
-              zoom: 17.0,
+              zoom: 5.0,
             ),
             mapType: _currentMapType,
             markers: _markers,
@@ -98,6 +181,8 @@ class _shop extends State<ZeroWasteShop> {
             bottom: this.pinPillPosition,
             child: ShopInfo(),
           ),
+
+                        _buildBody(context),
         ],
       ),
     );
