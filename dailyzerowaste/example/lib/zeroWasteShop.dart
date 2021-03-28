@@ -28,9 +28,11 @@ Completer<GoogleMapController> _mapController = Completer();
 MapType _googleMapType = MapType.normal;
 
 _currentLocation() async {
-  print("is it?");
-  final GoogleMapController controller = await _mapController.future;
-
+  print(
+      "is it?================================================================================");
+  //final GoogleMapController controller = await _mapController.future;
+  print(
+      "is it2?================================================================================");
   var location = new Location();
   try {
     print("rrr");
@@ -53,7 +55,7 @@ class _shop extends State<ZeroWasteShop> {
 
   MapType _currentMapType = MapType.normal;
 
-  double pinPillPosition = PIN_VISIBLE_POSITION;
+  double pinPillPosition = PIN_INVISIBLE_POSITION;
 
   void _addMarker(LatLng point) {
     setState(() {
@@ -81,6 +83,18 @@ class _shop extends State<ZeroWasteShop> {
 
   void _onMapCreated(GoogleMapController controller) {
     _controller.complete(controller);
+  }
+
+  // 함수 이름 바꿔주세요ㅠㅠ
+  void _temp(List<double> loc) async {
+    final GoogleMapController controller = await _controller.future;
+    controller.animateCamera(CameraUpdate.newCameraPosition(
+      CameraPosition(
+        bearing: 0,
+        target: LatLng(loc[0], loc[1]),
+        zoom: 17.0,
+      ),
+    ));
   }
 
   // 텍스트폼필드의 값을 인자로 갖고, 스트림빌더를 반환하는 함수
@@ -151,7 +165,25 @@ class _shop extends State<ZeroWasteShop> {
               });
             },
           ),
-          ShopListButton(),
+
+          Container(
+            padding: EdgeInsets.only(top: 98.5, right: 13.5),
+            alignment: Alignment.topRight,
+            child: FloatingActionButton(
+              child: Icon(Icons.menu),
+              backgroundColor: Color(0xffede6dd),
+              foregroundColor: Color(0xff4e4b49),
+              onPressed: () async {
+                print("going");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          ZeroWasteShopList(currentLocation: currentLocation)),
+                ).then((value) => _temp(value));
+              },
+            ),
+          ),
 
           // shop info 움직이는 창
           AnimatedPositioned(
@@ -273,28 +305,13 @@ class ShopInfo extends StatelessWidget {
   }
 }
 
-class ShopListButton extends StatelessWidget {
-  const ShopListButton({
-    Key key,
-  }) : super(key: key);
+// class ShopListButton extends StatelessWidget {
+//   const ShopListButton({
+//     Key key,
+//   }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(top: 98.5, right: 13.5),
-      alignment: Alignment.topRight,
-      child: FloatingActionButton(
-        child: Icon(Icons.menu),
-        backgroundColor: Color(0xffede6dd),
-        foregroundColor: Color(0xff4e4b49),
-        onPressed: () async {
-          print("going");
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(builder: (context) => ZeroWasteShopList(currentLocation: <여기에 현재 위치>)),
-          // );
-        },
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return
+//   }
+// }
