@@ -42,27 +42,7 @@ class _shopList extends State<ZeroWasteShopList> {
               ),
               SizedBox(height: 27),
 
-              // // 가게 리스트
-              // Column(
-              //   children: <Widget>[
-              //     // list 요소 1개
-              //     ShopInfoInList(),
-              //     ShopInfoInList(),
-              //     ShopInfoInList(),
-              //     ShopInfoInList(),
-              //     ShopInfoInList(),
-              //     ShopInfoInList(),
-              //     ShopInfoInList(),
-              //     ShopInfoInList(),
-              //     ShopInfoInList(),
-              //     ShopInfoInList(),
-              //     ShopInfoInList(),
-              //     ShopInfoInList(),
-              //     ShopInfoInList(),
-              //     ShopInfoInList(),
-              //     ShopInfoInList(),
-              //   ],
-              // ),
+              // 가게 리스트
               _buildBody(context)
             ],
           ),
@@ -72,86 +52,97 @@ class _shopList extends State<ZeroWasteShopList> {
   }
 }
 
-  // 텍스트폼필드의 값을 인자로 갖고, 스트림빌더를 반환하는 함수
-  Widget _buildBody(BuildContext context) {
-    print("빌드바디");
-    return StreamBuilder<QuerySnapshot>(
-        //동적 데이터 활용을 위해 스트림 형성
-        stream: FirebaseFirestore.instance
-            .collection('stores')
-            .snapshots(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return LinearProgressIndicator();
-          }
+// 텍스트폼필드의 값을 인자로 갖고, 스트림빌더를 반환하는 함수
+Widget _buildBody(BuildContext context) {
+  print("빌드바디");
+  return StreamBuilder<QuerySnapshot>(
+      //동적 데이터 활용을 위해 스트림 형성
+      stream: FirebaseFirestore.instance.collection('stores').snapshots(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return LinearProgressIndicator();
+        }
 
-          return _buildList(context, snapshot.data.docs); //리스트뷰 생성 함수(생성자) 호출
-        });
-  }
+        return _buildList(context, snapshot.data.docs); //리스트뷰 생성 함수(생성자) 호출
+      });
+}
 
-  //쿼리문 스냅샷 문서를 인자로 갖고 리스트뷰를 반환하는 함수
-  Widget _buildList(BuildContext context, List<DocumentSnapshot> snapshot) {
-    print("빌드리스트");
-    return Expanded(
-        child: ListView(
-      scrollDirection: Axis.vertical,
-      shrinkWrap: true,
-      padding: const EdgeInsets.only(top: 20.0),
-      children: snapshot
-          .map((data) => _buildListItem(context, data))
-          .toList(), //문서마다 리스트뷰_타일 생성 함수(생성자) 호출
-    ));
-  }
+//쿼리문 스냅샷 문서를 인자로 갖고 리스트뷰를 반환하는 함수
+Widget _buildList(BuildContext context, List<DocumentSnapshot> snapshot) {
+  print("빌드리스트");
+  return Expanded(
+      child: ListView(
+    scrollDirection: Axis.vertical,
+    shrinkWrap: true,
+    padding: const EdgeInsets.only(top: 20.0),
+    children: snapshot
+        .map((data) => _buildListItem(context, data))
+        .toList(), //문서마다 리스트뷰_타일 생성 함수(생성자) 호출
+  ));
+}
 
-  //각 문서의 데이터를 인자로 갖고 리스트뷰_타일(각 사각항목)을 반환하는 함수
-  Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
-    final currentStore = Store.fromSnapshot(data);
+//각 문서의 데이터를 인자로 갖고 리스트뷰_타일(각 사각항목)을 반환하는 함수
+Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
+  final currentStore = Store.fromSnapshot(data);
 
-    print("빌드 리스트아이템");
-    print(currentStore.name);
-    return InkWell(
-      onTap: () {},
-      child: Container(
-        padding: EdgeInsets.only(top: 10),
-        child: Column(
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+  print("빌드 리스트아이템");
+  print(currentStore.name);
+  return InkWell(
+    onTap: () {},
+    child: Container(
+      padding: EdgeInsets.only(top: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.only(bottom: 5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Text(
-                  currentStore.name,
-                  style: TextStyle(
-                    fontFamily: 'Quick-Pencil',
-                    fontSize: 25,
+                Container(
+                  padding: EdgeInsets.only(left: 36),
+                  child: Text(
+                    currentStore.name,
+                    style: TextStyle(
+                      fontFamily: 'Quick-Pencil',
+                      fontSize: 25,
+                    ),
                   ),
                 ),
-                SizedBox(width: 189),
-                Text(
-                  '3km',
-                  style: TextStyle(
-                    fontFamily: 'Quick-Pencil',
-                    fontSize: 25,
+                Expanded(child: SizedBox()),
+                Container(
+                  padding: EdgeInsets.only(right: 36),
+                  child: Text(
+                    '3km',
+                    style: TextStyle(
+                      fontFamily: 'Quick-Pencil',
+                      fontSize: 25,
+                    ),
                   ),
                 ),
               ],
             ),
-            Text(
+          ),
+          Container(
+            padding: EdgeInsets.only(left: 36, right: 36),
+            child: Text(
               currentStore.address,
+              overflow: TextOverflow.visible,
               style: TextStyle(
                 fontFamily: 'Quick-Pencil',
                 fontSize: 16,
               ),
             ),
-            Container(
-              padding: EdgeInsets.only(top: 8, bottom: 8),
-              width: 342.94,
-              child: Image.asset('image/source_bar_2.png'),
-            ),
-          ],
-        ),
+          ),
+          Container(
+            padding: EdgeInsets.fromLTRB(36, 8, 36, 8),
+            child: Image.asset('image/source_bar_2.png'),
+          ),
+        ],
       ),
-    );
-  }
+    ),
+  );
+}
 
 class ShopInfoInList extends StatelessWidget {
   const ShopInfoInList({
