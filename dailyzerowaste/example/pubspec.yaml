@@ -34,6 +34,7 @@ dependencies:
   cloud_firestore: ^1.0.2
   qrscan: ^0.2.22
   permission_handler: ^6.1.1
+  latlong: ^0.6.1
 
   media_scanner_scan_file: ^0.0.2
   screenshot: ^0.1.1

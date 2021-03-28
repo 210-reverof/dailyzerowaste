@@ -22,6 +22,26 @@ class ZeroWasteShop extends StatefulWidget {
   }
 }
 
+LocationData currentLocation;
+
+Completer<GoogleMapController> _mapController = Completer();
+MapType _googleMapType = MapType.normal;
+
+_currentLocation() async {
+  print("is it?");
+  final GoogleMapController controller = await _mapController.future;
+
+  var location = new Location();
+  try {
+    print("rrr");
+    currentLocation = await location.getLocation();
+    print(currentLocation.toString());
+  } on Exception {
+    print("설마예외냐");
+    currentLocation = null;
+  }
+}
+
 class _shop extends State<ZeroWasteShop> {
   Completer<GoogleMapController> _controller = Completer();
 
@@ -63,13 +83,11 @@ class _shop extends State<ZeroWasteShop> {
     _controller.complete(controller);
   }
 
-    // 텍스트폼필드의 값을 인자로 갖고, 스트림빌더를 반환하는 함수
+  // 텍스트폼필드의 값을 인자로 갖고, 스트림빌더를 반환하는 함수
   Widget _buildBody(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
         //동적 데이터 활용을 위해 스트림 형성
-        stream: FirebaseFirestore.instance
-            .collection('stores')
-            .snapshots(),
+        stream: FirebaseFirestore.instance.collection('stores').snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return LinearProgressIndicator();
@@ -85,8 +103,7 @@ class _shop extends State<ZeroWasteShop> {
         child: ListView(
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
-      padding: const EdgeInsets.only(
-        top: 20.0),
+      padding: const EdgeInsets.only(top: 20.0),
       children: snapshot
           .map((data) => _buildListItem(context, data))
           .toList(), //문서마다 리스트뷰_타일 생성 함수(생성자) 호출
@@ -102,45 +119,7 @@ class _shop extends State<ZeroWasteShop> {
     print(currentStore.name);
     return InkWell(
       onTap: () {},
-      child: Container(
-        // padding: EdgeInsets.only(top: 10),
-        // child: Column(
-        //   children: <Widget>[
-        //     Row(
-        //       mainAxisAlignment: MainAxisAlignment.center,
-        //       children: <Widget>[
-        //         Text(
-        //           currentStore.name,
-        //           style: TextStyle(
-        //             fontFamily: 'Quick-Pencil',
-        //             fontSize: 25,
-        //           ),
-        //         ),
-        //         SizedBox(width: 189),
-        //         Text(
-        //           '3km',
-        //           style: TextStyle(
-        //             fontFamily: 'Quick-Pencil',
-        //             fontSize: 25,
-        //           ),
-        //         ),
-        //       ],
-        //     ),
-        //     Text(
-        //       currentStore.address,
-        //       style: TextStyle(
-        //         fontFamily: 'Quick-Pencil',
-        //         fontSize: 16,
-        //       ),
-        //     ),
-        //     Container(
-        //       padding: EdgeInsets.only(top: 8, bottom: 8),
-        //       width: 342.94,
-        //       child: Image.asset('image/source_bar_2.png'),
-        //     ),
-        //   ],
-        // ),
-      ),
+      child: Container(),
     );
   }
 
@@ -149,6 +128,8 @@ class _shop extends State<ZeroWasteShop> {
     //파이어베이스 스트림빌드 생성해서 data 수만큼 _addMarker을 추가할겁니당 ~
     _addMarker(_center);
     _addMarker(new LatLng(36.769691, 126.231705)); //임의로 하나 찍어본 포인트
+    _buildBody(context);
+    _currentLocation();
 
     return Scaffold(
       body: Stack(
@@ -181,8 +162,6 @@ class _shop extends State<ZeroWasteShop> {
             bottom: this.pinPillPosition,
             child: ShopInfo(),
           ),
-
-                        _buildBody(context),
         ],
       ),
     );
@@ -308,11 +287,12 @@ class ShopListButton extends StatelessWidget {
         child: Icon(Icons.menu),
         backgroundColor: Color(0xffede6dd),
         foregroundColor: Color(0xff4e4b49),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => ZeroWasteShopList()),
-          );
+        onPressed: () async {
+          print("going");
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(builder: (context) => ZeroWasteShopList(currentLocation: <여기에 현재 위치>)),
+          // );
         },
       ),
     );
