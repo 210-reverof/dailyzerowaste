@@ -161,6 +161,7 @@ class _feed extends State<FeedPage> {
                                     child: InkWell(
                                         onTap: () {
                                           changeState(option);
+                                          stepValues.clear();
                                           if (option[
                                               'isActive']) //option의 isActive가 true라면 ->
                                           {
@@ -267,7 +268,6 @@ class _feed extends State<FeedPage> {
   Widget makeList(BuildContext context, List val) {
     List<Widget> ar = [];
     for (int i = 0; i < stepValues.length; i++) {
-      print("this");
       print(stepValues[i]);
       ar.add(makeCustomList1(context, stepValues[i]));
     }

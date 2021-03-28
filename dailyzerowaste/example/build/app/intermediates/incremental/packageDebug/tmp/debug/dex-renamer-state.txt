@@ -1,4 +1,4 @@
-#Mon Mar 29 02:34:04 KST 2021
+#Mon Mar 29 05:17:22 KST 2021
 base.2=C\:\\Users\\user\\Desktop\\dailyzerowaste\\dailyzerowaste\\dailyzerowaste\\example\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
 base.1=C\:\\Users\\user\\Desktop\\dailyzerowaste\\dailyzerowaste\\dailyzerowaste\\example\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\classes.dex
 base.0=C\:\\Users\\user\\Desktop\\dailyzerowaste\\dailyzerowaste\\dailyzerowaste\\example\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
