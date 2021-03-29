@@ -9,7 +9,6 @@ class ProfilePage extends StatefulWidget {
   Record currentRecord;
   ProfilePage({@required this.currentRecord});
 
-
   @override
   State<StatefulWidget> createState() {
     return _profile();
@@ -32,48 +31,46 @@ class _profile extends State<ProfilePage> {
           child: Center(
             child: Column(
               children: <Widget>[
-                 // header
-                  SizedBox(height: 64),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      SizedBox(width: 36),
-                      Container(
-                        width: 26,
-                        child: InkWell(
-                          child: Image.asset('image/source_direction.png'),
-                          onTap: () => Navigator.pop(context),
-                        ),
+                // header
+                SizedBox(height: 64),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    SizedBox(width: 36),
+                    Container(
+                      width: 26,
+                      child: InkWell(
+                        child: Image.asset('image/source_direction.png'),
+                        onTap: () => Navigator.pop(context),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
+                ),
 
-                  Container(
-                      child: Column(
-                    children: [
-                      Container(
-                        width: 72,
-                        height: 72,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: NetworkImage(widget.currentRecord.userImage)),
-                            border: Border.all(width: 1, color: Colors.black),
-                            borderRadius: BorderRadius.circular(50)),
-                      ),
+                Container(
+                    child: Column(
+                  children: [
+                    Container(
+                      width: 72,
+                      height: 72,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image:
+                                  NetworkImage(widget.currentRecord.userImage)),
+                          border: Border.all(width: 1, color: Colors.black),
+                          borderRadius: BorderRadius.circular(50)),
+                    ),
+                    SizedBox(height: 20),
+                    Text(widget.currentRecord.userName,
+                        style: TextStyle(
+                            fontFamily: 'Quick-Pencil',
+                            fontSize: 30,
+                            fontWeight: FontWeight.normal,
+                            color: Color(0xff403e3d)))
+                  ],
+                )),
 
-                      SizedBox(height: 20),
-
-                      Text(widget.currentRecord.userName,
-                      style: TextStyle(
-                              fontFamily: 'Quick-Pencil',
-                              fontSize: 30,
-                              fontWeight: FontWeight.normal,
-                              color: Color(0xff403e3d)))
-                    ],
-                  )),
-
-                  SizedBox(height: 25),
-
+                SizedBox(height: 25),
 
                 //사용자 작성글-> 스트림빌더 생성 함수(생성자) 호출
                 _buildBody(context)
@@ -127,8 +124,11 @@ class _profile extends State<ProfilePage> {
     }
 
     return InkWell(
-      onTap: () => Navigator.push(context,
-          MaterialPageRoute(builder: (context) => ViewFeedPage(currentRecord: currentRecord))),
+      onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  ViewFeedPage(currentRecord: currentRecord))),
       child: Container(
         margin: EdgeInsets.all(15),
         child: Container(
@@ -167,7 +167,7 @@ class _profile extends State<ProfilePage> {
                       children: <Widget>[
                         // 글 제목
                         Container(
-                            width: 250,
+                            width: 217,
                             child: Text(
                               currentRecord.title.toString(),
                               style: TextStyle(
@@ -180,7 +180,7 @@ class _profile extends State<ProfilePage> {
 
                         // 본문
                         Container(
-                            width: 250,
+                            width: 217,
                             child: Text(
                               currentRecord.text.toString(),
                               overflow: TextOverflow.visible,
