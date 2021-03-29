@@ -30,18 +30,11 @@ Completer<GoogleMapController> _mapController = Completer();
 MapType _googleMapType = MapType.normal;
 
 _currentLocation() async {
-  print(
-      "is it?================================================================================");
-  //final GoogleMapController controller = await _mapController.future;
-  print(
-      "is it2?================================================================================");
   var location = new Location();
   try {
-    print("rrr");
     currentLocation = await location.getLocation();
-    print(currentLocation.toString());
+    //print(currentLocation.toString()); // debug only
   } on Exception {
-    print("설마예외냐");
     currentLocation = null;
   }
 }
@@ -87,8 +80,13 @@ class _shop extends State<ZeroWasteShop> {
   }
 
   // 함수 이름 바꿔주세요ㅠㅠ
-  void _temp(List<double> loc) async {
+  void _movingMapInShopList(List<double> loc) async {
     final GoogleMapController controller = await _controller.future;
+    if (loc == null) {
+      var location = new Location();
+      currentLocation = await location.getLocation();
+      loc = [currentLocation.latitude, currentLocation.longitude];
+    }
     controller.animateCamera(CameraUpdate.newCameraPosition(
       CameraPosition(
         bearing: 0,
@@ -181,7 +179,7 @@ class _shop extends State<ZeroWasteShop> {
                   MaterialPageRoute(
                       builder: (context) =>
                           ZeroWasteShopList(currentLocation: currentLocation)),
-                ).then((value) => _temp(value));
+                ).then((value) => _movingMapInShopList(value));
               },
             ),
           ),
