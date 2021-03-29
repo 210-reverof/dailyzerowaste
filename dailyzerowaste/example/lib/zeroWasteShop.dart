@@ -14,6 +14,7 @@ const double PIN_VISIBLE_POSITION = 0;
 const double PIN_INVISIBLE_POSITION = -220;
 
 Store currentStore;
+Store showStore = Store(); // 종이쪼가리로 보여줄 가게 정보
 
 class ZeroWasteShop extends StatefulWidget {
   ZeroWasteShop(User currentUser);
@@ -65,6 +66,7 @@ class _shop extends State<ZeroWasteShop> {
       icon: BitmapDescriptor.defaultMarker,
       onTap: () {
         setState(() {
+          showStore = currentStore;
           this.pinPillPosition = PIN_VISIBLE_POSITION;
         });
       },
@@ -79,14 +81,27 @@ class _shop extends State<ZeroWasteShop> {
     _controller.complete(controller);
   }
 
-  // 함수 이름 바꿔주세요ㅠㅠ
-  void _movingMapInShopList(List<double> loc) async {
+  // shop 리스트의 요소를 누르면 해당 위치로 이동
+  void _movingMapInShopList(Store currentStore) async {
     final GoogleMapController controller = await _controller.future;
-    if (loc == null) {
+    List<double> loc;
+    if (currentStore == null || currentStore.name == '') {
       var location = new Location();
       currentLocation = await location.getLocation();
       loc = [currentLocation.latitude, currentLocation.longitude];
+    } else {
+      loc = [currentStore.latitude, currentStore.longitude];
     }
+    setState(() {
+      showStore = currentStore;
+      if (showStore == null) {
+        showStore = Store();
+        this.pinPillPosition = PIN_INVISIBLE_POSITION;
+      } else {
+        this.pinPillPosition = PIN_VISIBLE_POSITION;
+      }
+    });
+
     controller.animateCamera(CameraUpdate.newCameraPosition(
       CameraPosition(
         bearing: 0,
@@ -125,11 +140,8 @@ class _shop extends State<ZeroWasteShop> {
 
   //각 문서의 데이터를 인자로 갖고 리스트뷰_타일(각 사각항목)을 반환하는 함수
   Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
-    print("hi");
     currentStore = Store.fromSnapshot(data);
     _addMarker(new LatLng(currentStore.latitude, currentStore.longitude));
-
-    print(currentStore.name);
     return InkWell(
       onTap: () {},
       child: Container(),
@@ -191,7 +203,112 @@ class _shop extends State<ZeroWasteShop> {
             left: 0,
             right: 0,
             bottom: this.pinPillPosition,
-            child: ShopInfo(),
+            child: Container(
+              //margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
+              margin: EdgeInsets.only(bottom: 0),
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("image/shop_info_cut.png"),
+                  fit: BoxFit.fill,
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.fromLTRB(37, 30, 36, 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          showStore.name,
+                          style: TextStyle(
+                            fontFamily: 'Quick-Pencil',
+                            fontSize: 25,
+                          ),
+                        ),
+                        SizedBox(height: 5),
+                        Text(
+                          showStore.address,
+                          overflow: TextOverflow.visible,
+                          style: TextStyle(
+                            fontFamily: 'Quick-Pencil',
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(top: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        Container(
+                          padding: EdgeInsets.only(bottom: 13),
+                          child: Row(
+                            children: <Widget>[
+                              SizedBox(width: 49.3),
+                              Icon(Icons.phone),
+                              SizedBox(width: 20.3),
+                              Text(
+                                showStore.phone,
+                                overflow: TextOverflow.visible,
+                                style: TextStyle(
+                                  fontFamily: 'Quick-Pencil',
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(bottom: 13),
+                          child: Row(
+                            children: <Widget>[
+                              SizedBox(width: 49.3),
+                              Icon(Icons.access_time),
+                              SizedBox(width: 20.3),
+                              Text(
+                                showStore.hours,
+                                overflow: TextOverflow.visible,
+                                style: TextStyle(
+                                  fontFamily: 'Quick-Pencil',
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: 40,
+                          //padding: EdgeInsets.only(bottom: 13),
+                          child: Row(
+                            children: <Widget>[
+                              SizedBox(width: 49.3),
+                              Icon(Icons.home_outlined),
+                              SizedBox(width: 20.3),
+                              Expanded(
+                                child: Text(
+                                  showStore.url,
+                                  overflow: TextOverflow.visible,
+                                  style: TextStyle(
+                                    fontFamily: 'Quick-Pencil',
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            //ShopInfo(),
           ),
 
           _buildBody(context),
@@ -200,119 +317,3 @@ class _shop extends State<ZeroWasteShop> {
     );
   }
 }
-
-class ShopInfo extends StatelessWidget {
-  const ShopInfo({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      //margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
-      margin: EdgeInsets.only(bottom: 0),
-      padding: EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("image/shop_info_cut.png"),
-          fit: BoxFit.fill,
-        ),
-      ),
-      child: Column(
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.only(top: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  'AlmongMarket',
-                  style: TextStyle(
-                    fontFamily: 'Quick-Pencil',
-                    fontSize: 25,
-                  ),
-                ),
-                Text(
-                  'Seoul, Mapo-gu, Hapjeong-dong, Woldeukeom-ro, 49 한\n우마을 2층',
-                  style: TextStyle(
-                    fontFamily: 'Quick-Pencil',
-                    fontSize: 18,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.only(top: 23.5),
-            child: Column(
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.only(bottom: 16),
-                  child: Row(
-                    children: <Widget>[
-                      SizedBox(width: 49.3),
-                      Icon(Icons.phone),
-                      SizedBox(width: 20.3),
-                      Text(
-                        '010-2229-1027',
-                        style: TextStyle(
-                          fontFamily: 'Quick-Pencil',
-                          fontSize: 18,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(bottom: 16),
-                  child: Row(
-                    children: <Widget>[
-                      SizedBox(width: 49.3),
-                      Icon(Icons.access_time),
-                      SizedBox(width: 20.3),
-                      Text(
-                        '매일 14:00 ~ 20:00 (월요일 휴무)',
-                        style: TextStyle(
-                          fontFamily: 'Quick-Pencil',
-                          fontSize: 18,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(bottom: 16),
-                  child: Row(
-                    children: <Widget>[
-                      SizedBox(width: 49.3),
-                      Icon(Icons.home_outlined),
-                      SizedBox(width: 20.3),
-                      Text(
-                        'http://www.instagram.com/almongmarket',
-                        style: TextStyle(
-                          fontFamily: 'Quick-Pencil',
-                          fontSize: 18,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// class ShopListButton extends StatelessWidget {
-//   const ShopListButton({
-//     Key key,
-//   }) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return
-//   }
-// }

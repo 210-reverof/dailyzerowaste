@@ -11,13 +11,13 @@ class Store {
   DocumentReference reference;
 
   Store({
-    this.url,
-    this.address,
-    this.hours,
-    this.name,
-    this.phone,
-    this.latitude,
-    this.longitude,
+    this.url = '',
+    this.address = '',
+    this.hours = '',
+    this.name = '',
+    this.phone = '',
+    this.latitude = 0.0,
+    this.longitude = 0.0,
   });
 
   Store.fromMap(Map<String, dynamic> map,

@@ -21,7 +21,7 @@ class _shopList extends State<ZeroWasteShopList> {
 //각 문서의 데이터를 인자로 갖고 리스트뷰_타일(각 사각항목)을 반환하는 함수
     Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
       print(widget.currentLocation.longitude.toString());
-      final currentStore = Store.fromSnapshot(data);
+      var currentStore = Store.fromSnapshot(data);
       final Distance distance = Distance();
       final double km = distance.as(
           LengthUnit.Kilometer,
@@ -33,14 +33,10 @@ class _shopList extends State<ZeroWasteShopList> {
 
       return InkWell(
         onTap: () {
-          print("=================================================");
-          List<double> storeLoc = [
-            currentStore.latitude,
-            currentStore.longitude
-          ];
-          print(currentStore.latitude);
-          print(currentStore.longitude);
-          Navigator.pop(context, storeLoc);
+          print('========================');
+          print(currentStore);
+          print('========================');
+          Navigator.pop(context, currentStore);
         },
         child: Container(
           padding: EdgeInsets.only(top: 10),
