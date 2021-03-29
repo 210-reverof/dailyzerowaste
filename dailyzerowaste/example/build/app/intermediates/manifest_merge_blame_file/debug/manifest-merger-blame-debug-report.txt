@@ -12,40 +12,40 @@
 12         to allow setting breakpoints, to provide hot reload, etc.
 13    -->
 14    <uses-permission android:name="android.permission.INTERNET" />
-14-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\debug\AndroidManifest.xml:6:5-66
-14-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\debug\AndroidManifest.xml:6:22-64
+14-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\debug\AndroidManifest.xml:6:5-66
+14-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\debug\AndroidManifest.xml:6:22-64
 15    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-15-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:3:5-79
-15-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:3:22-76
+15-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:3:5-79
+15-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:3:22-76
 16    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-16-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:4:5-81
-16-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:4:22-78
+16-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:4:5-81
+16-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:4:22-78
 17    <uses-permission android:name="android.permission.CAMERA" />
-17-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:5:5-65
-17-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:5:22-62
+17-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:5:5-65
+17-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:5:22-62
 18    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-18-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:6:5-80
-18-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:6:22-78
+18-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:6:5-80
+18-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:6:22-78
 19    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-19-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:7:5-79
-19-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:7:22-77
+19-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:7:5-79
+19-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:7:22-77
 20    <uses-permission android:name="android.permission.VIBRATE" />
-20-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-66
-20-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:8:22-63
+20-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-66
+20-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:8:22-63
 21    <uses-permission android:name="android.permission.FLASHLIGHT" />
-21-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-69
-21-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:9:22-66
+21-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-69
+21-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:9:22-66
 22
 23    <uses-feature android:name="android.hardware.camera" />
-23-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-60
-23-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:11:19-57
+23-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-60
+23-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:11:19-57
 24    <uses-feature android:name="android.hardware.camera.autofocus" />
-24-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:12:5-70
-24-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:12:19-67
+24-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:12:5-70
+24-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:12:19-67
 25
 26    <uses-permission android:name="android.permission.WAKE_LOCK" />
-26-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:14:5-68
-26-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:14:22-65
+26-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:14:5-68
+26-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:14:22-65
 27    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 27-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\user\.gradle\caches\transforms-2\files-2.1\4c933b82fb6ca37692eafcf5e1e9e376\jetified-firebase-auth-20.0.3\AndroidManifest.xml:24:5-79
 27-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\user\.gradle\caches\transforms-2\files-2.1\4c933b82fb6ca37692eafcf5e1e9e376\jetified-firebase-auth-20.0.3\AndroidManifest.xml:24:22-76
@@ -62,42 +62,42 @@
 33-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\user\.gradle\caches\transforms-2\files-2.1\597b2f0b8c3a797cc8fdd071fd492a7a\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:26:22-107
 34
 35    <application
-35-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:8:4-56:19
+35-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:8:4-56:19
 36        android:allowBackup="true"
-36-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:20:9-35
+36-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:20:9-35
 37        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 37-->[androidx.core:core:1.3.2] C:\Users\user\.gradle\caches\transforms-2\files-2.1\f0c9d99ae44373752f48963f9840317f\core-1.3.2\AndroidManifest.xml:24:18-86
 38        android:configChanges="orientation|keyboardHidden"
-38-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:21:9-59
+38-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:21:9-59
 39        android:debuggable="true"
 40        android:icon="@mipmap/ic_launcher"
-40-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:22:9-43
+40-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:22:9-43
 41        android:label="dailyzerowaste"
-41-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:9:9-39
+41-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:9:9-39
 42        android:screenOrientation="portrait"
-42-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:23:9-45
+42-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:23:9-45
 43        android:supportsRtl="true"
-43-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:24:9-35
+43-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:24:9-35
 44        android:theme="@style/Theme.AppCompat.NoActionBar"
-44-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:25:9-59
+44-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:25:9-59
 45        android:windowSoftInputMode="stateAlwaysHidden" >
-45-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:26:9-56
+45-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:26:9-56
 46
 47        <!-- 원본: <application> 내 android:icon="@mipmap/launcher_icon" -->
 48        <activity
-48-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:11:9-39:20
+48-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:11:9-39:20
 49            android:name="com.example.dailyzerowaste.MainActivity"
-49-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:12:13-41
+49-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:12:13-41
 50            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-50-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:15:13-163
+50-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:15:13-163
 51            android:hardwareAccelerated="true"
-51-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:16:13-47
+51-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:16:13-47
 52            android:launchMode="singleTop"
-52-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:13:13-43
+52-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:13:13-43
 53            android:theme="@style/LaunchTheme"
-53-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:14:13-47
+53-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:14:13-47
 54            android:windowSoftInputMode="adjustResize" >
-54-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:17:13-55
+54-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:17:13-55
 55
 56            <!--
 57                 Specifies an Android theme to apply to this Activity as soon as
@@ -106,11 +106,11 @@
 60                 to determine the Window background behind the Flutter UI.
 61            -->
 62            <meta-data
-62-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:22:13-25:17
+62-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:22:13-25:17
 63                android:name="io.flutter.embedding.android.NormalTheme"
-63-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:23:15-70
+63-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:23:15-70
 64                android:resource="@style/NormalTheme" />
-64-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:24:15-52
+64-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:24:15-52
 65            <!--
 66                 Displays an Android View that continues showing the launch screen
 67                 Drawable until Flutter paints its first frame, then this splash
@@ -119,21 +119,21 @@
 70                 Flutter's first frame.
 71            -->
 72            <meta-data
-72-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:31:13-34:17
+72-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:31:13-34:17
 73                android:name="io.flutter.embedding.android.SplashScreenDrawable"
-73-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:32:15-79
+73-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:32:15-79
 74                android:resource="@drawable/launch_background" />
-74-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:33:15-61
+74-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:33:15-61
 75
 76            <intent-filter>
-76-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:35:13-38:29
+76-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:35:13-38:29
 77                <action android:name="android.intent.action.MAIN" />
-77-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:36:17-68
-77-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:36:25-66
+77-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:36:17-68
+77-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:36:25-66
 78
 79                <category android:name="android.intent.category.LAUNCHER" />
-79-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:37:17-76
-79-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:37:27-74
+79-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:37:17-76
+79-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:37:27-74
 80            </intent-filter>
 81        </activity>
 82        <!--
@@ -141,17 +141,17 @@
 84             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
 85        -->
 86        <meta-data
-86-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:42:9-44:33
+86-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:42:9-44:33
 87            android:name="flutterEmbedding"
-87-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:43:13-44
+87-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:43:13-44
 88            android:value="2" />
-88-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:44:13-30
+88-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:44:13-30
 89        <meta-data
-89-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:45:9-46:70
+89-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:45:9-46:70
 90            android:name="com.google.android.geo.API_KEY"
-90-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:45:20-65
+90-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:45:20-65
 91            android:value="AIzaSyDhx87XQ2IAF7hzmgtV-xXRRJQOi5fn6hU" />
-91-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:46:13-68
+91-->C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\android\app\src\main\AndroidManifest.xml:46:13-68
 92
 93        <provider
 94            android:name="androidx.core.content.FileProvider"
@@ -159,45 +159,45 @@
 96            android:exported="false"
 97            android:grantUriPermissions="true" >
 98            <meta-data
-98-->[:image_picker] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-18:75
+98-->[:image_picker] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-18:75
 99                android:name="android.support.FILE_PROVIDER_PATHS"
-99-->[:image_picker] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:17:17-67
+99-->[:image_picker] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:17:17-67
 100                android:resource="@xml/filepaths" />
-100-->[:image_picker] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-72
+100-->[:image_picker] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-72
 101        </provider>
 102
 103        <service
-103-->[:firebase_storage] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+103-->[:firebase_storage] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
 104            android:name="com.google.firebase.components.ComponentDiscoveryService"
-104-->[:firebase_storage] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:8:18-89
+104-->[:firebase_storage] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:8:18-89
 105            android:directBootAware="true"
 105-->[com.google.firebase:firebase-common:19.5.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\a348beea78586f27ffc2391bf0a13f9b\jetified-firebase-common-19.5.0\AndroidManifest.xml:35:13-43
 106            android:exported="false" >
 106-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\user\.gradle\caches\transforms-2\files-2.1\4c933b82fb6ca37692eafcf5e1e9e376\jetified-firebase-auth-20.0.3\AndroidManifest.xml:76:13-37
 107            <meta-data
-107-->[:firebase_storage] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+107-->[:firebase_storage] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
 108                android:name="com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar"
-108-->[:firebase_storage] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-126
+108-->[:firebase_storage] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-126
 109                android:value="com.google.firebase.components.ComponentRegistrar" />
-109-->[:firebase_storage] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+109-->[:firebase_storage] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 110            <meta-data
-110-->[:cloud_firestore] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+110-->[:cloud_firestore] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
 111                android:name="com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar"
-111-->[:cloud_firestore] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-134
+111-->[:cloud_firestore] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-134
 112                android:value="com.google.firebase.components.ComponentRegistrar" />
-112-->[:cloud_firestore] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+112-->[:cloud_firestore] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 113            <meta-data
-113-->[:firebase_auth] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+113-->[:firebase_auth] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
 114                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
-114-->[:firebase_auth] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
+114-->[:firebase_auth] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
 115                android:value="com.google.firebase.components.ComponentRegistrar" />
-115-->[:firebase_auth] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+115-->[:firebase_auth] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 116            <meta-data
-116-->[:firebase_core] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+116-->[:firebase_core] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
 117                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
-117-->[:firebase_core] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
+117-->[:firebase_core] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
 118                android:value="com.google.firebase.components.ComponentRegistrar" />
-118-->[:firebase_core] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+118-->[:firebase_core] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 119            <meta-data
 119-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\user\.gradle\caches\transforms-2\files-2.1\4c933b82fb6ca37692eafcf5e1e9e376\jetified-firebase-auth-20.0.3\AndroidManifest.xml:77:13-79:85
 120                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
@@ -241,37 +241,37 @@
 141        </service>
 142
 143        <provider
-143-->[:image_picker] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:11:9-19:20
+143-->[:image_picker] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:11:9-19:20
 144            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
-144-->[:image_picker] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-82
+144-->[:image_picker] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-82
 145            android:authorities="com.example.dailyzerowaste.flutter.image_provider"
-145-->[:image_picker] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-74
+145-->[:image_picker] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-74
 146            android:exported="false"
-146-->[:image_picker] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-37
+146-->[:image_picker] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-37
 147            android:grantUriPermissions="true" >
-147-->[:image_picker] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-47
+147-->[:image_picker] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-47
 148            <meta-data
-148-->[:image_picker] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-18:75
+148-->[:image_picker] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-18:75
 149                android:name="android.support.FILE_PROVIDER_PATHS"
-149-->[:image_picker] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:17:17-67
+149-->[:image_picker] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:17:17-67
 150                android:resource="@xml/flutter_image_picker_file_paths" />
-150-->[:image_picker] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-72
+150-->[:image_picker] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-72
 151        </provider>
 152
 153        <activity android:name="com.shinow.qrscan.SecondActivity" />
-153-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:27:9-69
-153-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:27:19-66
+153-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:27:9-69
+153-->[:qrscan] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:27:19-66
 154
 155        <service
-155-->[:location] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:11:9-15:56
+155-->[:location] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:11:9-15:56
 156            android:name="com.lyokone.location.FlutterLocationService"
-156-->[:location] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-71
+156-->[:location] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-71
 157            android:enabled="true"
-157-->[:location] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-35
+157-->[:location] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-35
 158            android:exported="false"
-158-->[:location] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-37
+158-->[:location] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-37
 159            android:foregroundServiceType="location" />
-159-->[:location] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\dailyzerowaste\example\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-53
+159-->[:location] C:\Users\user\Desktop\dailyzerowaste\dailyzerowaste\example\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-53
 160
 161        <activity
 161-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\user\.gradle\caches\transforms-2\files-2.1\4c933b82fb6ca37692eafcf5e1e9e376\jetified-firebase-auth-20.0.3\AndroidManifest.xml:27:9-44:20
