@@ -27,6 +27,7 @@ class _TextOverImage extends State<TextOverImage> {
 
   //테스트 추가
   File file;
+  var pickedFile;
   final picker = ImagePicker();
 
   @override
@@ -128,8 +129,8 @@ class _TextOverImage extends State<TextOverImage> {
               ),
               onTap: () {
                 // social_share => 고른 위의 파일의 경로를 가지고 story에 업로드한다.
-                SocialShare.shareInstagramStory(file.path, "#ffffff", "#000000",
-                        "https://deep-link-url")
+                SocialShare.shareInstagramStory(pickedFile.path, "#ffffff",
+                        "#000000", "https://deep-link-url")
                     .then((data) {
                   print(data);
                 });
@@ -146,16 +147,15 @@ class _TextOverImage extends State<TextOverImage> {
   }
 
   saveInfoToFirestore(BuildContext context) async {
-final userReference =
-    FirebaseFirestore.instance.collection('SocialShare');
+    final userReference = FirebaseFirestore.instance.collection('SocialShare');
 
-      // 작성글 셋팅된 값으로 db에 set
-      userReference.doc().set({
-        'cnt':currentUser.cntCheck,
-        'userName': currentUser.username,
-        'userId': currentUser.id,
-        'timestamp': timestamp,
-      });
+    // 작성글 셋팅된 값으로 db에 set
+    userReference.doc().set({
+      'cnt': currentUser.cntCheck,
+      'userName': currentUser.username,
+      'userId': currentUser.id,
+      'timestamp': timestamp,
+    });
   }
 
   updatepractice(BuildContext context) async {
@@ -230,7 +230,7 @@ final userReference =
   // }
 
   Future getImage() async {
-    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    pickedFile = await picker.getImage(source: ImageSource.gallery);
 
     file = File(pickedFile.path);
     final img = new Image.file(file);
