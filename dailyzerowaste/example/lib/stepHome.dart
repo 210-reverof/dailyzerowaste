@@ -177,7 +177,7 @@ class _step extends State<StepHomePage> {
                         ? DecorationImage(
                             image: AssetImage('image/tier/DIY_expert.png'),
                           )
-                        : currentUser.cntDIY >= 1
+                        : currentUser.cntDIY >= 0
                             ? DecorationImage(
                                 image: AssetImage(
                                     'image/tier/DIY_intermediate.png'),
@@ -330,7 +330,6 @@ class _step extends State<StepHomePage> {
                             backgroundColor: Color(0xff4f4b49),
                             content: Text("Success scanning QR Code")));
                         setState(() {
-                          currentUser.cntVisitShop += 1;
                           currentUser.step =
                               (percent == 100) && currentUser.step == "beginner"
                                   ? "intermediate"
@@ -520,7 +519,6 @@ class _step extends State<StepHomePage> {
                             backgroundColor: Color(0xff4f4b49),
                             content: Text("Success")));
                         setState(() {
-                          currentUser.cntShare += 1;
                           currentUser.step =
                               (percent == 100) && currentUser.step == "beginner"
                                   ? "intermediate"
@@ -557,13 +555,19 @@ class YourStepTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final DateTime now = DateTime.now();
     return Container(
       padding: EdgeInsets.only(bottom: 25),
       child: Center(
         child: Column(
           children: <Widget>[
             Text(
-              '6 may 2016 - 18 Aug 2016',
+              currentUser.timestamp.toDate().day.toString() + " " +
+              currentUser.timestamp.toDate().month.toString() + " " +
+              currentUser.timestamp.toDate().year.toString() + "  ~  " +
+              now.day.toString() + " " +
+              now.month.toString() + " " +
+              now.year.toString(),
               style: TextStyle(
                 fontFamily: 'Quick-Pencil',
                 fontSize: 17,
@@ -572,7 +576,7 @@ class YourStepTitle extends StatelessWidget {
             ),
             SizedBox(height: 6),
             Text(
-              'YOUR STEP',
+              currentUser.step.toString(),
               style: TextStyle(
                 fontFamily: 'Quick-Pencil',
                 fontSize: 30,

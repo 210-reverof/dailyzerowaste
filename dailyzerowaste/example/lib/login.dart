@@ -9,7 +9,7 @@ import 'package:dailyzerowaste/model/user.dart';
 import 'bottomBar.dart';
 import 'package:dailyzerowaste/question.dart';
 
-/*
+
 final GoogleSignIn googleSignIn = new GoogleSignIn();
 // variable for firestore collection 'users'
 final userReference =
@@ -191,8 +191,8 @@ class _login extends State<LoginPage> {
       return buildSignInScreen();
     }
   }
-}*/
-
+}
+/*
 User currentUser;
 
   resetter() async {
@@ -258,4 +258,4 @@ class _fakelogin extends State<FakeLoginPage> {
   Widget build(BuildContext context) {
     return buildHomeScreen();
   }
-}
+}*/
