@@ -555,13 +555,19 @@ class YourStepTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final DateTime now = DateTime.now();
     return Container(
       padding: EdgeInsets.only(bottom: 25),
       child: Center(
         child: Column(
           children: <Widget>[
             Text(
-              '6 may 2016 - 18 Aug 2016',
+              currentUser.timestamp.toDate().day.toString() + " " +
+              currentUser.timestamp.toDate().month.toString() + " " +
+              currentUser.timestamp.toDate().year.toString() + "  ~  " +
+              now.day.toString() + " " +
+              now.month.toString() + " " +
+              now.year.toString(),
               style: TextStyle(
                 fontFamily: 'Quick-Pencil',
                 fontSize: 17,
@@ -570,7 +576,7 @@ class YourStepTitle extends StatelessWidget {
             ),
             SizedBox(height: 6),
             Text(
-              'YOUR STEP',
+              currentUser.step.toString(),
               style: TextStyle(
                 fontFamily: 'Quick-Pencil',
                 fontSize: 30,
