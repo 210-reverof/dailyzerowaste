@@ -216,7 +216,7 @@ class _step extends State<StepHomePage> {
                         ],
                       ),
                     ),
-                    SizedBox(width: 31),
+                    Expanded(child: SizedBox(width: 31)),
 
                     // TRY 버튼
                     InkWell(
@@ -311,7 +311,7 @@ class _step extends State<StepHomePage> {
                         ],
                       ),
                     ),
-                    SizedBox(width: 31),
+                    Expanded(child: SizedBox(width: 31)),
 
                     // TRY 버튼
                     InkWell(
@@ -407,7 +407,7 @@ class _step extends State<StepHomePage> {
                         ],
                       ),
                     ),
-                    SizedBox(width: 35),
+                    Expanded(child: SizedBox(width: 31)),
 
                     // TRY 버튼
                     InkWell(
@@ -502,7 +502,7 @@ class _step extends State<StepHomePage> {
                         ],
                       ),
                     ),
-                    SizedBox(width: 35),
+                    Expanded(child: SizedBox(width: 31)),
 
                     // TRY 버튼
                     InkWell(
