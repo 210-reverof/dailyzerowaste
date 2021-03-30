@@ -36,8 +36,8 @@ class _feed extends State<FeedPage> {
     for (int i = 0 ; i < 3 ; i++) {
       var a = selected[i];
       if (a['isActive']) {
-              String t = a['title'];
-      stepValues.add([t]);
+      String t = a['title'];
+      stepValues.add(t.toString());
       }
     }  
   }
@@ -244,12 +244,12 @@ class _feed extends State<FeedPage> {
   }
 
   // 텍스트폼필드의 값을 인자로 갖고, 스트림빌더를 반환하는 함수
-  Widget makeCustomList1(BuildContext context, List str) {
+  Widget makeCustomList1(BuildContext context, String str) {
     return StreamBuilder<QuerySnapshot>(
         //동적 데이터 활용을 위해 스트림 형성
         stream: FirebaseFirestore.instance
             .collection('feed')
-            .where('selectedTargets', isEqualTo: str) //텍스트폼필드 값을 쿼리문에 이용
+            .where('selectedTargets', arrayContains: str) //텍스트폼필드 값을 쿼리문에 이용
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
@@ -278,7 +278,7 @@ class _feed extends State<FeedPage> {
     List<Widget> ar = [];
     for (int i = 0; i < stepValues.length; i++) {
       print(stepValues[i]);
-      ar.add(makeCustomList1(context, stepValues[i]));
+      ar.add(makeCustomList1(context, stepValues[i].toString()));
     }
     ar.add(
       Row(
