@@ -23,6 +23,7 @@ class VisitShop {
   VisitShop.fromMap(Map<String, dynamic> map,
       {this.reference}) // 생성자 리다이렉팅 : 특정 생성자에게 처리를 위임할 수 있음
       : assert(map['userId'] != null),
+        storeNum = map['storeNum'],
         userId = map['userId'],
         userName = map['userName'],
         cnt = map['cnt'],

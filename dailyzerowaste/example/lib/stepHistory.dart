@@ -10,9 +10,8 @@ import 'package:flutter/material.dart';
 import 'login.dart';
 
 DIY currentDIY;
+Check currentVisitShop;
 Check currentCheck;
-
-int diynum = 0;
 
 class StepHistoryPage extends StatefulWidget {
   @override
@@ -383,6 +382,7 @@ class _stepHistory extends State<StepHistoryPage> {
 
     return InkWell(
       onTap: () {
+        print(currentVisit.storeNum.toString());
         Navigator.push(
             context,
             MaterialPageRoute(

@@ -1,4 +1,3 @@
-import 'package:dailyzerowaste/model/store.dart';
 import 'package:dailyzerowaste/model/visit.dart';
 import 'package:flutter/material.dart';
 
@@ -46,7 +45,7 @@ class _viewFeed extends State<ViewVisitShopPage> {
                   //제목
                   Container(
                       width: 311,
-                      child: Text("visited " + widget.currentVisit.storeNum,
+                      child: Text( "visited [ " + widget.currentVisit.storeNum +" ]",
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.visible,
                           style: TextStyle(
@@ -60,8 +59,7 @@ class _viewFeed extends State<ViewVisitShopPage> {
                   //본문
                   Container(
                       width: 311,
-                      child: Text(
-                          widget.currentVisit.timestamp.toDate().toString(),
+                      child: Text(widget.currentVisit.timestamp.toDate().toString(),
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.visible,
                           style: TextStyle(
