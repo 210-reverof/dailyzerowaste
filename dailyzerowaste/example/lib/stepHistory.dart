@@ -35,7 +35,8 @@ class _stepHistory extends State<StepHistoryPage> {
           child: ListView(
             children: <Widget>[
               SizedBox(height: 30),
-              Expanded(child: makeList(context, currentUserName)),
+              Expanded(
+                  child: Container(child: makeList(context, currentUserName))),
               //검색결과 -> 스트림빌더 생성 함수(생성자) 호출
             ],
           ),
