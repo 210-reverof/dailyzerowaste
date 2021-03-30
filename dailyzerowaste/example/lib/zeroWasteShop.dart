@@ -106,7 +106,7 @@ class _shop extends State<ZeroWasteShop> {
       CameraPosition(
         bearing: 0,
         target: LatLng(loc[0], loc[1]),
-        zoom: 17.0,
+        zoom: 20.0,
       ),
     ));
   }
@@ -163,7 +163,7 @@ class _shop extends State<ZeroWasteShop> {
             onMapCreated: _onMapCreated,
             initialCameraPosition: CameraPosition(
               target: _center,
-              zoom: 5.0,
+              zoom: 6.0,
             ),
             mapType: _currentMapType,
             markers: _markers,

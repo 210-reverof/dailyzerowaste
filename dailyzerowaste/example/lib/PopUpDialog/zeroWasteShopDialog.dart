@@ -25,21 +25,20 @@ class _zwsPopUpMessageDialog extends State<ZWSPopUpMessageDialog> {
     );
   }
 
-    saveInfoToFirestore(BuildContext context) async {
-final userReference =
-    FirebaseFirestore.instance.collection('VisitShop');
+  saveInfoToFirestore(BuildContext context) async {
+    final userReference = FirebaseFirestore.instance.collection('VisitShop');
 
-      // 작성글 셋팅된 값으로 db에 set
-      userReference.doc().set({
-        'storeNum':_marketID,
-        'cnt':currentUser.cntCheck,
-        'userName': currentUser.username,
-        'userId': currentUser.id,
-        'timestamp': timestamp,
-      });
+    // 작성글 셋팅된 값으로 db에 set
+    userReference.doc().set({
+      'storeNum': _marketID,
+      'cnt': currentUser.cntVisitShop,
+      'userName': currentUser.username,
+      'userId': currentUser.id,
+      'timestamp': timestamp,
+    });
   }
 
-      updatepractice(BuildContext context) async {
+  updatepractice(BuildContext context) async {
     final userReference = FirebaseFirestore.instance.collection('users');
 
     currentUser.cntVisitShop += 1;
