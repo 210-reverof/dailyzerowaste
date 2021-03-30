@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dailyzerowaste/model/DIY.dart';
 import 'package:dailyzerowaste/model/check.dart';
+import 'package:dailyzerowaste/model/share.dart';
 import 'package:dailyzerowaste/model/visit.dart';
 import 'package:dailyzerowaste/viewCheckPractice.dart';
 import 'package:dailyzerowaste/viewDIY.dart';
@@ -192,7 +193,8 @@ class _stepHistory extends State<StepHistoryPage> {
   // 텍스트폼필드의 값을 인자로 갖고, 스트림빌더를 반환하는 함수
   Widget makeCustomList3(BuildContext context, String str) {
     FirebaseFirestore.instance
-            .collection('PracticeCheck').orderBy('cnt', descending: true);
+        .collection('PracticeCheck')
+        .orderBy('cnt', descending: true);
 
     return StreamBuilder<QuerySnapshot>(
         //동적 데이터 활용을 위해 스트림 형성
@@ -316,7 +318,7 @@ class _stepHistory extends State<StepHistoryPage> {
                             image: currentDIY.cnt >= 10
                                 ? DecorationImage(
                                     image:
-                                      AssetImage('image/tier/DIY_expert.png'),
+                                        AssetImage('image/tier/DIY_expert.png'),
                                   )
                                 : currentDIY.cnt >= 0
                                     ? DecorationImage(
@@ -386,7 +388,8 @@ class _stepHistory extends State<StepHistoryPage> {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => ViewVisitShopPage(currentVisit: currentVisit)));
+                builder: (context) =>
+                    ViewVisitShopPage(currentVisit: currentVisit)));
       },
       child: Container(
         margin: EdgeInsets.fromLTRB(20, 5, 20, 10),
@@ -479,7 +482,8 @@ class _stepHistory extends State<StepHistoryPage> {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => ViewCheckPracticePage(currentCheck: currentCheck)));
+                builder: (context) =>
+                    ViewCheckPracticePage(currentCheck: currentCheck)));
       },
       child: Container(
         margin: EdgeInsets.fromLTRB(20, 5, 20, 10),
@@ -565,88 +569,85 @@ class _stepHistory extends State<StepHistoryPage> {
   }
 
   Widget _buildListItem4(BuildContext context, DocumentSnapshot data) {
-    final currentShare = DIY.fromSnapshot(data);
+    final currentShare = Share.fromSnapshot(data);
 
-    return InkWell(
-      onTap: () {},
+    return Container(
+      margin: EdgeInsets.fromLTRB(20, 5, 20, 10),
       child: Container(
-        margin: EdgeInsets.fromLTRB(20, 5, 20, 10),
-        child: Container(
-          padding: EdgeInsets.all(5),
-          decoration: BoxDecoration(
-            color: Color(0x114f4b49),
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-          ),
-          child: Column(
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  // 글의 사진
-                  Container(
-                    padding: EdgeInsets.all(5),
-                    child: SizedBox(
-                      width: 70,
-                      height: 70,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            image: currentShare.cnt >= 16
-                                ? DecorationImage(
-                                    image: AssetImage(
-                                        'image/tier/shop_expert.png'),
-                                  )
-                                : currentShare.cnt >= 31
-                                    ? DecorationImage(
-                                        image: AssetImage(
-                                            'image/tier/shop_intermediate.png'),
-                                      )
-                                    : DecorationImage(
-                                        image: AssetImage(
-                                            'image/tier/shop_beginner.png')),
-                            borderRadius: BorderRadius.circular(100)),
-                      ),
+        padding: EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          color: Color(0x114f4b49),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+        ),
+        child: Column(
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                // 글의 사진
+                Container(
+                  padding: EdgeInsets.all(5),
+                  child: SizedBox(
+                    width: 70,
+                    height: 70,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          image: currentShare.cnt >= 16
+                              ? DecorationImage(
+                                  image:
+                                      AssetImage('image/tier/shop_expert.png'),
+                                )
+                              : currentShare.cnt >= 31
+                                  ? DecorationImage(
+                                      image: AssetImage(
+                                          'image/tier/shop_intermediate.png'),
+                                    )
+                                  : DecorationImage(
+                                      image: AssetImage(
+                                          'image/tier/shop_beginner.png')),
+                          borderRadius: BorderRadius.circular(100)),
                     ),
                   ),
+                ),
 
-                  // 글 제목, 본문, 작성자
-                  Container(
-                    padding:
-                        EdgeInsets.only(left: 9, top: 5, right: 5, bottom: 5),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        // 글 제목
-                        Container(
-                            width: 250,
-                            child: Text(
-                              "NO. " + currentShare.cnt.toString(),
-                              style: TextStyle(
-                                fontFamily: 'Quick-Pencil',
-                                fontSize: 20,
-                                color: Color(0xff4f4b49),
-                              ),
-                            )),
-                        SizedBox(height: 5),
+                // 글 제목, 본문, 작성자
+                Container(
+                  padding:
+                      EdgeInsets.only(left: 9, top: 5, right: 5, bottom: 5),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      // 글 제목
+                      Container(
+                          width: 250,
+                          child: Text(
+                            "NO. " + currentShare.cnt.toString(),
+                            style: TextStyle(
+                              fontFamily: 'Quick-Pencil',
+                              fontSize: 20,
+                              color: Color(0xff4f4b49),
+                            ),
+                          )),
+                      SizedBox(height: 5),
 
-                        // 본문
-                        Container(
-                            width: 250,
-                            child: Text(
-                              currentShare.timestamp.toDate().toString(),
-                              overflow: TextOverflow.visible,
-                              style: TextStyle(
-                                fontFamily: 'Quick-Pencil',
-                                fontSize: 15,
-                                color: Color(0xff4f4b49),
-                              ),
-                            )),
-                        SizedBox(height: 10),
-                      ],
-                    ),
+                      // 본문
+                      Container(
+                          width: 250,
+                          child: Text(
+                            currentShare.timestamp.toDate().toString(),
+                            overflow: TextOverflow.visible,
+                            style: TextStyle(
+                              fontFamily: 'Quick-Pencil',
+                              fontSize: 15,
+                              color: Color(0xff4f4b49),
+                            ),
+                          )),
+                      SizedBox(height: 10),
+                    ],
                   ),
-                ],
-              ),
-            ],
-          ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
