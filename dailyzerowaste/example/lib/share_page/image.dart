@@ -166,7 +166,7 @@ class _TextOverImage extends State<TextOverImage> {
 
     print('cnt' + currentUser.cntCheck.toString());
 
-    currentUser.cntShare += 1;
+    // currentUser.cntShare += 1;
 
     // 체크박스 셋팅된 값으로 db에 set
     userReference.doc(currentUser.id).set({

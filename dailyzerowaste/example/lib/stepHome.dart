@@ -333,6 +333,7 @@ class _step extends State<StepHomePage> {
                             backgroundColor: Color(0xff4f4b49),
                             content: Text("Success scanning QR Code")));
                         setState(() {
+                          currentUser.cntShare += 1;
                           currentUser.step =
                               (percent == 100) && currentUser.step == "beginner"
                                   ? "intermediate"
