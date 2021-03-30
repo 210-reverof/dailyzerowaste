@@ -57,7 +57,7 @@ class ReturnNickname {
   String step;
   List init = [0,0,0,0];
 
-  ReturnNickname({this.nickname, this.step});
+  ReturnNickname({this.nickname, this.step, this.init});
 
   ReturnNickname.setNickname(String str) {
     this.nickname = str;

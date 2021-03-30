@@ -2,7 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dailyzerowaste/model/DIY.dart';
 import 'package:dailyzerowaste/model/check.dart';
 import 'package:dailyzerowaste/model/visit.dart';
+import 'package:dailyzerowaste/viewCheckPractice.dart';
 import 'package:dailyzerowaste/viewDIY.dart';
+import 'package:dailyzerowaste/viewVisitShop.dart';
 import 'package:flutter/material.dart';
 
 import 'login.dart';
@@ -315,7 +317,7 @@ class _stepHistory extends State<StepHistoryPage> {
                             image: currentDIY.cnt >= 10
                                 ? DecorationImage(
                                     image:
-                                        AssetImage('image/tier/DIY_expert.png'),
+                                      AssetImage('image/tier/DIY_expert.png'),
                                   )
                                 : currentDIY.cnt >= 0
                                     ? DecorationImage(
@@ -380,7 +382,12 @@ class _stepHistory extends State<StepHistoryPage> {
     final currentVisit = VisitShop.fromSnapshot(data);
 
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ViewVisitShopPage(currentVisit: currentVisit)));
+      },
       child: Container(
         margin: EdgeInsets.fromLTRB(20, 5, 20, 10),
         child: Container(
@@ -468,7 +475,12 @@ class _stepHistory extends State<StepHistoryPage> {
     final currentCheck = Check.fromSnapshot(data);
 
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ViewCheckPracticePage(currentCheck: currentCheck)));
+      },
       child: Container(
         margin: EdgeInsets.fromLTRB(20, 5, 20, 10),
         child: Container(

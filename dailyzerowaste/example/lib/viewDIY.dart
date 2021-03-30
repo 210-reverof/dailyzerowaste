@@ -88,33 +88,4 @@ class _viewFeed extends State<ViewDIYPage> {
       ),
     );
   }
-
-  customBoxDecoration() {
-    return BoxDecoration(
-      image: DecorationImage(
-          image: AssetImage("image/select_background.png"), fit: BoxFit.fill),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.black.withOpacity(0.5),
-          spreadRadius: 0.1,
-          blurRadius: 0.5,
-          offset: Offset(3, 3),
-        ),
-      ],
-      border: Border(
-          left: BorderSide(color: Colors.black12, width: 1.0),
-          bottom: BorderSide(color: Colors.black12, width: 1.0),
-          top: BorderSide(color: Colors.black12, width: 1.0),
-          right: BorderSide(color: Colors.black12, width: 1.0)),
-      borderRadius: const BorderRadius.all(
-        Radius.circular(5.0),
-      ),
-    );
-  }
-
-  changeState(item) {
-    setState(() {
-      item['isActive'] = !item['isActive'];
-    });
-  }
 }

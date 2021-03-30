@@ -14,13 +14,13 @@ class PracticeCheckPage extends StatefulWidget {
   }
 }
 
-List _q = [0, 0, 0, 0];
+List q = [0, 0, 0, 0];
 
 class _practiceCheck extends State<PracticeCheckPage> {
   final DateTime timestamp = DateTime.now();
 
   Widget build(BuildContext context) {
-    print(_q);
+    print(q);
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -126,6 +126,7 @@ class _practiceCheck extends State<PracticeCheckPage> {
                       onTap: () {
                         updatepractice(context);
                         saveInfoToFirestore(context);
+                        q = [0, 0, 0, 0];
 
                         // Navigator.pop(context);
 
@@ -166,6 +167,7 @@ final userReference =
         'userName': currentUser.username,
         'userId': currentUser.id,
         'timestamp': timestamp,
+        'chart':q,
       });
   }
 
@@ -230,7 +232,7 @@ final userReference =
     return InkWell(
       onTap: () {
         setState(() {
-          _q[index] = val;
+          q[index] = val;
         });
       },
       child: Container(
@@ -238,7 +240,7 @@ final userReference =
         height: size,
         decoration: BoxDecoration(
           border: Border.all(),
-          color: _q[index] == val ? Color(0xff5c5b5a) : Color(0x00000000),
+          color: q[index] == val ? Color(0xff5c5b5a) : Color(0x00000000),
           shape: BoxShape.circle,
         ),
       ),

@@ -6,6 +6,7 @@ class Check {
   int cnt;
   String userId;
   String userName;
+  List chart;
   Timestamp timestamp;
   DocumentReference reference;
 
@@ -15,6 +16,7 @@ class Check {
     this.userId,
     this.userName,
     this.timestamp,
+    this.chart,
   });
 
   Check.fromMap(Map<String, dynamic> map,
@@ -23,7 +25,8 @@ class Check {
         userId = map['userId'],
         userName = map['userName'],
         cnt = map['cnt'],
-        timestamp = map['timestamp'];
+        timestamp = map['timestamp'],
+        chart = map['chart'];
 
   Check.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data(), reference: snapshot.reference);
@@ -36,6 +39,7 @@ class Check {
       userName: getDocs["userId"],
       cnt: getDocs["cnt"],
       timestamp: getDocs["timestamp"],
+      chart: getDocs["chart"],
     );
   }
 }
