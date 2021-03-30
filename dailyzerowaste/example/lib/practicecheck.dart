@@ -146,29 +146,31 @@ class _practiceCheck extends State<PracticeCheckPage> {
   }
 
   selectTitle(str) {
-    return Container(
-        width: 450,
-        child: Text(str,
-            overflow: TextOverflow.visible,
-            style: TextStyle(
-                fontFamily: 'Quick-Pencil',
-                fontSize: 23,
-                color: Color(0xff4f4b49))),
-        padding: EdgeInsets.only(left: 52.82));
+    return Expanded(
+      child: Container(
+          width: 450,
+          child: Text(str,
+              overflow: TextOverflow.visible,
+              style: TextStyle(
+                  fontFamily: 'Quick-Pencil',
+                  fontSize: 23,
+                  color: Color(0xff4f4b49))),
+          padding: EdgeInsets.only(left: 52.82)),
+    );
   }
 
   saveInfoToFirestore(BuildContext context) async {
-final userReference =
-    FirebaseFirestore.instance.collection('PracticeCheck');
+    final userReference =
+        FirebaseFirestore.instance.collection('PracticeCheck');
 
-      // 작성글 셋팅된 값으로 db에 set
-      userReference.doc().set({
-        'cnt':currentUser.cntCheck,
-        'userName': currentUser.username,
-        'userId': currentUser.id,
-        'timestamp': timestamp,
-        'chart':q,
-      });
+    // 작성글 셋팅된 값으로 db에 set
+    userReference.doc().set({
+      'cnt': currentUser.cntCheck,
+      'userName': currentUser.username,
+      'userId': currentUser.id,
+      'timestamp': timestamp,
+      'chart': q,
+    });
   }
 
   updatepractice(BuildContext context) async {

@@ -55,7 +55,7 @@ comfirm(str, ReturnNickname user) async {
 class ReturnNickname {
   String nickname;
   String step;
-  List init = [0,0,0,0];
+  List init = [0, 0, 0, 0];
 
   ReturnNickname({this.nickname, this.step, this.init});
 
@@ -85,8 +85,7 @@ class _question extends State<QuestionPage> {
   submitNickname() {
     checkStep();
 
-
-    if (user.step == "" || user.nickname == "") {
+    if (user.nickname == "") {
       Fluttertoast.showToast(
           msg: "Comfirm your nickname",
           toastLength: Toast.LENGTH_SHORT,
@@ -95,10 +94,15 @@ class _question extends State<QuestionPage> {
           backgroundColor: Colors.red,
           textColor: Colors.white,
           fontSize: 16.0);
-      return;}
+      return;
+    }
+
+    if (user.step == "" || user.nickname == "") {
+      return;
+    }
 
     if (user.step == "e1") {
-            Fluttertoast.showToast(
+      Fluttertoast.showToast(
           msg: "You have to answer all questions",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
@@ -110,7 +114,7 @@ class _question extends State<QuestionPage> {
     }
 
     if (user.step == "e2") {
-            Fluttertoast.showToast(
+      Fluttertoast.showToast(
           msg: "You have to answer 'yes' for the last question",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
@@ -121,18 +125,23 @@ class _question extends State<QuestionPage> {
       return;
     }
 
-    if ( _q2 == 2 ) { user.init[0] = 1; }
-    else if ( _q2 == 3 ) { user.init[0] = 10; }
+    if (_q2 == 2) {
+      user.init[0] = 1;
+    } else if (_q2 == 3) {
+      user.init[0] = 10;
+    }
 
-    if ( _q3 == 2 ) { user.init[1] = 6; }
-    else if ( _q3 == 3 ) { user.init[1] = 16; }
+    if (_q3 == 2) {
+      user.init[1] = 6;
+    } else if (_q3 == 3) {
+      user.init[1] = 16;
+    }
 
     print(user.nickname + " " + user.step);
 
     final form = _formKey.currentState;
     if (form.validate()) {
       form.save();
-
 
       Timer(Duration(seconds: 1), () {
         Navigator.pop(context, user);
