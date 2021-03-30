@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: FakeLoginPage(), //나중에는 LoginPage()로 수정하고 login.dart 수정하기
+        child: LoginPage(), //나중에는 LoginPage()로 수정하고 login.dart 수정하기
         //child: Share(), //소셜 셰어 페이지
       ),
     );

@@ -177,7 +177,7 @@ class _step extends State<StepHomePage> {
                         ? DecorationImage(
                             image: AssetImage('image/tier/DIY_expert.png'),
                           )
-                        : currentUser.cntDIY >= 1
+                        : currentUser.cntDIY >= 0
                             ? DecorationImage(
                                 image: AssetImage(
                                     'image/tier/DIY_intermediate.png'),
@@ -330,7 +330,6 @@ class _step extends State<StepHomePage> {
                             backgroundColor: Color(0xff4f4b49),
                             content: Text("Success scanning QR Code")));
                         setState(() {
-                          currentUser.cntVisitShop += 1;
                           currentUser.step =
                               (percent == 100) && currentUser.step == "beginner"
                                   ? "intermediate"
@@ -520,7 +519,6 @@ class _step extends State<StepHomePage> {
                             backgroundColor: Color(0xff4f4b49),
                             content: Text("Success")));
                         setState(() {
-                          currentUser.cntShare += 1;
                           currentUser.step =
                               (percent == 100) && currentUser.step == "beginner"
                                   ? "intermediate"

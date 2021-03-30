@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dailyzerowaste/model/DIY.dart';
 import 'package:dailyzerowaste/model/check.dart';
+import 'package:dailyzerowaste/model/visit.dart';
 import 'package:dailyzerowaste/viewDIY.dart';
 import 'package:flutter/material.dart';
 
@@ -59,7 +60,7 @@ class _stepHistory extends State<StepHistoryPage> {
         ],
       ),
     );
-    ar.add(makeCustomList1(context, currentUserName));
+    ar.add(makeCustomList1(context, currentUser.username));
 
     ar.add(
       Column(
@@ -88,7 +89,7 @@ class _stepHistory extends State<StepHistoryPage> {
         ],
       ),
     );
-    ar.add(makeCustomList2(context, currentUserName));
+    ar.add(makeCustomList2(context, currentUser.username));
 
     ar.add(
       Column(
@@ -117,7 +118,7 @@ class _stepHistory extends State<StepHistoryPage> {
         ],
       ),
     );
-    ar.add(makeCustomList3(context, currentUserName));
+    ar.add(makeCustomList3(context, currentUser.username));
 
     ar.add(
       Column(
@@ -146,7 +147,7 @@ class _stepHistory extends State<StepHistoryPage> {
         ],
       ),
     );
-    ar.add(makeCustomList4(context, currentUserName));
+    ar.add(makeCustomList4(context, currentUser.username));
 
     print(ar);
     return Container(
@@ -154,12 +155,12 @@ class _stepHistory extends State<StepHistoryPage> {
   }
 
   // 텍스트폼필드의 값을 인자로 갖고, 스트림빌더를 반환하는 함수
-  Widget makeCustomList1(BuildContext context, List str) {
+  Widget makeCustomList1(BuildContext context, String str) {
     return StreamBuilder<QuerySnapshot>(
         //동적 데이터 활용을 위해 스트림 형성
         stream: FirebaseFirestore.instance
             .collection('DIY')
-            //  .where('username', isEqualTo: str) //텍스트폼필드 값을 쿼리문에 이용
+            .where('userName', isEqualTo: str) //텍스트폼필드 값을 쿼리문에 이용
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
@@ -171,12 +172,12 @@ class _stepHistory extends State<StepHistoryPage> {
   }
 
   // 텍스트폼필드의 값을 인자로 갖고, 스트림빌더를 반환하는 함수
-  Widget makeCustomList2(BuildContext context, List str) {
+  Widget makeCustomList2(BuildContext context, String str) {
     return StreamBuilder<QuerySnapshot>(
         //동적 데이터 활용을 위해 스트림 형성
         stream: FirebaseFirestore.instance
             .collection('VisitShop')
-            //  .where('username', isEqualTo: str) //텍스트폼필드 값을 쿼리문에 이용
+            .where('userName', isEqualTo: str) //텍스트폼필드 값을 쿼리문에 이용
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
@@ -188,12 +189,15 @@ class _stepHistory extends State<StepHistoryPage> {
   }
 
   // 텍스트폼필드의 값을 인자로 갖고, 스트림빌더를 반환하는 함수
-  Widget makeCustomList3(BuildContext context, List str) {
+  Widget makeCustomList3(BuildContext context, String str) {
+    FirebaseFirestore.instance
+            .collection('PracticeCheck').orderBy('cnt', descending: true);
+
     return StreamBuilder<QuerySnapshot>(
         //동적 데이터 활용을 위해 스트림 형성
         stream: FirebaseFirestore.instance
             .collection('PracticeCheck')
-            //  .where('username', isEqualTo: str) //텍스트폼필드 값을 쿼리문에 이용
+            .where('userName', isEqualTo: str) //텍스트폼필드 값을 쿼리문에 이용
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
@@ -205,19 +209,19 @@ class _stepHistory extends State<StepHistoryPage> {
   }
 
   // 텍스트폼필드의 값을 인자로 갖고, 스트림빌더를 반환하는 함수
-  Widget makeCustomList4(BuildContext context, List str) {
+  Widget makeCustomList4(BuildContext context, String str) {
     return StreamBuilder<QuerySnapshot>(
         //동적 데이터 활용을 위해 스트림 형성
         stream: FirebaseFirestore.instance
             .collection('SocialShare')
-            //  .where('username', isEqualTo: str) //텍스트폼필드 값을 쿼리문에 이용
+            .where('userName', isEqualTo: str) //텍스트폼필드 값을 쿼리문에 이용
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return LinearProgressIndicator();
           }
 
-          return _buildList1(context, snapshot.data.docs);
+          return _buildList4(context, snapshot.data.docs);
         });
   }
 
@@ -308,12 +312,12 @@ class _stepHistory extends State<StepHistoryPage> {
                       height: 70,
                       child: Container(
                         decoration: BoxDecoration(
-                            image: currentUser.cntDIY >= 10
+                            image: currentDIY.cnt >= 10
                                 ? DecorationImage(
                                     image:
                                         AssetImage('image/tier/DIY_expert.png'),
                                   )
-                                : currentUser.cntDIY >= 1
+                                : currentDIY.cnt >= 0
                                     ? DecorationImage(
                                         image: AssetImage(
                                             'image/tier/DIY_intermediate.png'),
@@ -373,7 +377,7 @@ class _stepHistory extends State<StepHistoryPage> {
 
   //각 문서의 데이터를 인자로 갖고 리스트뷰_타일(각 사각항목)을 반환하는 함수
   Widget _buildListItem2(BuildContext context, DocumentSnapshot data) {
-    final currentDIY = DIY.fromSnapshot(data);
+    final currentVisit = VisitShop.fromSnapshot(data);
 
     return InkWell(
       onTap: () {},
@@ -397,12 +401,12 @@ class _stepHistory extends State<StepHistoryPage> {
                       height: 70,
                       child: Container(
                         decoration: BoxDecoration(
-                            image: currentUser.cntVisitShop >= 16
+                            image: currentVisit.cnt >= 16
                                 ? DecorationImage(
                                     image: AssetImage(
                                         'image/tier/shop_expert.png'),
                                   )
-                                : currentUser.cntVisitShop >= 6
+                                : currentVisit.cnt >= 6
                                     ? DecorationImage(
                                         image: AssetImage(
                                             'image/tier/shop_intermediate.png'),
@@ -426,7 +430,7 @@ class _stepHistory extends State<StepHistoryPage> {
                         Container(
                             width: 250,
                             child: Text(
-                              "NO. " + currentDIY.cnt.toString(),
+                              "NO. " + currentVisit.cnt.toString(),
                               style: TextStyle(
                                 fontFamily: 'Quick-Pencil',
                                 fontSize: 20,
@@ -439,7 +443,7 @@ class _stepHistory extends State<StepHistoryPage> {
                         Container(
                             width: 250,
                             child: Text(
-                              currentDIY.timestamp.toDate().toString(),
+                              currentVisit.timestamp.toDate().toString(),
                               overflow: TextOverflow.visible,
                               style: TextStyle(
                                 fontFamily: 'Quick-Pencil',
@@ -485,12 +489,12 @@ class _stepHistory extends State<StepHistoryPage> {
                       height: 70,
                       child: Container(
                         decoration: BoxDecoration(
-                            image: currentUser.cntCheck >= 41
+                            image: currentCheck.cnt >= 41
                                 ? DecorationImage(
                                     image: AssetImage(
                                         'image/tier/check_expert.png'),
                                   )
-                                : currentUser.cntCheck >= 21
+                                : currentCheck.cnt >= 21
                                     ? DecorationImage(
                                         image: AssetImage(
                                             'image/tier/check_intermediate.png'),
@@ -549,7 +553,7 @@ class _stepHistory extends State<StepHistoryPage> {
   }
 
   Widget _buildListItem4(BuildContext context, DocumentSnapshot data) {
-    final currentDIY = DIY.fromSnapshot(data);
+    final currentShare = DIY.fromSnapshot(data);
 
     return InkWell(
       onTap: () {},
@@ -573,12 +577,12 @@ class _stepHistory extends State<StepHistoryPage> {
                       height: 70,
                       child: Container(
                         decoration: BoxDecoration(
-                            image: currentUser.cntShare >= 16
+                            image: currentShare.cnt >= 16
                                 ? DecorationImage(
                                     image: AssetImage(
                                         'image/tier/shop_expert.png'),
                                   )
-                                : currentUser.cntShare >= 31
+                                : currentShare.cnt >= 31
                                     ? DecorationImage(
                                         image: AssetImage(
                                             'image/tier/shop_intermediate.png'),
@@ -602,7 +606,7 @@ class _stepHistory extends State<StepHistoryPage> {
                         Container(
                             width: 250,
                             child: Text(
-                              "NO. " + currentDIY.cnt.toString(),
+                              "NO. " + currentShare.cnt.toString(),
                               style: TextStyle(
                                 fontFamily: 'Quick-Pencil',
                                 fontSize: 20,
@@ -615,7 +619,7 @@ class _stepHistory extends State<StepHistoryPage> {
                         Container(
                             width: 250,
                             child: Text(
-                              currentDIY.timestamp.toDate().toString(),
+                              currentShare.timestamp.toDate().toString(),
                               overflow: TextOverflow.visible,
                               style: TextStyle(
                                 fontFamily: 'Quick-Pencil',

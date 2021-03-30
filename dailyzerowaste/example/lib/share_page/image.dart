@@ -135,6 +135,9 @@ class _TextOverImage extends State<TextOverImage> {
                   print(data);
                 });
 
+                saveInfoToFirestore(context);
+                updatepractice(context);
+
                 // 다시 step페이지로 이동
                 Navigator.popUntil(
                     context, ModalRoute.withName(Navigator.defaultRouteName));

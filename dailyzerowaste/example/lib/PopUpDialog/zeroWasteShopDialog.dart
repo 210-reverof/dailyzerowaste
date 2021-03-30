@@ -25,6 +25,20 @@ class _zwsPopUpMessageDialog extends State<ZWSPopUpMessageDialog> {
     );
   }
 
+    saveInfoToFirestore(BuildContext context) async {
+final userReference =
+    FirebaseFirestore.instance.collection('VisitShop');
+
+      // 작성글 셋팅된 값으로 db에 set
+      userReference.doc().set({
+        'storeNum':_marketID,
+        'cnt':currentUser.cntCheck,
+        'userName': currentUser.username,
+        'userId': currentUser.id,
+        'timestamp': timestamp,
+      });
+  }
+
       updatepractice(BuildContext context) async {
     final userReference = FirebaseFirestore.instance.collection('users');
 
@@ -60,6 +74,7 @@ class _zwsPopUpMessageDialog extends State<ZWSPopUpMessageDialog> {
       _marketID = barcode;
 
       updatepractice(context);
+      saveInfoToFirestore(context);
 
       // 다시 step페이지로 이동
       Navigator.popUntil(
