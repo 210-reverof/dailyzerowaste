@@ -311,7 +311,7 @@ class _step extends State<StepHomePage> {
                         ],
                       ),
                     ),
-                    SizedBox(width: 33),
+                    SizedBox(width: 31),
 
                     // TRY 버튼
                     InkWell(

@@ -3,21 +3,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'user.dart';
 
 class Share {
-  String title;
-  String text;
-  String userImage;
+  int cnt;
   String userId;
   String userName;
-  String image;
-  String timestamp;
+  Timestamp timestamp;
   DocumentReference reference;
 
-  Share ({
-    this.image,
+  Share({
     this.reference,
-    this.userImage,
-    this.text,
-    this.title,
+    this.cnt,
     this.userId,
     this.userName,
     this.timestamp,
@@ -25,13 +19,10 @@ class Share {
 
   Share.fromMap(Map<String, dynamic> map,
       {this.reference}) // 생성자 리다이렉팅 : 특정 생성자에게 처리를 위임할 수 있음
-      : assert(map['title'] != null),
-        title = map['title'],
-        text = map['text'],
-        image = map['image'],
+      : assert(map['userId'] != null),
         userId = map['userId'],
         userName = map['userName'],
-        userImage = map['userImage'],
+        cnt = map['cnt'],
         timestamp = map['timestamp'];
 
   Share.fromSnapshot(DocumentSnapshot snapshot)
@@ -39,14 +30,11 @@ class Share {
 
   factory Share.fromDocumnet(DocumentSnapshot doc) {
     Map getDocs = doc.data();
-    return Share (
-      image: getDocs["image"],
+    return Share(
       reference: getDocs["reference"],
       userId: getDocs["userId"],
       userName: getDocs["userId"],
-      title: getDocs["title"],
-      text: getDocs["text"],
-      userImage: getDocs["userImage"],
+      cnt: getDocs["cnt"],
       timestamp: getDocs["timestamp"],
     );
   }
