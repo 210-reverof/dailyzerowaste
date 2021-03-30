@@ -39,6 +39,7 @@
         android:debuggable="true"
         android:icon="@mipmap/ic_launcher"
         android:label="dailyzerowaste"
+        android:requestLegacyExternalStorage="true"
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"

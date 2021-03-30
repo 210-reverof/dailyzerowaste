@@ -31,6 +31,18 @@ class _feed extends State<FeedPage> {
     {'title': 'expert', 'isActive': false}
   ];
 
+  setKeywords() { 
+    stepValues.clear();
+    for (int i = 0 ; i < 3 ; i++) {
+      var a = selected[i];
+      if (a['isActive']) {
+              String t = a['title'];
+      stepValues.add([t]);
+      }
+    }  
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -161,18 +173,15 @@ class _feed extends State<FeedPage> {
                                     child: InkWell(
                                         onTap: () {
                                           changeState(option);
-                                          stepValues.clear();
-                                          if (option[
+                                          setKeywords();
+                                            if (option[
                                               'isActive']) //option의 isActive가 true라면 ->
                                           {
-                                            stepValues.add([option['title']]);
+                                           // stepValues.add([option['title']]);
                                             print("add");
                                             print(stepValues);
-                                          } else {
-                                            //stepValues.removeAt(a);
-                                            print("remove");
-                                            print([option['title']]);
                                           }
+                        
                                         },
                                         child: Container(
                                             padding: EdgeInsets.all(10),
