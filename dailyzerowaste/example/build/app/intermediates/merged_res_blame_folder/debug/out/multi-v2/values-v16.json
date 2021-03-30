@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\user\\Desktop\\dailyzerowaste\\dailyzerowaste\\example\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+            "outputFile": "C:\\Users\\JOLLA\\dailyzerowaste\\dailyzerowaste\\dailyzerowaste\\example\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\user\\.gradle\\caches\\transforms-2\\files-2.1\\72e9bc9417c6c5f5cf305841afc14800\\appcompat-1.1.0\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\JOLLA\\.gradle\\caches\\transforms-2\\files-2.1\\72e9bc9417c6c5f5cf305841afc14800\\appcompat-1.1.0\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\user\\.gradle\\caches\\transforms-2\\files-2.1\\f0c9d99ae44373752f48963f9840317f\\core-1.3.2\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\JOLLA\\.gradle\\caches\\transforms-2\\files-2.1\\f0c9d99ae44373752f48963f9840317f\\core-1.3.2\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

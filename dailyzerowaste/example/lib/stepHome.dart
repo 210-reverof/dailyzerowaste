@@ -21,16 +21,16 @@ class _step extends State<StepHomePage> {
   int calcPercentage() {
     List per = [0, 0, 0, 0];
     if (currentUser.step == "beginner") {
-      per[0] = 25;
+      per[0] = 0;
       per[1] = (currentUser.cntVisitShop / 5) > 1
-          ? 25
-          : (currentUser.cntVisitShop / 5) * 25;
+          ? 35
+          : (currentUser.cntVisitShop / 5) * 35;
       per[2] = (currentUser.cntCheck / 20) > 1
-          ? 25
-          : (currentUser.cntCheck / 20) * 25;
+          ? 35
+          : (currentUser.cntCheck / 20) * 35;
       per[3] = (currentUser.cntShare / 15) > 1
-          ? 25
-          : (currentUser.cntShare / 20) * 25;
+          ? 30
+          : (currentUser.cntShare / 20) * 30;
     } else if (currentUser.step == "intermediate") {
       per[0] = currentUser.cntVisitShop > 1 ? 25 : 0;
       per[1] = ((currentUser.cntVisitShop - 5) / 5) > 1
@@ -60,11 +60,12 @@ class _step extends State<StepHomePage> {
     double sum = 0;
 
     for (int i = 0; i < 4; i++) {
+      print("+++++++++++++++" + per[i].toString());
       sum += per[i];
     }
 
     int calc_ranks(ranks) {
-      double multiplier = .5;
+      double multiplier = 1.0;
       return (multiplier * ranks).round();
     }
 
@@ -173,19 +174,20 @@ class _step extends State<StepHomePage> {
                       width: 106,
                       height: 106,
                       decoration: BoxDecoration(
-                    image: currentUser.cntDIY >= 10
-                        ? DecorationImage(
-                            image: AssetImage('image/tier/DIY_expert.png'),
-                          )
-                        : currentUser.cntDIY >= 0
-                            ? DecorationImage(
-                                image: AssetImage(
-                                    'image/tier/DIY_intermediate.png'),
-                              )
-                            : DecorationImage(
-                                image:
-                                    AssetImage('image/tier/DIY_beginner.png')),
-                    borderRadius: BorderRadius.circular(100)),
+                          image: currentUser.cntDIY >= 10
+                              ? DecorationImage(
+                                  image:
+                                      AssetImage('image/tier/DIY_expert.png'),
+                                )
+                              : currentUser.cntDIY >= 0
+                                  ? DecorationImage(
+                                      image: AssetImage(
+                                          'image/tier/DIY_intermediate.png'),
+                                    )
+                                  : DecorationImage(
+                                      image: AssetImage(
+                                          'image/tier/DIY_beginner.png')),
+                          borderRadius: BorderRadius.circular(100)),
                     ),
 
                     // 어떤 분야의 칭호인지
@@ -267,19 +269,20 @@ class _step extends State<StepHomePage> {
                       width: 106,
                       height: 106,
                       decoration: BoxDecoration(
-                    image: currentUser.cntVisitShop >= 16
-                        ? DecorationImage(
-                            image: AssetImage('image/tier/shop_expert.png'),
-                          )
-                        : currentUser.cntVisitShop >= 6
-                            ? DecorationImage(
-                                image: AssetImage(
-                                    'image/tier/shop_intermediate.png'),
-                              )
-                            : DecorationImage(
-                                image:
-                                    AssetImage('image/tier/shop_beginner.png')),
-                    borderRadius: BorderRadius.circular(100)),
+                          image: currentUser.cntVisitShop >= 16
+                              ? DecorationImage(
+                                  image:
+                                      AssetImage('image/tier/shop_expert.png'),
+                                )
+                              : currentUser.cntVisitShop >= 6
+                                  ? DecorationImage(
+                                      image: AssetImage(
+                                          'image/tier/shop_intermediate.png'),
+                                    )
+                                  : DecorationImage(
+                                      image: AssetImage(
+                                          'image/tier/shop_beginner.png')),
+                          borderRadius: BorderRadius.circular(100)),
                     ),
 
                     // 어떤 분야의 칭호인지
@@ -362,19 +365,20 @@ class _step extends State<StepHomePage> {
                       width: 106,
                       height: 106,
                       decoration: BoxDecoration(
-                    image: currentUser.cntCheck >= 41
-                        ? DecorationImage(
-                            image: AssetImage('image/tier/check_expert.png'),
-                          )
-                        : currentUser.cntCheck >= 21
-                            ? DecorationImage(
-                                image: AssetImage(
-                                    'image/tier/check_intermediate.png'),
-                              )
-                            : DecorationImage(
-                                image:
-                                    AssetImage('image/tier/check_beginner.png')),
-                    borderRadius: BorderRadius.circular(100)),
+                          image: currentUser.cntCheck >= 41
+                              ? DecorationImage(
+                                  image:
+                                      AssetImage('image/tier/check_expert.png'),
+                                )
+                              : currentUser.cntCheck >= 21
+                                  ? DecorationImage(
+                                      image: AssetImage(
+                                          'image/tier/check_intermediate.png'),
+                                    )
+                                  : DecorationImage(
+                                      image: AssetImage(
+                                          'image/tier/check_beginner.png')),
+                          borderRadius: BorderRadius.circular(100)),
                     ),
 
                     // 어떤 분야의 칭호인지
@@ -456,19 +460,20 @@ class _step extends State<StepHomePage> {
                       width: 106,
                       height: 106,
                       decoration: BoxDecoration(
-                    image: currentUser.cntShare >= 16
-                        ? DecorationImage(
-                            image: AssetImage('image/tier/shop_expert.png'),
-                          )
-                        : currentUser.cntShare >= 31
-                            ? DecorationImage(
-                                image: AssetImage(
-                                    'image/tier/shop_intermediate.png'),
-                              )
-                            : DecorationImage(
-                                image:
-                                    AssetImage('image/tier/shop_beginner.png')),
-                    borderRadius: BorderRadius.circular(100)),
+                          image: currentUser.cntShare >= 16
+                              ? DecorationImage(
+                                  image:
+                                      AssetImage('image/tier/shop_expert.png'),
+                                )
+                              : currentUser.cntShare >= 31
+                                  ? DecorationImage(
+                                      image: AssetImage(
+                                          'image/tier/shop_intermediate.png'),
+                                    )
+                                  : DecorationImage(
+                                      image: AssetImage(
+                                          'image/tier/shop_beginner.png')),
+                          borderRadius: BorderRadius.circular(100)),
                     ),
 
                     // 어떤 분야의 칭호인지
@@ -562,12 +567,17 @@ class YourStepTitle extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Text(
-              currentUser.timestamp.toDate().day.toString() + " " +
-              currentUser.timestamp.toDate().month.toString() + " " +
-              currentUser.timestamp.toDate().year.toString() + "  ~  " +
-              now.day.toString() + " " +
-              now.month.toString() + " " +
-              now.year.toString(),
+              currentUser.timestamp.toDate().day.toString() +
+                  " " +
+                  currentUser.timestamp.toDate().month.toString() +
+                  " " +
+                  currentUser.timestamp.toDate().year.toString() +
+                  "  ~  " +
+                  now.day.toString() +
+                  " " +
+                  now.month.toString() +
+                  " " +
+                  now.year.toString(),
               style: TextStyle(
                 fontFamily: 'Quick-Pencil',
                 fontSize: 17,

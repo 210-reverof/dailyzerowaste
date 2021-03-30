@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "763840709427-1dq1acbc5oadhdtg3squpqosb4maa06h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dailyzerowaste",
+            "certificate_hash": "8b21dec9d34c71c39b6bd21b77cede2ec4805950"
+          }
+        },
+        {
           "client_id": "763840709427-3bp4ln88d9g8e670div21k6dav8uj98r.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
