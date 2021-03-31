@@ -2,7 +2,6 @@
 
 # #dailyzerowaste
 
----
 
 ![Dailyzerowaste%20README%204ff0e85121694236b918324bc0ba9456/Untitled.png](Dailyzerowaste%20README%204ff0e85121694236b918324bc0ba9456/Untitled.png)
 
@@ -14,7 +13,6 @@ That is why we introduce to you **“Dailyzerowaste”**, a mobile application t
 
 # 🤔 Using Our App...
 
----
 
 - Write stories about your zero-waste life
 - Check your step when you enter the app.
@@ -31,7 +29,6 @@ That is why we introduce to you **“Dailyzerowaste”**, a mobile application t
 
 # ✔️ How to run "#dailyzerowaste"
 
----
 
 you should have flutter, android studio(emulator) and Interlinked firebase
 
@@ -43,7 +40,6 @@ you should have flutter, android studio(emulator) and Interlinked firebase
 
 # ⚙ Project Structure
 
----
 ```
 📦lib
  ┣ 📂DIY_page
@@ -103,7 +99,6 @@ you should have flutter, android studio(emulator) and Interlinked firebase
 
 # 📜 DB
 
----
 
 - DIY Firestore Database
 
@@ -135,7 +130,6 @@ you should have flutter, android studio(emulator) and Interlinked firebase
 
 # 💻 Technical Stack
 
----
 
 - Flutter 2.0
 - Google Firebase
@@ -147,7 +141,6 @@ you should have flutter, android studio(emulator) and Interlinked firebase
 
 # 📱App Preview
 
----
 
 ![Dailyzerowaste%20README%204ff0e85121694236b918324bc0ba9456/KakaoTalk_20210330_224949808.jpg](Dailyzerowaste%20README%204ff0e85121694236b918324bc0ba9456/KakaoTalk_20210330_224949808.jpg)
 
@@ -175,13 +168,11 @@ you should have flutter, android studio(emulator) and Interlinked firebase
 
 # 🎞 Demo Video
 
----
 
 [click here](https://youtu.be/y0WPw5xusFs) to see our demo video 😎
 
 # 👨‍👨‍👧‍👦 Contributor
 
----
 
 - 👩🏻‍💻 Jeongyoon Joo, [yoon913612@gmail.com](mailto:yoon913612@gmail.com)
 - 👩🏻‍🎨 Minseo Kim, [ccd399761@gmail.com](mailto:ccd399761@gmail.com)
