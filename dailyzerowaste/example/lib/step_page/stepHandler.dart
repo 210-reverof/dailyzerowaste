@@ -1,6 +1,6 @@
-import 'package:dailyzerowaste/stepHistory.dart';
 import 'package:flutter/material.dart';
 
+import '../step_page/stepHistory.dart';
 import 'stepHome.dart';
 
 int STEP_TAB_INDEX = 0;

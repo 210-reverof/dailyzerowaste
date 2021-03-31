@@ -1,14 +1,13 @@
-import 'package:dailyzerowaste/mypage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dailyzerowaste/model/user.dart';
 
-import 'bottomBar.dart';
-import 'package:dailyzerowaste/question.dart';
-
+import '../model/user.dart';
+import '../bottomBar.dart';
+import 'mypage.dart';
+import 'question.dart';
 
 final GoogleSignIn googleSignIn = new GoogleSignIn();
 // variable for firestore collection 'users'
@@ -22,23 +21,23 @@ final postsReference =
 final DateTime timestamp = DateTime.now();
 User currentUser;
 
-  resetter() async {
-    userReference.doc(currentUser.id).set({
-      'id': currentUser.id,
-      'profileName': currentUser.profileName,
-      'username': currentUser.username,
-      'cntDIY': currentUser.cntDIY,
-      'cntVisitShop': currentUser.cntVisitShop,
-      'cntCheck': currentUser.cntCheck,
-      'cntShare': currentUser.cntShare,
-      'url': currentUser.url,
-      'email': currentUser.email,
-      'bio': '',
-      'image': currentUser.image,
-      'step': currentUser.step,
-      'timestamp': currentUser.timestamp,
-    });
-  }
+resetter() async {
+  userReference.doc(currentUser.id).set({
+    'id': currentUser.id,
+    'profileName': currentUser.profileName,
+    'username': currentUser.username,
+    'cntDIY': currentUser.cntDIY,
+    'cntVisitShop': currentUser.cntVisitShop,
+    'cntCheck': currentUser.cntCheck,
+    'cntShare': currentUser.cntShare,
+    'url': currentUser.url,
+    'email': currentUser.email,
+    'bio': '',
+    'image': currentUser.image,
+    'step': currentUser.step,
+    'timestamp': currentUser.timestamp,
+  });
+}
 
 class LoginPage extends StatefulWidget {
   @override

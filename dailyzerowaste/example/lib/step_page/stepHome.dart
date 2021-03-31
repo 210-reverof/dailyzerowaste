@@ -1,11 +1,10 @@
-import 'package:dailyzerowaste/PopUpDialog/DIYDialog.dart';
-import 'package:dailyzerowaste/login.dart';
 import 'package:flutter/material.dart';
 
-import 'login.dart';
-import 'PopUpDialog/checkPracticeDialog.dart';
-import 'PopUpDialog/shareHashtagsDialog.dart';
-import 'PopUpDialog/zeroWasteShopDialog.dart';
+import '../users/login.dart';
+import '../PopUpDialog/DIYDialog.dart';
+import '../PopUpDialog/checkPracticeDialog.dart';
+import '../PopUpDialog/shareHashtagsDialog.dart';
+import '../PopUpDialog/zeroWasteShopDialog.dart';
 
 class StepHomePage extends StatefulWidget {
   @override

@@ -1,11 +1,12 @@
-import 'package:dailyzerowaste/model/record.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'PopUpDialog/feedInfoDialog.dart';
+
+import '../model/record.dart';
+import '../PopUpDialog/feedInfoDialog.dart';
 import 'feedupload.dart';
-import 'login.dart';
-import 'model/user.dart';
+import '../users/login.dart';
+import '../model/user.dart';
 import 'viewFeed.dart';
 
 Record currentRecord;
@@ -31,17 +32,16 @@ class _feed extends State<FeedPage> {
     {'title': 'expert', 'isActive': false}
   ];
 
-  setKeywords() { 
+  setKeywords() {
     stepValues.clear();
-    for (int i = 0 ; i < 3 ; i++) {
+    for (int i = 0; i < 3; i++) {
       var a = selected[i];
       if (a['isActive']) {
-      String t = a['title'];
-      stepValues.add(t.toString());
+        String t = a['title'];
+        stepValues.add(t.toString());
       }
-    }  
+    }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -174,14 +174,13 @@ class _feed extends State<FeedPage> {
                                         onTap: () {
                                           changeState(option);
                                           setKeywords();
-                                            if (option[
+                                          if (option[
                                               'isActive']) //option의 isActive가 true라면 ->
                                           {
-                                           // stepValues.add([option['title']]);
+                                            // stepValues.add([option['title']]);
                                             print("add");
                                             print(stepValues);
                                           }
-                        
                                         },
                                         child: Container(
                                             padding: EdgeInsets.all(10),
@@ -323,8 +322,12 @@ class _feed extends State<FeedPage> {
     return InkWell(
       onTap: () {
         final Record here = currentRecord;
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => ViewFeedPage(currentRecord: currentRecord,)));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ViewFeedPage(
+                      currentRecord: currentRecord,
+                    )));
       },
       child: Container(
         margin: EdgeInsets.all(15),

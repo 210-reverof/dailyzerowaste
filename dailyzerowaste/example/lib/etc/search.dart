@@ -1,79 +1,70 @@
-import 'package:dailyzerowaste/feedpage.dart';
-import 'package:dailyzerowaste/model/record.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dailyzerowaste/viewFeed.dart';
-import 'package:flutter/material.dart';
-import 'login.dart';
+//model 폴더 및 record 파일 추가
+//yaml 파일에  firebase_storage: ^8.0.0 추가하고 import
+//main함수 호출 비동기 설정 및 DB 초기화
 
-class ProfilePage extends StatefulWidget {
-  Record currentRecord;
-  ProfilePage({@required this.currentRecord});
+import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../model/record.dart';
+import '../model/user.dart';
+import '../feed_page/viewFeed.dart';
+
+class SearchPage extends StatefulWidget {
+  SearchPage(User currentUser);
 
   @override
   State<StatefulWidget> createState() {
-    return _profile();
+    return _search();
   }
 }
 
-class _profile extends State<ProfilePage> {
+class _search extends State<SearchPage> {
   String searchText;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("image/background.png"),
-          fit: BoxFit.cover,
-        ),
-      ),
+    return GestureDetector(
+      onTap: () {
+        //만약 바탕을 터치하면 포커스 제거하기 (키보드 내려가도록)
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
       child: Scaffold(
         body: Container(
           child: Center(
             child: Column(
               children: <Widget>[
-                // header
-                SizedBox(height: 64),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    SizedBox(width: 36),
-                    Container(
-                      width: 26,
-                      child: InkWell(
-                        child: Image.asset('image/source_direction.png'),
-                        onTap: () => Navigator.pop(context),
+                // 검색창
+                Container(
+                  padding: EdgeInsets.fromLTRB(30, 79, 30, 10),
+                  //padding: EdgeInsets.only(left: 30, top: 79, right: 30),
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: Container(
+                          child: TextFormField(onChanged: (val) {
+                            //텍스트폼필드에 변화가 있을 때마다
+                            setState(() {
+                              searchText = val; //검색텍스트 갱신
+                            });
+                          }),
+                        ),
                       ),
-                    ),
-                  ],
+                      IconButton(
+                        icon: Icon(
+                          Icons.search,
+                          size: 27,
+                        ),
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
                 ),
 
-                Container(
-                    child: Column(
-                  children: [
-                    Container(
-                      width: 72,
-                      height: 72,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image:
-                                  NetworkImage(widget.currentRecord.userImage)),
-                          border: Border.all(width: 1, color: Colors.black),
-                          borderRadius: BorderRadius.circular(50)),
-                    ),
-                    SizedBox(height: 20),
-                    Text(widget.currentRecord.userName,
-                        style: TextStyle(
-                            fontFamily: 'Quick-Pencil',
-                            fontSize: 30,
-                            fontWeight: FontWeight.normal,
-                            color: Color(0xff403e3d)))
-                  ],
-                )),
-
-                SizedBox(height: 25),
-
-                //사용자 작성글-> 스트림빌더 생성 함수(생성자) 호출
-                _buildBody(context)
+                //검색결과 -> 스트림빌더 생성 함수(생성자) 호출
+                _buildBody(context, searchText)
               ],
             ),
           ),
@@ -83,13 +74,12 @@ class _profile extends State<ProfilePage> {
   }
 
   // 텍스트폼필드의 값을 인자로 갖고, 스트림빌더를 반환하는 함수
-  Widget _buildBody(BuildContext context) {
+  Widget _buildBody(BuildContext context, String val) {
     return StreamBuilder<QuerySnapshot>(
         //동적 데이터 활용을 위해 스트림 형성
         stream: FirebaseFirestore.instance
             .collection('feed')
-            .where('userName',
-                isEqualTo: widget.currentRecord.userName) //텍스트폼필드 값을 쿼리문에 이용
+            .where('title', isGreaterThanOrEqualTo: val) //텍스트폼필드 값을 쿼리문에 이용
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
@@ -124,13 +114,16 @@ class _profile extends State<ProfilePage> {
     }
 
     return InkWell(
-      onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  ViewFeedPage(currentRecord: currentRecord))),
+      onTap: () {
+        print(currentRecord.title);
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    ViewFeedPage(currentRecord: currentRecord)));
+      },
       child: Container(
-        margin: EdgeInsets.all(15),
+        margin: EdgeInsets.fromLTRB(30, 0, 30, 20),
         child: Container(
           padding: EdgeInsets.all(5),
           decoration: BoxDecoration(
@@ -159,15 +152,17 @@ class _profile extends State<ProfilePage> {
                   ),
 
                   // 글 제목, 본문, 작성자
-                  Container(
-                    padding:
-                        EdgeInsets.only(left: 9, top: 5, right: 5, bottom: 5),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        // 글 제목
-                        Container(
-                            width: 217,
+                  Expanded(
+                    child: Container(
+                      width: 200,
+                      padding:
+                          EdgeInsets.only(left: 9, top: 5, right: 5, bottom: 5),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          // 글 제목
+                          Container(
+                            width: 195,
                             child: Text(
                               currentRecord.title.toString(),
                               style: TextStyle(
@@ -175,12 +170,14 @@ class _profile extends State<ProfilePage> {
                                 fontSize: 20,
                                 color: Color(0xff4f4b49),
                               ),
-                            )),
-                        SizedBox(height: 5),
+                            ),
+                          ),
 
-                        // 본문
-                        Container(
-                            width: 217,
+                          SizedBox(height: 5),
+
+                          // 본문
+                          Container(
+                            width: 195,
                             child: Text(
                               currentRecord.text.toString(),
                               overflow: TextOverflow.visible,
@@ -189,33 +186,35 @@ class _profile extends State<ProfilePage> {
                                 fontSize: 15,
                                 color: Color(0xff4f4b49),
                               ),
-                            )),
-                        SizedBox(height: 10),
+                            ),
+                          ),
+                          SizedBox(height: 10),
 
-                        // 작성자
-                        Row(
-                          children: <Widget>[
-                            IconButton(
-                              padding: EdgeInsets.zero,
-                              icon: Icon(
-                                Icons.account_circle,
-                                size: 20,
+                          // 작성자
+                          Row(
+                            children: <Widget>[
+                              IconButton(
+                                padding: EdgeInsets.zero,
+                                icon: Icon(
+                                  Icons.account_circle,
+                                  size: 20,
+                                ),
+                                constraints: BoxConstraints(),
+                                onPressed: () {},
                               ),
-                              constraints: BoxConstraints(),
-                              onPressed: () {},
-                            ),
-                            SizedBox(width: 5),
-                            Text(
-                              currentRecord.userName.toString(),
-                              style: TextStyle(
-                                fontFamily: 'Quick-Pencil',
-                                fontSize: 15,
-                                color: Color(0xff4f4b49),
+                              SizedBox(width: 5),
+                              Text(
+                                currentRecord.userName.toString(),
+                                style: TextStyle(
+                                  fontFamily: 'Quick-Pencil',
+                                  fontSize: 15,
+                                  color: Color(0xff4f4b49),
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
