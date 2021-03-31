@@ -6,7 +6,7 @@
 <img height="200" src="https://github.com/DSCSCHZeroHero/dailyzerowaste/blob/main/readme_photo/Untitled.png">
 </p>
 
-<p align="center">*#Dailyzerowaste*</p>
+<p align="center"><i>#Dailyzerowaste</i></p>
 
 Proven by over 7.5 billion #zerowaste posts on Instagram, there has been a spike in interest in the zero waste trend recently, but the limits have been exposed accordingly. If an eco-friendly product did not reach its certain usage level, it could cause ‘the rebound effect’, negatively affecting the environment. In addition, it is difficult to get the will alone.
 
@@ -27,7 +27,7 @@ That is why we introduce to you **“Dailyzerowaste”**, a mobile application t
 <p align="center">
 <img height="200" src="https://github.com/DSCSCHZeroHero/dailyzerowaste/blob/main/readme_photo/trees.png">
 </p>
-<p align="center">*Grow your own tree 😌*</p>
+<p align="center"><i>Grow your own tree 😌</i></p>
 
 
 # ✔️ How to run "#dailyzerowaste"
