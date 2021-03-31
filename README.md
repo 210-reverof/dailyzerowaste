@@ -2,10 +2,11 @@
 
 # #dailyzerowaste
 
+<p align="center">
+<img height="200" src="https://github.com/DSCSCHZeroHero/dailyzerowaste/blob/main/readme_photo/Untitled.png">
+</p>
 
-![Dailyzerowaste%20README%204ff0e85121694236b918324bc0ba9456/Untitled.png](Dailyzerowaste%20README%204ff0e85121694236b918324bc0ba9456/Untitled.png)
-
-*#Dailyzerowaste*
+<p align="center">*#Dailyzerowaste*</p>
 
 Proven by over 7.5 billion #zerowaste posts on Instagram, there has been a spike in interest in the zero waste trend recently, but the limits have been exposed accordingly. If an eco-friendly product did not reach its certain usage level, it could cause ‘the rebound effect’, negatively affecting the environment. In addition, it is difficult to get the will alone.
 
