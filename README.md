@@ -24,9 +24,11 @@ That is why we introduce to you **“Dailyzerowaste”**, a mobile application t
 - Check your zero-waste life
 - Grow your own tree in Step Page
 
-![Dailyzerowaste%20README%204ff0e85121694236b918324bc0ba9456/trees.png](Dailyzerowaste%20README%204ff0e85121694236b918324bc0ba9456/trees.png)
+<p align="center">
+<img height="200" src="https://github.com/DSCSCHZeroHero/dailyzerowaste/blob/main/readme_photo/trees.png">
+</p>
+<p align="center">*Grow your own tree 😌*</p>
 
-*Grow your own tree 😌*
 
 # ✔️ How to run "#dailyzerowaste"
 
