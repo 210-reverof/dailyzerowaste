@@ -102,34 +102,34 @@ you should have flutter, android studio(emulator) and Interlinked firebase
 
 # 📜 DB
 
+| ![image](https://github.com/DSCSCHZeroHero/dailyzerowaste/blob/main/readme_photo/DIY_censored.jpg) |
+|:--:|
+| DIY Firestore Database |
 
-- DIY Firestore Database
+| ![image](https://github.com/DSCSCHZeroHero/dailyzerowaste/blob/main/readme_photo/PracticeCheck_censored.jpg) |
+|:--:|
+| Practice Check Firestore Database |
 
-    ![Dailyzerowaste%20README%204ff0e85121694236b918324bc0ba9456/DIY_censored.jpg](Dailyzerowaste%20README%204ff0e85121694236b918324bc0ba9456/DIY_censored.jpg)
+| ![image](https://github.com/DSCSCHZeroHero/dailyzerowaste/blob/main/readme_photo/SocialShare_censored.jpg) |
+|:--:|
+| Social Share Firestore Database |
 
-- Practice Check Firestore Database
+| ![image](https://github.com/DSCSCHZeroHero/dailyzerowaste/blob/main/readme_photo/VisitShop_censored.jpg) |
+|:--:|
+| Visit Shop Firestore Database |
 
-    ![Dailyzerowaste%20README%204ff0e85121694236b918324bc0ba9456/PracticeCheck_censored.jpg](Dailyzerowaste%20README%204ff0e85121694236b918324bc0ba9456/PracticeCheck_censored.jpg)
+| ![image](https://github.com/DSCSCHZeroHero/dailyzerowaste/blob/main/readme_photo/Feed_censored.jpg) |
+|:--:|
+| Feed Firestore Database |
 
-- Social Share Firestore Database
+| ![image](https://github.com/DSCSCHZeroHero/dailyzerowaste/blob/main/readme_photo/Stores_censored.jpg) |
+|:--:|
+| Stores Firestore Database |
 
-    ![Dailyzerowaste%20README%204ff0e85121694236b918324bc0ba9456/SocialShare_censored.jpg](Dailyzerowaste%20README%204ff0e85121694236b918324bc0ba9456/SocialShare_censored.jpg)
+| ![image](https://github.com/DSCSCHZeroHero/dailyzerowaste/blob/main/readme_photo/Users_censored.jpg) |
+|:--:|
+| Users Firestore Database |
 
-- Visit Shop Firestore Database
-
-    ![Dailyzerowaste%20README%204ff0e85121694236b918324bc0ba9456/VisitShop_censored.jpg](Dailyzerowaste%20README%204ff0e85121694236b918324bc0ba9456/VisitShop_censored.jpg)
-
-- Feed Firestore Database
-
-    ![Dailyzerowaste%20README%204ff0e85121694236b918324bc0ba9456/Feed_censored.jpg](Dailyzerowaste%20README%204ff0e85121694236b918324bc0ba9456/Feed_censored.jpg)
-
-- Stores Firestore Database
-
-    ![Dailyzerowaste%20README%204ff0e85121694236b918324bc0ba9456/Stores_censored.jpg](Dailyzerowaste%20README%204ff0e85121694236b918324bc0ba9456/Stores_censored.jpg)
-
-- Users Firestore Database
-
-    ![Dailyzerowaste%20README%204ff0e85121694236b918324bc0ba9456/Users_censored.jpg](Dailyzerowaste%20README%204ff0e85121694236b918324bc0ba9456/Users_censored.jpg)
 
 # 💻 Technical Stack
 
