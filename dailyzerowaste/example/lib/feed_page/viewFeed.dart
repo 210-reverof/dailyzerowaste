@@ -1,7 +1,8 @@
-import 'package:dailyzerowaste/profile.dart';
 import 'package:flutter/material.dart';
-import 'model/record.dart';
-import 'login.dart';
+
+import '../users/profile.dart';
+import '../model/record.dart';
+import '../users/login.dart';
 
 class ViewFeedPage extends StatefulWidget {
   Record currentRecord;

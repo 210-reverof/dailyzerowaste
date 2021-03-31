@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dailyzerowaste/model/store.dart';
-import 'package:dailyzerowaste/zeroWasteShop.dart';
 import 'package:flutter/material.dart';
 import 'package:latlong/latlong.dart';
 import 'package:location/location.dart';
+
+import '../model/store.dart';
+import '../zerowasteshop_page/zeroWasteShop.dart';
 
 class ZeroWasteShopList extends StatefulWidget {
   LocationData currentLocation;

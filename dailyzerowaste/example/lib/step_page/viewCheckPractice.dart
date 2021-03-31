@@ -1,11 +1,12 @@
-import 'package:dailyzerowaste/login.dart';
-import 'package:dailyzerowaste/model/check.dart';
-import 'package:dailyzerowaste/stepHistory.dart';
 import 'package:flutter/material.dart';
+
+import '../users/login.dart';
+import '../model/check.dart';
+import '../step_page/stepHistory.dart';
 
 class ViewCheckPracticePage extends StatefulWidget {
   Check currentCheck;
-  ViewCheckPracticePage ({@required this.currentCheck});
+  ViewCheckPracticePage({@required this.currentCheck});
   @override
   State<StatefulWidget> createState() {
     return _viewFeed();
@@ -13,21 +14,30 @@ class ViewCheckPracticePage extends StatefulWidget {
 }
 
 String toText(int n) {
-  if(n == 1) return "Absolutely yes";
-  else if(n == 2) return "Actually yes";
-  else if(n == 3) return "normal";
-  else if(n == 4) return "Actually yes";
-  else if(n == 5) return "Absolutely no";
+  if (n == 1)
+    return "Absolutely yes";
+  else if (n == 2)
+    return "Actually yes";
+  else if (n == 3)
+    return "normal";
+  else if (n == 4)
+    return "Actually yes";
+  else if (n == 5) return "Absolutely no";
 }
 
 class _viewFeed extends State<ViewCheckPracticePage> {
   Widget build(BuildContext context) {
     String chartContents() {
-  return "1. Does DIY practice well?\n\n                                " + toText(widget.currentCheck.chart[0]) +
-  "\n\n\n\n2. Have you visited the Zero waste shop recently?\n\n                                " + toText(widget.currentCheck.chart[1]) +
-  "\n\n\n\n3. Have you shared a zero waste life with the people around you?\n\n                                " + toText(widget.currentCheck.chart[2]) +
-  "\n\n\n\n4. Are you living a zero waste life?\n\n                              " + toText(widget.currentCheck.chart[3]) + "\n";
-}
+      return "1. Does DIY practice well?\n\n                                " +
+          toText(widget.currentCheck.chart[0]) +
+          "\n\n\n\n2. Have you visited the Zero waste shop recently?\n\n                                " +
+          toText(widget.currentCheck.chart[1]) +
+          "\n\n\n\n3. Have you shared a zero waste life with the people around you?\n\n                                " +
+          toText(widget.currentCheck.chart[2]) +
+          "\n\n\n\n4. Are you living a zero waste life?\n\n                              " +
+          toText(widget.currentCheck.chart[3]) +
+          "\n";
+    }
 
     return Container(
       decoration: BoxDecoration(
@@ -95,5 +105,4 @@ class _viewFeed extends State<ViewCheckPracticePage> {
       ),
     );
   }
-
 }

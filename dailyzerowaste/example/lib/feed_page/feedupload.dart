@@ -6,8 +6,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:dailyzerowaste/model/user.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
-import 'PopUpDialog/tagInfoDialog.dart';
-import 'login.dart';
+import '../PopUpDialog/tagInfoDialog.dart';
+import '../users/login.dart';
 
 class FeedUploadPage extends StatefulWidget {
   FeedUploadPage(User currentUser);

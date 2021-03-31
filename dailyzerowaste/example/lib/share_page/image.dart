@@ -9,7 +9,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:media_scanner_scan_file/media_scanner_scan_file.dart';
 import 'check_permission.dart';
-import 'package:dailyzerowaste/login.dart';
+import '../users/login.dart';
 
 import 'package:image_picker/image_picker.dart';
 import 'package:social_share/social_share.dart';

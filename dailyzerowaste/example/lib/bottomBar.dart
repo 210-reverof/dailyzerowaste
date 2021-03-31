@@ -1,19 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'package:dailyzerowaste/model/user.dart';
+import 'model/user.dart';
 
-import 'stepHandler.dart';
-import 'feedpage.dart';
-import 'login.dart';
-import 'stepHistory.dart';
-import 'login.dart';
-import 'mypage.dart';
-import 'search.dart';
-import 'stepHome.dart';
-import 'temp.dart';
-import 'feedupload.dart';
-import 'zeroWasteShop.dart';
-import 'practicecheck.dart';
+import 'step_page/stepHandler.dart';
+import 'users/login.dart';
+import 'users/mypage.dart';
+import 'etc/search.dart';
+import 'zerowasteshop_page/zeroWasteShop.dart';
+import 'feed_page/feedpage.dart';
 
 class BottomBar extends StatefulWidget {
   BottomBar(User currentUser);

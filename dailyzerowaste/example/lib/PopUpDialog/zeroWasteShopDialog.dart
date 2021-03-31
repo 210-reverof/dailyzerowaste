@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:dailyzerowaste/login.dart';
+import '../users/login.dart';
 
 import 'package:qrscan/qrscan.dart' as scanner;
 
-import '../checkPermission.dart'; //qrscan 패키지를 scanner 별칭으로 사용.
+import '../etc/checkPermission.dart'; //qrscan 패키지를 scanner 별칭으로 사용.
 
 class ZWSPopUpMessageDialog extends StatefulWidget {
   @override

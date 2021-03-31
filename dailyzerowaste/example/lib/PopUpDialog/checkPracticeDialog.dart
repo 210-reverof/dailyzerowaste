@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../login.dart';
-import '../practicecheck.dart';
+import '../users/login.dart';
+import '../step_page/practicecheck.dart';
 
 class CPPopUpMessageDialog extends StatefulWidget {
   @override

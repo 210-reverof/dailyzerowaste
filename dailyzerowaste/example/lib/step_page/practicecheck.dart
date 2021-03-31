@@ -1,9 +1,9 @@
 import 'dart:io';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dailyzerowaste/model/user.dart';
 import 'package:flutter/material.dart';
-import 'login.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../model/user.dart';
+import '../users/login.dart';
 
 class PracticeCheckPage extends StatefulWidget {
   PracticeCheckPage(User currentUser);

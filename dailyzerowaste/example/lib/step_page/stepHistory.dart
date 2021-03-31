@@ -1,14 +1,14 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dailyzerowaste/model/DIY.dart';
-import 'package:dailyzerowaste/model/check.dart';
-import 'package:dailyzerowaste/model/share.dart';
-import 'package:dailyzerowaste/model/visit.dart';
-import 'package:dailyzerowaste/viewCheckPractice.dart';
-import 'package:dailyzerowaste/viewDIY.dart';
-import 'package:dailyzerowaste/viewVisitShop.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'login.dart';
+import '../model/DIY.dart';
+import '../model/check.dart';
+import '../model/share.dart';
+import '../model/visit.dart';
+import '../step_page/viewCheckPractice.dart';
+import '../DIY_page/viewDIY.dart';
+import '../step_page/viewVisitShop.dart';
+import '../users/login.dart';
 
 DIY currentDIY;
 Check currentVisitShop;

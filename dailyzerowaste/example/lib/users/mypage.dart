@@ -1,10 +1,11 @@
-import 'contact.dart';
-import 'package:dailyzerowaste/login.dart';
-import 'package:dailyzerowaste/model/user.dart';
 import 'package:flutter/material.dart';
-import 'stepInfo.dart';
+
+import '../etc/contact.dart';
 import 'login.dart';
-import 'versions.dart';
+import '../model/user.dart';
+import '../step_page/stepInfo.dart';
+import 'login.dart';
+import '../etc/versions.dart';
 
 class MyPage extends StatefulWidget {
   MyPage(User currentUser);
@@ -83,7 +84,10 @@ class _myPage extends State<MyPage> {
                   children: <Widget>[
                     InkWell(
                         onTap: () => Navigator.push(
-                          context, MaterialPageRoute(builder: (context) => StepInfoPage(currentUser))),
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    StepInfoPage(currentUser))),
                         child: Text(
                           'step information',
                           style: TextStyle(
@@ -96,7 +100,10 @@ class _myPage extends State<MyPage> {
                     SizedBox(height: 10.7),
                     InkWell(
                         onTap: () => Navigator.push(
-                          context, MaterialPageRoute(builder: (context) => VersionPage(currentUser))),
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    VersionPage(currentUser))),
                         child: Text(
                           'Version',
                           style: TextStyle(
@@ -109,7 +116,10 @@ class _myPage extends State<MyPage> {
                     SizedBox(height: 10.7),
                     InkWell(
                         onTap: () => Navigator.push(
-          context, MaterialPageRoute(builder: (context) => ContactPage(currentUser))),
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    ContactPage(currentUser))),
                         child: Text(
                           'Contact us',
                           style: TextStyle(
@@ -121,7 +131,8 @@ class _myPage extends State<MyPage> {
                     Image.asset('image/source_bar_2.png'),
                     SizedBox(height: 10.7),
                     InkWell(
-                      onTap: () => logoutUser(), //로그아웃버튼 잘 작동되지만, 페이크로그인에서는 작동 x 나중에 활성화하기
+                      onTap: () =>
+                          logoutUser(), //로그아웃버튼 잘 작동되지만, 페이크로그인에서는 작동 x 나중에 활성화하기
                       child: Text(
                         'Log out',
                         style: TextStyle(
