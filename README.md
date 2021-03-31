@@ -44,7 +44,7 @@ you should have flutter, android studio(emulator) and Interlinked firebase
 # ⚙ Project Structure
 
 ---
-
+```
 📦lib
  ┣ 📂DIY_page
  ┃ ┣ 📜DIYupload.dart
@@ -99,6 +99,7 @@ you should have flutter, android studio(emulator) and Interlinked firebase
  ┃ ┗ 📜zeroWasteShopList.dart
  ┣ 📜bottomBar.dart
  ┗ 📜main.dart
+```
 
 # 📜 DB
 
